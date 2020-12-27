@@ -150,6 +150,7 @@
   <ItemGroup>
     <Content Include="Content\AdminTemplate\css\sb-admin-2.css" />
     <Content Include="Content\AdminTemplate\css\sb-admin-2.min.css" />
+    <Content Include="Content\AdminTemplate\img\photo-1517849845537-4d257902454a.jpg" />
     <Content Include="Content\AdminTemplate\img\undraw_posting_photo.svg" />
     <Content Include="Content\AdminTemplate\img\undraw_profile.svg" />
     <Content Include="Content\AdminTemplate\img\undraw_profile_1.svg" />

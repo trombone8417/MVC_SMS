@@ -8,11 +8,11 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>UserTypeTable</h4>
+    <h4>使用者角色</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TypeName)
+            使用者角色
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            詳細內容
         </dt>
 
         <dd>
@@ -32,9 +32,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-success" /> |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</div>
     }
 </div>

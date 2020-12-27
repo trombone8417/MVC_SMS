@@ -48,7 +48,7 @@ namespace MVC_SMS.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,UserTypeID,FullName,UserName,Password,ContactNo,EmailAddress,Address")] UserTable userTable)
+        public ActionResult Create(UserTable userTable)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace MVC_SMS.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,UserTypeID,FullName,UserName,Password,ContactNo,EmailAddress,Address")] UserTable userTable)
+        public ActionResult Edit(UserTable userTable)
         {
             if (ModelState.IsValid)
             {

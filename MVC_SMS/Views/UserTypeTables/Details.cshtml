@@ -4,14 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>使用者角色</h2>
 
 <div>
     <h4>UserTypeTable</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TypeName)
+            使用者角色
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            詳細內容
         </dt>
 
         <dd>
@@ -29,6 +29,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserTypeID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserTypeID }, new { @class="btn btn-primary"}) |
+    @Html.ActionLink("Back to List", "Index",null, new { @class = "btn btn-default" })
 </p>
