@@ -2038,7 +2038,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\UserTypeTables\Create.cshtml" />
     <Content Include="Views\UserTypeTables\Delete.cshtml" />
     <Content Include="Views\UserTypeTables\Details.cshtml" />
@@ -2049,6 +2048,7 @@
     <Content Include="Views\UserTables\Details.cshtml" />
     <Content Include="Views\UserTables\Edit.cshtml" />
     <Content Include="Views\UserTables\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
