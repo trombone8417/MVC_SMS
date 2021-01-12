@@ -1,7 +1,7 @@
 ﻿@model DatabaseAccess.UserTable
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "User";
 }
 
 <h2>Delete</h2>
@@ -12,7 +12,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FullName)
+            Full Name
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserName)
+            User Name
         </dt>
 
         <dd>
@@ -28,15 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ContactNo)
+            Contact No
         </dt>
 
         <dd>
@@ -44,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EmailAddress)
+            Email Address
         </dt>
 
         <dd>
@@ -52,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            Address
         </dt>
 
         <dd>
@@ -60,7 +52,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserTypeTable.TypeName)
+            User Type
         </dt>
 
         <dd>
@@ -72,9 +64,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</div>
     }
 </div>

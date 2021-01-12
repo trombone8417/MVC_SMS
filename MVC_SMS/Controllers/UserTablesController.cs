@@ -17,6 +17,12 @@ namespace MVC_SMS.Controllers
         // GET: UserTables
         public ActionResult Index()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             var userTables = db.UserTables.Include(u => u.UserTypeTable);
             return View(userTables.ToList());
         }
@@ -24,6 +30,12 @@ namespace MVC_SMS.Controllers
         // GET: UserTables/Details/5
         public ActionResult Details(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +51,12 @@ namespace MVC_SMS.Controllers
         // GET: UserTables/Create
         public ActionResult Create()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName");
             return View();
         }
@@ -50,6 +68,12 @@ namespace MVC_SMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(UserTable userTable)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.UserTables.Add(userTable);
@@ -64,6 +88,12 @@ namespace MVC_SMS.Controllers
         // GET: UserTables/Edit/5
         public ActionResult Edit(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -84,6 +114,12 @@ namespace MVC_SMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UserTable userTable)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(userTable).State = EntityState.Modified;
@@ -97,6 +133,12 @@ namespace MVC_SMS.Controllers
         // GET: UserTables/Delete/5
         public ActionResult Delete(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -114,6 +156,12 @@ namespace MVC_SMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             UserTable userTable = db.UserTables.Find(id);
             db.UserTables.Remove(userTable);
             db.SaveChanges();
@@ -122,6 +170,7 @@ namespace MVC_SMS.Controllers
 
         protected override void Dispose(bool disposing)
         {
+            
             if (disposing)
             {
                 db.Dispose();

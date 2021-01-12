@@ -17,12 +17,24 @@ namespace MVC_SMS.Controllers
         // GET: UserTypeTables
         public ActionResult Index()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             return View(db.UserTypeTables.ToList());
         }
 
         // GET: UserTypeTables/Details/5
         public ActionResult Details(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -38,6 +50,12 @@ namespace MVC_SMS.Controllers
         // GET: UserTypeTables/Create
         public ActionResult Create()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
 
@@ -46,8 +64,14 @@ namespace MVC_SMS.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserTypeID,TypeName,Description")] UserTypeTable userTypeTable)
+        public ActionResult Create(UserTypeTable userTypeTable)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.UserTypeTables.Add(userTypeTable);
@@ -61,6 +85,12 @@ namespace MVC_SMS.Controllers
         // GET: UserTypeTables/Edit/5
         public ActionResult Edit(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -78,8 +108,14 @@ namespace MVC_SMS.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserTypeID,TypeName,Description")] UserTypeTable userTypeTable)
+        public ActionResult Edit(UserTypeTable userTypeTable)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(userTypeTable).State = EntityState.Modified;
@@ -92,6 +128,12 @@ namespace MVC_SMS.Controllers
         // GET: UserTypeTables/Delete/5
         public ActionResult Delete(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -109,6 +151,12 @@ namespace MVC_SMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             UserTypeTable userTypeTable = db.UserTypeTables.Find(id);
             db.UserTypeTables.Remove(userTypeTable);
             db.SaveChanges();
