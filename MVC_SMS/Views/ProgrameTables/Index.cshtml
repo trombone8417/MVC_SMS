@@ -1,16 +1,17 @@
-﻿@model IEnumerable<DatabaseAccess.SubjectTable>
+﻿@model IEnumerable<DatabaseAccess.ProgrameTable>
 
 @{
-    ViewBag.Title = "Subject";
+    ViewBag.Title = "Programe";
 }
 
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("New Subject", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("New Programe", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">All Subjects</h6>
+        <h6 class="m-0 font-weight-bold text-primary">All Programs</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -18,25 +19,22 @@
                 <thead>
                     <tr>
                         <th>
-                            Subject Name
+                            Programe Name
                         </th>
                         <th>
-                            Reg Date
+                            Start Date
                         </th>
                         <th>
-                            Description
-                        </th>
-                        <th>
-                            Total Marks
+                            Status
                         </th>
                         <th>
                             User
                         </th>
+                        
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach (var item in Model)
                     {
                         <tr>
@@ -44,24 +42,23 @@
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.RegDate)
+                                @Html.DisplayFor(modelItem => item.StartDate)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TotalMarks)
+                                @Html.DisplayFor(modelItem => item.IsActive)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
+                            
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.SubjectID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.SubjectID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.SubjectID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ProgrameID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Details", "Details", new { id = item.ProgrameID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ProgrameID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }
+
                 </tbody>
             </table>
         </div>

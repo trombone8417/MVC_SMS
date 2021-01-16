@@ -20,7 +20,8 @@ namespace DatabaseAccess
         public int StudentID { get; set; }
         public double Amount { get; set; }
         public int ProgrameID { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime SubmissionDate { get; set; }
         public string FeesMonth { get; set; }
         public string Description { get; set; }

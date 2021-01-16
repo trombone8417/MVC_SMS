@@ -29,7 +29,8 @@ namespace DatabaseAccess
         public int UserID { get; set; }
         public string Name { get; set; }
         public string FatherName { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime DateofBirth { get; set; }
         public string Gender { get; set; }
         public string ContactNo { get; set; }
@@ -37,7 +38,8 @@ namespace DatabaseAccess
         public string FNIC { get; set; }
         public string Photo { get; set; }
         public bool IsEnrolled { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime ApplyDate { get; set; }
         public bool IsShortList { get; set; }
         public bool IsApply { get; set; }

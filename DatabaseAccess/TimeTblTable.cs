@@ -18,9 +18,11 @@ namespace DatabaseAccess
         public int TimeTableID { get; set; }
         public int UserID { get; set; }
         public int SubjectID { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.TimeSpan StartTime { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.TimeSpan EndTime { get; set; }
         public string Day { get; set; }
         public int SessionProgrameSubjectSetting_ID { get; set; }

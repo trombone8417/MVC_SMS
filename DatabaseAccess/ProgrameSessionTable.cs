@@ -21,7 +21,8 @@ namespace DatabaseAccess
         public int ProgrameID { get; set; }
         public string Details { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime RegDate { get; set; }
         public string Description { get; set; }
     

@@ -17,7 +17,8 @@ namespace DatabaseAccess
     {
         public int StaffAttendanceID { get; set; }
         public int StaffID { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime AttendDate { get; set; }
         [DataType(DataType.Time)]
         public Nullable<System.TimeSpan> ComingTime { get; set; }
