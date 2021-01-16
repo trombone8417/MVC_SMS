@@ -147,6 +147,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\SubjectTablesController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AdminTemplate\css\sb-admin-2.css" />
@@ -2055,6 +2056,11 @@
     <Content Include="Views\SessionTables\Details.cshtml" />
     <Content Include="Views\SessionTables\Edit.cshtml" />
     <Content Include="Views\SessionTables\Index.cshtml" />
+    <Content Include="Views\SubjectTables\Create.cshtml" />
+    <Content Include="Views\SubjectTables\Delete.cshtml" />
+    <Content Include="Views\SubjectTables\Details.cshtml" />
+    <Content Include="Views\SubjectTables\Edit.cshtml" />
+    <Content Include="Views\SubjectTables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
