@@ -140,6 +140,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SessionTablesController.cs" />
     <Compile Include="Controllers\UserTablesController.cs" />
     <Compile Include="Controllers\UserTypeTablesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2049,6 +2050,11 @@
     <Content Include="Views\UserTables\Edit.cshtml" />
     <Content Include="Views\UserTables\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\SessionTables\Create.cshtml" />
+    <Content Include="Views\SessionTables\Delete.cshtml" />
+    <Content Include="Views\SessionTables\Details.cshtml" />
+    <Content Include="Views\SessionTables\Edit.cshtml" />
+    <Content Include="Views\SessionTables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
