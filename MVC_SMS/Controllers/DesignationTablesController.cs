@@ -8,13 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using DatabaseAccess;
 
-namespace MVC_SMS.Views
+namespace MVC_SMS.Controllers
 {
-    public class ProgrameTablesController : Controller
+    public class DesignationTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
 
-        // GET: ProgrameTables
+        // GET: DesignationTables
         public ActionResult Index()
         {
             //若未登入
@@ -23,11 +23,11 @@ namespace MVC_SMS.Views
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
-            var programeTables = db.ProgrameTables.Include(p => p.UserTable).Include(p => p.UserTable1);
-            return View(programeTables.ToList());
+            var designationTables = db.DesignationTables.Include(d => d.UserTable);
+            return View(designationTables.ToList());
         }
 
-        // GET: ProgrameTables/Details/5
+        // GET: DesignationTables/Details/5
         public ActionResult Details(int? id)
         {
             //若未登入
@@ -40,15 +40,15 @@ namespace MVC_SMS.Views
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProgrameTable programeTable = db.ProgrameTables.Find(id);
-            if (programeTable == null)
+            DesignationTable designationTable = db.DesignationTables.Find(id);
+            if (designationTable == null)
             {
                 return HttpNotFound();
             }
-            return View(programeTable);
+            return View(designationTable);
         }
 
-        // GET: ProgrameTables/Create
+        // GET: DesignationTables/Create
         public ActionResult Create()
         {
             //若未登入
@@ -58,16 +58,15 @@ namespace MVC_SMS.Views
                 return RedirectToAction("Login", "Home");
             }
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName");
-            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }
 
-        // POST: ProgrameTables/Create
+        // POST: DesignationTables/Create
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProgrameID,UserID,Name,StartDate,IsActive")] ProgrameTable programeTable)
+        public ActionResult Create(DesignationTable designationTable)
         {
             //若未登入
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
@@ -76,21 +75,19 @@ namespace MVC_SMS.Views
                 return RedirectToAction("Login", "Home");
             }
             int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
-            programeTable.UserID = userid;
-
+            designationTable.UserID = userid;
             if (ModelState.IsValid)
             {
-                db.ProgrameTables.Add(programeTable);
+                db.DesignationTables.Add(designationTable);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", programeTable.UserID);
-            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", programeTable.UserID);
-            return View(programeTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", designationTable.UserID);
+            return View(designationTable);
         }
 
-        // GET: ProgrameTables/Edit/5
+        // GET: DesignationTables/Edit/5
         public ActionResult Edit(int? id)
         {
             //若未登入
@@ -103,22 +100,21 @@ namespace MVC_SMS.Views
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProgrameTable programeTable = db.ProgrameTables.Find(id);
-            if (programeTable == null)
+            DesignationTable designationTable = db.DesignationTables.Find(id);
+            if (designationTable == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", programeTable.UserID);
-            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", programeTable.UserID);
-            return View(programeTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", designationTable.UserID);
+            return View(designationTable);
         }
 
-        // POST: ProgrameTables/Edit/5
+        // POST: DesignationTables/Edit/5
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ProgrameTable programeTable)
+        public ActionResult Edit(DesignationTable designationTable)
         {
             //若未登入
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
@@ -127,20 +123,18 @@ namespace MVC_SMS.Views
                 return RedirectToAction("Login", "Home");
             }
             int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
-            programeTable.UserID = userid;
-
+            designationTable.UserID = userid;
             if (ModelState.IsValid)
             {
-                db.Entry(programeTable).State = EntityState.Modified;
+                db.Entry(designationTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", programeTable.UserID);
-            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", programeTable.UserID);
-            return View(programeTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", designationTable.UserID);
+            return View(designationTable);
         }
 
-        // GET: ProgrameTables/Delete/5
+        // GET: DesignationTables/Delete/5
         public ActionResult Delete(int? id)
         {
             //若未登入
@@ -153,15 +147,15 @@ namespace MVC_SMS.Views
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProgrameTable programeTable = db.ProgrameTables.Find(id);
-            if (programeTable == null)
+            DesignationTable designationTable = db.DesignationTables.Find(id);
+            if (designationTable == null)
             {
                 return HttpNotFound();
             }
-            return View(programeTable);
+            return View(designationTable);
         }
 
-        // POST: ProgrameTables/Delete/5
+        // POST: DesignationTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -172,8 +166,8 @@ namespace MVC_SMS.Views
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
-            ProgrameTable programeTable = db.ProgrameTables.Find(id);
-            db.ProgrameTables.Remove(programeTable);
+            DesignationTable designationTable = db.DesignationTables.Find(id);
+            db.DesignationTables.Remove(designationTable);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

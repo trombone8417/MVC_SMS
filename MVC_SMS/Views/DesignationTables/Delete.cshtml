@@ -1,30 +1,22 @@
-﻿@model DatabaseAccess.ProgrameTable
+﻿@model DatabaseAccess.DesignationTable
 
 @{
-    ViewBag.Title = "Programe";
+    ViewBag.Title = "Designation";
 }
 
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Programe</h4>
+    <h4>Designation</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Programe Name
+            Designation
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            Start Date
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
+            @Html.DisplayFor(model => model.Title)
         </dd>
 
         <dt>
@@ -43,15 +35,13 @@
             @Html.DisplayFor(model => model.UserTable.FullName)
         </dd>
 
-       
-
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
 <div class="form-actions no-color">
-    <input type="submit" value="Delete" class="btn btn-danger" /> 
+    <input type="submit" value="Delete" class="btn btn-danger" />
     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
 </div>
     }
