@@ -18,6 +18,7 @@ namespace DatabaseAccess
         public StaffTable()
         {
             this.StaffAttendanceTables = new HashSet<StaffAttendanceTable>();
+            this.TimeTblTables = new HashSet<TimeTblTable>();
         }
     
         public int StaffID { get; set; }
@@ -36,5 +37,7 @@ namespace DatabaseAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StaffAttendanceTable> StaffAttendanceTables { get; set; }
         public virtual UserTable UserTable { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TimeTblTable> TimeTblTables { get; set; }
     }
 }

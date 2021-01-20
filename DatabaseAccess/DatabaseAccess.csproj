@@ -56,6 +56,9 @@
     <Compile Include="AttendanceTable.cs">
       <DependentUpon>SchoolMgt.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClassTable.cs">
+      <DependentUpon>SchoolMgt.tt</DependentUpon>
+    </Compile>
     <Compile Include="DesignationTable.cs">
       <DependentUpon>SchoolMgt.tt</DependentUpon>
     </Compile>
@@ -100,6 +103,9 @@
       <DependentUpon>SchoolMgt.tt</DependentUpon>
     </Compile>
     <Compile Include="StaffTable.cs">
+      <DependentUpon>SchoolMgt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentPromoteTable.cs">
       <DependentUpon>SchoolMgt.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentTable.cs">

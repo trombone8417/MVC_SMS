@@ -23,7 +23,9 @@ namespace DatabaseAccess
         public System.DateTime AttendDate { get; set; }
         [DataType(DataType.Time)]
         public System.TimeSpan AttendTime { get; set; }
+        public int ClassID { get; set; }
     
         public virtual StudentTable StudentTable { get; set; }
+        public virtual ClassTable ClassTable { get; set; }
     }
 }

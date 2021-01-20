@@ -19,26 +19,29 @@ namespace DatabaseAccess
         public SessionProgrameSubjectSettingTable()
         {
             this.ExamMarksTables = new HashSet<ExamMarksTable>();
+            this.TimeTblTables = new HashSet<TimeTblTable>();
         }
     
         public int SessionProgrameSubjectSettingID { get; set; }
         public int UserID { get; set; }
         public int SessionID { get; set; }
         public int ProgrameID { get; set; }
-        public int AnnualID { get; set; }
         public int SubjectID { get; set; }
         [DataType(DataType.Date, ErrorMessage = "Date only")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime RegDate { get; set; }
         public string Description { get; set; }
         public bool isActive { get; set; }
+        public int ClassID { get; set; }
     
-        public virtual AnnualTable AnnualTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamMarksTable> ExamMarksTables { get; set; }
         public virtual ProgrameTable ProgrameTable { get; set; }
         public virtual SessionTable SessionTable { get; set; }
         public virtual SubjectTable SubjectTable { get; set; }
         public virtual UserTable UserTable { get; set; }
+        public virtual ClassTable ClassTable { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TimeTblTable> TimeTblTables { get; set; }
     }
 }

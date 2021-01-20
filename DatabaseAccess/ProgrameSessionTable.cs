@@ -15,12 +15,17 @@ namespace DatabaseAccess
 
     public partial class ProgrameSessionTable
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ProgrameSessionTable()
+        {
+            this.StudentPromoteTables = new HashSet<StudentPromoteTable>();
+        }
+    
         public int ProgrameSessionID { get; set; }
         public int UserID { get; set; }
         public int SessionID { get; set; }
         public int ProgrameID { get; set; }
         public string Details { get; set; }
-
         [DataType(DataType.Date, ErrorMessage = "Date only")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime RegDate { get; set; }
@@ -29,5 +34,7 @@ namespace DatabaseAccess
         public virtual ProgrameTable ProgrameTable { get; set; }
         public virtual SessionTable SessionTable { get; set; }
         public virtual UserTable UserTable { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentPromoteTable> StudentPromoteTables { get; set; }
     }
 }

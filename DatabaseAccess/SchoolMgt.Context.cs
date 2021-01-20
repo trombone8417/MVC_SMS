@@ -44,5 +44,7 @@ namespace DatabaseAccess
         public virtual DbSet<TimeTblTable> TimeTblTables { get; set; }
         public virtual DbSet<UserTable> UserTables { get; set; }
         public virtual DbSet<UserTypeTable> UserTypeTables { get; set; }
+        public virtual DbSet<ClassTable> ClassTables { get; set; }
+        public virtual DbSet<StudentPromoteTable> StudentPromoteTables { get; set; }
     }
 }

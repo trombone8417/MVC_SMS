@@ -13,23 +13,22 @@ namespace DatabaseAccess
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public partial class SubmissionFeeTable
+    public partial class StudentPromoteTable
     {
-        public int SubmissionFeeID { get; set; }
-        public int UserID { get; set; }
+        public int StudentPromoteID { get; set; }
         public int StudentID { get; set; }
-        public double Amount { get; set; }
-        public int ProgrameID { get; set; }
+        public int ClassID { get; set; }
+        public int ProgrameSessionID { get; set; }
+
         [DataType(DataType.Date, ErrorMessage = "Date only")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public System.DateTime SubmissionDate { get; set; }
-        public string FeesMonth { get; set; }
-        public string Description { get; set; }
-        public int ClassID { get; set; }
+        public System.DateTime PromoteDate { get; set; }
+        public int AnnualFee { get; set; }
+        public Nullable<bool> isActive { get; set; }
+        public Nullable<bool> IsSubmit { get; set; }
     
-        public virtual ProgrameTable ProgrameTable { get; set; }
-        public virtual StudentTable StudentTable { get; set; }
-        public virtual UserTable UserTable { get; set; }
         public virtual ClassTable ClassTable { get; set; }
+        public virtual ProgrameSessionTable ProgrameSessionTable { get; set; }
+        public virtual StudentTable StudentTable { get; set; }
     }
 }
