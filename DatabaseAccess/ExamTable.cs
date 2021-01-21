@@ -15,12 +15,6 @@ namespace DatabaseAccess
 
     public partial class ExamTable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ExamTable()
-        {
-            this.ExamSettingTables = new HashSet<ExamSettingTable>();
-        }
-    
         public int ExamID { get; set; }
         public int UserID { get; set; }
         public string Title { get; set; }
@@ -32,8 +26,6 @@ namespace DatabaseAccess
         public System.DateTime EndDate { get; set; }
         public string Descrption { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExamSettingTable> ExamSettingTables { get; set; }
         public virtual UserTable UserTable { get; set; }
     }
 }

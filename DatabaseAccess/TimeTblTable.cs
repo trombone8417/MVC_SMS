@@ -18,22 +18,18 @@ namespace DatabaseAccess
         public int TimeTableID { get; set; }
         public int UserID { get; set; }
         public int SubjectID { get; set; }
-        [DataType(DataType.Date, ErrorMessage = "Date only")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public int StaffID { get; set; }
+        [DataType(DataType.Time)]
         public System.TimeSpan StartTime { get; set; }
-        [DataType(DataType.Date, ErrorMessage = "Date only")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Time)]
         public System.TimeSpan EndTime { get; set; }
         public string Day { get; set; }
+        public int ClassSubjectID { get; set; }
         public bool IsActive { get; set; }
-        public int StaffID { get; set; }
-        public int ClassID { get; set; }
-        public int SessionProgrameSubjectSettingID { get; set; }
     
+        public virtual ClassSubjectTable ClassSubjectTable { get; set; }
+        public virtual StaffTable StaffTable { get; set; }
         public virtual SubjectTable SubjectTable { get; set; }
         public virtual UserTable UserTable { get; set; }
-        public virtual ClassTable ClassTable { get; set; }
-        public virtual StaffTable StaffTable { get; set; }
-        public virtual SessionProgrameSubjectSettingTable SessionProgrameSubjectSettingTable { get; set; }
     }
 }
