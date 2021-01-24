@@ -78,21 +78,18 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                   aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSession"
+                   aria-expanded="true" aria-controls="collapseSession">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Configuration</span>
+                    <span>Session's</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseSession" class="collapse" aria-labelledby="headingSession"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
 
                         @Html.ActionLink("Session", "Index", "SessionTables", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Subjects", "Index", "SubjectTables", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Programes", "Index", "ProgrameTables", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Designations", "Index", "DesignationTables", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Annual Fee/Promate Fee", "Index", "AnnualTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Programe Setting", "Index", "ProgrameSessionTables", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>

@@ -338,3 +338,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+MVC_SMS/Web.config
+DatabaseAccess/App.Config
