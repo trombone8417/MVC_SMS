@@ -142,6 +142,8 @@
     <Compile Include="Controllers\AnnualTablesController.cs" />
     <Compile Include="Controllers\ClassSubjectTablesController.cs" />
     <Compile Include="Controllers\ClassTablesController.cs" />
+    <Compile Include="Controllers\ExamMarksTablesController.cs" />
+    <Compile Include="Controllers\ExamTablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProgrameSessionTablesController.cs" />
     <Compile Include="Controllers\SessionTablesController.cs" />
@@ -2097,6 +2099,16 @@
     <Content Include="Views\ClassSubjectTables\Details.cshtml" />
     <Content Include="Views\ClassSubjectTables\Edit.cshtml" />
     <Content Include="Views\ClassSubjectTables\Index.cshtml" />
+    <Content Include="Views\ExamTables\Create.cshtml" />
+    <Content Include="Views\ExamTables\Delete.cshtml" />
+    <Content Include="Views\ExamTables\Details.cshtml" />
+    <Content Include="Views\ExamTables\Edit.cshtml" />
+    <Content Include="Views\ExamTables\Index.cshtml" />
+    <Content Include="Views\ExamMarksTables\Create.cshtml" />
+    <Content Include="Views\ExamMarksTables\Delete.cshtml" />
+    <Content Include="Views\ExamMarksTables\Details.cshtml" />
+    <Content Include="Views\ExamMarksTables\Edit.cshtml" />
+    <Content Include="Views\ExamMarksTables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
