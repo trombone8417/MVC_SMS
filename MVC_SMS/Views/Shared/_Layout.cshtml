@@ -93,7 +93,7 @@
                     </div>
                 </div>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClass"
                    aria-expanded="true" aria-controls="collapseClass">
@@ -116,7 +116,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Exam
+                Examination
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -124,7 +124,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                    aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Examination</span>
+                    <span>Exam Setting</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -136,21 +136,66 @@
                     </div>
                 </div>
             </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-            <!-- Nav Item - Charts -->
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Time Table
+            </div>
+
+            <!-- Nav Item - TimeTable Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTimeTable"
+                   aria-expanded="true" aria-controls="collapseTimeTable">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Time Table Setting</span>
                 </a>
+                <div id="collapseTimeTable" class="collapse" aria-labelledby="headingTimeTable" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Setting:</h6>
+                        @Html.ActionLink("Set Time Table", "Index", "TimeTblTables", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Class Wise:</h6>
+                        @Html.ActionLink("Time Table", "Index", "TimeTblTables", null, new { @class = "collapse-item" })
+                    </div>
+                </div>
             </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-            <!-- Nav Item - Tables -->
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Reports
+            </div>
+
+            <!-- Nav Item - Report Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Session</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport"
+                   aria-expanded="true" aria-controls="collapseReport">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Basic Reports</span>
                 </a>
+                <div id="collapseReport" class="collapse" aria-labelledby="headingReport" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">General Reports:</h6>
+                        @Html.ActionLink("Student Reports", "#", "#", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Adminstration Reports:</h6>
+                        @Html.ActionLink("Apply Students List", "#", "#", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Examination Reports:</h6>
+                        @Html.ActionLink("Print DMC", "#", "#", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Attendance Reports:</h6>
+                        @Html.ActionLink("Student Attendance", "#", "#", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Teacher Attendance", "#", "#", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Fee's Reports:</h6>
+                        @Html.ActionLink("Annual Fee Report", "#", "#", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Student Fee Report", "#", "#", null, new { @class = "collapse-item" })
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->

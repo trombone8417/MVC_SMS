@@ -147,6 +147,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProgrameSessionTablesController.cs" />
     <Compile Include="Controllers\SessionTablesController.cs" />
+    <Compile Include="Controllers\TimeTblTablesController.cs" />
     <Compile Include="Controllers\UserTablesController.cs" />
     <Compile Include="Controllers\UserTypeTablesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2109,6 +2110,11 @@
     <Content Include="Views\ExamMarksTables\Details.cshtml" />
     <Content Include="Views\ExamMarksTables\Edit.cshtml" />
     <Content Include="Views\ExamMarksTables\Index.cshtml" />
+    <Content Include="Views\TimeTblTables\Create.cshtml" />
+    <Content Include="Views\TimeTblTables\Delete.cshtml" />
+    <Content Include="Views\TimeTblTables\Details.cshtml" />
+    <Content Include="Views\TimeTblTables\Edit.cshtml" />
+    <Content Include="Views\TimeTblTables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

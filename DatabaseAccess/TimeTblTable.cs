@@ -17,7 +17,6 @@ namespace DatabaseAccess
     {
         public int TimeTableID { get; set; }
         public int UserID { get; set; }
-        public int SubjectID { get; set; }
         public int StaffID { get; set; }
         [DataType(DataType.Time)]
         public System.TimeSpan StartTime { get; set; }
@@ -29,7 +28,6 @@ namespace DatabaseAccess
     
         public virtual ClassSubjectTable ClassSubjectTable { get; set; }
         public virtual StaffTable StaffTable { get; set; }
-        public virtual SubjectTable SubjectTable { get; set; }
         public virtual UserTable UserTable { get; set; }
     }
 }
