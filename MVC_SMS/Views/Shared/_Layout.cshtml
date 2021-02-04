@@ -32,7 +32,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -44,10 +44,71 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Student Registration
+            </div>
+
+            <!-- Nav Item - Student Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStudent"
+                   aria-expanded="true" aria-controls="collapseStudent">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Student's</span>
+                </a>
+                <div id="collapseStudent" class="collapse" aria-labelledby="headingStudent" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Student Registration:</h6>
+                        @Html.ActionLink("Students", "Index", "StudentTables", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Promotion:</h6>
+                        @Html.ActionLink("Students Promote", "Index", "StudentPromoteTables", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Fee's:</h6>
+                        @Html.ActionLink("Tution Fee", "Index", "SubmissionFeeTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Annual Fee", "Index", "StudentPromoteTables", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Student Attendance:</h6>
+                        @Html.ActionLink("Student Attendance", "Index", "AttendanceTables", null, new { @class = "collapse-item" })
+
+
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Staff Registration
+            </div>
+
+            <!-- Nav Item - Employee Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmployee"
+                   aria-expanded="true" aria-controls="collapseEmployee">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Employee's</span>
+                </a>
+                <div id="collapseEmployee" class="collapse" aria-labelledby="headingEmployee" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Staff Registration:</h6>
+                        @Html.ActionLink("Staff", "Index", "StaffTables", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Attendance:</h6>
+                        @Html.ActionLink("Staff Attendance", "Index", "StaffAttendanceTables", null, new { @class = "collapse-item" })
+
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->

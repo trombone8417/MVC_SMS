@@ -11,18 +11,13 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class ExamTable
     {
         public int ExamID { get; set; }
         public int UserID { get; set; }
         public string Title { get; set; }
-        [DataType(DataType.Date, ErrorMessage = "Date only")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime StartDate { get; set; }
-        [DataType(DataType.Date, ErrorMessage = "Date only")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime EndDate { get; set; }
         public string Descrption { get; set; }
     

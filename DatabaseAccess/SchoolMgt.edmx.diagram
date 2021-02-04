@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="SchoolMgtDbModel.SessionTable" Width="1.5" PointX="5.25" PointY="30.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.StaffAttendanceTable" Width="1.5" PointX="7.5" PointY="34.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.StaffTable" Width="1.5" PointX="5.25" PointY="34" IsExpanded="true" />
-        <EntityTypeShape EntityType="SchoolMgtDbModel.StudentTable" Width="1.5" PointX="10.5" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.StudentTable" Width="2.125" PointX="9.875" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.SubmissionFeeTable" Width="2.5" PointX="12.75" PointY="23" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.UserTable" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
@@ -40,7 +40,7 @@
         <AssociationConnector Association="SchoolMgtDbModel.FK_SubmissionFeeTable_UserTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_UserTypeTable" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.ClassTable" Width="1.5" PointX="3.375" PointY="0.875" />
-        <EntityTypeShape EntityType="SchoolMgtDbModel.StudentPromoteTable" Width="1.5" PointX="12.75" PointY="12.875" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.StudentPromoteTable" Width="2.375" PointX="12.75" PointY="12.875" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_AttendanceTable_ClassTable" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_StudentPromoteTable_ClassTable" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_SubmissionFeeTable_ClassTable" />
