@@ -11,12 +11,14 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class StaffTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public StaffTable()
         {
+            this.EmployeeLeavingTables = new HashSet<EmployeeLeavingTable>();
+            this.EmployeeSalaryTables = new HashSet<EmployeeSalaryTable>();
             this.StaffAttendanceTables = new HashSet<StaffAttendanceTable>();
             this.TimeTblTables = new HashSet<TimeTblTable>();
         }
@@ -33,7 +35,22 @@ namespace DatabaseAccess
         public string Photo { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
+        public string Gender { get; set; }
+        public string HomePhone { get; set; }
+        public bool Doyouhaveanydisability { get; set; }
+        public string Ifdisabilityyesthengiveusdetail { get; set; }
+        public bool Areyoutakinganymedication { get; set; }
+        public string Ifmedicationyesthengiveus { get; set; }
+        public bool AnyCriminaloffcenceagainstyou { get; set; }
+        public string Ifcriminaloffcenceyesthengiveusdetail { get; set; }
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public Nullable<System.DateTime> RegistrationDate { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeLeavingTable> EmployeeLeavingTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeSalaryTable> EmployeeSalaryTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StaffAttendanceTable> StaffAttendanceTables { get; set; }
         public virtual UserTable UserTable { get; set; }

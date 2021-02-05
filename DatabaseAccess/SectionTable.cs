@@ -11,27 +11,19 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    public partial class ProgrameSessionTable
+    
+    public partial class SectionTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ProgrameSessionTable()
+        public SectionTable()
         {
             this.StudentPromoteTables = new HashSet<StudentPromoteTable>();
         }
     
-        public int ProgrameSessionID { get; set; }
+        public int SectionID { get; set; }
+        public string SectionName { get; set; }
         public int UserID { get; set; }
-        public int SessionID { get; set; }
-        public int ProgrameID { get; set; }
-        public string Details { get; set; }
-        [DataType(DataType.Date, ErrorMessage = "Date only")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public System.DateTime RegDate { get; set; }
-        public string Description { get; set; }
     
-        public virtual ProgrameTable ProgrameTable { get; set; }
-        public virtual SessionTable SessionTable { get; set; }
         public virtual UserTable UserTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentPromoteTable> StudentPromoteTables { get; set; }
