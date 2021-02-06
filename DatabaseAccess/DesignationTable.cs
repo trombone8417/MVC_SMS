@@ -14,11 +14,19 @@ namespace DatabaseAccess
     
     public partial class DesignationTable
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DesignationTable()
+        {
+            this.StaffTables = new HashSet<StaffTable>();
+        }
+    
         public int DesignationID { get; set; }
         public int UserID { get; set; }
         public string Title { get; set; }
         public bool IsActive { get; set; }
     
         public virtual UserTable UserTable { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffTable> StaffTables { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace MVC_SMS.Controllers
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
-            var staffTables = db.StaffTables.Include(s => s.UserTable);
+            var staffTables = db.StaffTables.Include(s => s.DesignationTable).Include(s => s.UserTable);
             return View(staffTables.ToList());
         }
 
@@ -57,6 +57,7 @@ namespace MVC_SMS.Controllers
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
+            ViewBag.DesignationID = new SelectList(db.DesignationTables, "DesignationID", "Title");
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }
@@ -74,7 +75,6 @@ namespace MVC_SMS.Controllers
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
-
             int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             staffTable.UserID = userid;
             if (ModelState.IsValid)
@@ -84,6 +84,7 @@ namespace MVC_SMS.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.DesignationID = new SelectList(db.DesignationTables, "DesignationID", "Title", staffTable.DesignationID);
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", staffTable.UserID);
             return View(staffTable);
         }
@@ -106,6 +107,7 @@ namespace MVC_SMS.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.DesignationID = new SelectList(db.DesignationTables, "DesignationID", "Title", staffTable.DesignationID);
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", staffTable.UserID);
             return View(staffTable);
         }
@@ -123,7 +125,6 @@ namespace MVC_SMS.Controllers
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
-
             int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             staffTable.UserID = userid;
             if (ModelState.IsValid)
@@ -132,6 +133,7 @@ namespace MVC_SMS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.DesignationID = new SelectList(db.DesignationTables, "DesignationID", "Title", staffTable.DesignationID);
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", staffTable.UserID);
             return View(staffTable);
         }

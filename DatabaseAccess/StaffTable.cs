@@ -11,7 +11,7 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class StaffTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,7 +26,7 @@ namespace DatabaseAccess
         public int StaffID { get; set; }
         public int UserID { get; set; }
         public string Name { get; set; }
-        public int Designation_ID { get; set; }
+        public int DesignationID { get; set; }
         public string ContactNo { get; set; }
         public double BasicSalary { get; set; }
         public string EmailAddress { get; set; }
@@ -43,10 +43,9 @@ namespace DatabaseAccess
         public string Ifmedicationyesthengiveus { get; set; }
         public bool AnyCriminaloffcenceagainstyou { get; set; }
         public string Ifcriminaloffcenceyesthengiveusdetail { get; set; }
-        [DataType(DataType.Date, ErrorMessage = "Date only")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> RegistrationDate { get; set; }
     
+        public virtual DesignationTable DesignationTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeLeavingTable> EmployeeLeavingTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
