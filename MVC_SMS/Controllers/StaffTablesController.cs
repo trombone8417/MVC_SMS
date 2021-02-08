@@ -77,10 +77,25 @@ namespace MVC_SMS.Controllers
             }
             int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             staffTable.UserID = userid;
+            staffTable.Photo = "/Content/EmployeePhoto/default.png";
             if (ModelState.IsValid)
             {
+
                 db.StaffTables.Add(staffTable);
-                db.SaveChanges();
+                db.SaveChanges(); 
+                if (staffTable.PhotoFile != null)
+                {
+                    var folder = "/Content/EmployeePhoto";
+                    var file = string.Format("{0}.png", staffTable.StaffID);
+                    var response = FileHelper.UploadFile.UploadPhoto(staffTable.PhotoFile, folder, file);
+                    if (response)
+                    {
+                        var pic = string.Format("{0}/{1}", folder, file);
+                        staffTable.Photo = pic;
+                        db.Entry(staffTable).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                }
                 return RedirectToAction("Index");
             }
 
