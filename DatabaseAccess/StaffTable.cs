@@ -56,7 +56,6 @@ namespace DatabaseAccess
         public string Ifcriminaloffcenceyesthengiveusdetail { get; set; }
         public Nullable<System.DateTime> RegistrationDate { get; set; }
         [NotMapped]
-        [Required(ErrorMessage = "{0} Required Field!")]
         public HttpPostedFileBase PhotoFile { get; set; }
 
         public virtual DesignationTable DesignationTable { get; set; }

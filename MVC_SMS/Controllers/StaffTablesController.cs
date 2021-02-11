@@ -80,9 +80,6 @@ namespace MVC_SMS.Controllers
             staffTable.Photo = "/Content/EmployeePhoto/default.png";
             if (ModelState.IsValid)
             {
-
-                db.StaffTables.Add(staffTable);
-                db.SaveChanges(); 
                 if (staffTable.PhotoFile != null)
                 {
                     var folder = "/Content/EmployeePhoto";
@@ -96,6 +93,9 @@ namespace MVC_SMS.Controllers
                         db.SaveChanges();
                     }
                 }
+                db.StaffTables.Add(staffTable);
+                db.SaveChanges(); 
+                
                 return RedirectToAction("Index");
             }
 
@@ -144,6 +144,16 @@ namespace MVC_SMS.Controllers
             staffTable.UserID = userid;
             if (ModelState.IsValid)
             {
+                var folder = "/Content/EmployeePhoto";
+                var file = string.Format("{0}.png", staffTable.StaffID);
+                var response = FileHelper.UploadFile.UploadPhoto(staffTable.PhotoFile, folder, file);
+                if (response)
+                {
+                    var pic = string.Format("{0}/{1}", folder, file);
+                    staffTable.Photo = pic;
+                    db.Entry(staffTable).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
                 db.Entry(staffTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
