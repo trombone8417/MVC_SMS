@@ -1,7 +1,12 @@
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
-* text=auto
+# * text=auto
+*.yml linguist-language=csharp
+*.html linguist-language=csharp
+*.js linguist-language=csharp
+*.xml linguist-language=csharp
+*.css linguist-language=csharp
 
 ###############################################################################
 # Set default behavior for command prompt diff.
