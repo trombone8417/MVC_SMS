@@ -45,6 +45,7 @@ namespace DatabaseAccess
         public string Description { get; set; }
         [Required(ErrorMessage = "{0} Required Field!")]
         public bool IsActive { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string Gender { get; set; }
         [Required(ErrorMessage = "{0} Required Field!")]
         public string HomePhone { get; set; }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -77,24 +78,29 @@ namespace MVC_SMS.Controllers
             }
             int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             staffTable.UserID = userid;
+            //預設圖片
             staffTable.Photo = "/Content/EmployeePhoto/default.png";
             if (ModelState.IsValid)
             {
                 if (staffTable.PhotoFile != null)
                 {
+                    //先新增資料
+                    db.StaffTables.Add(staffTable);
+                    db.SaveChanges();
                     var folder = "/Content/EmployeePhoto";
+                    //新增之後才有staffTable.StaffID的資料
                     var file = string.Format("{0}.png", staffTable.StaffID);
                     var response = FileHelper.UploadFile.UploadPhoto(staffTable.PhotoFile, folder, file);
                     if (response)
                     {
+                        //再修改圖片位置
                         var pic = string.Format("{0}/{1}", folder, file);
                         staffTable.Photo = pic;
                         db.Entry(staffTable).State = EntityState.Modified;
                         db.SaveChanges();
                     }
                 }
-                db.StaffTables.Add(staffTable);
-                db.SaveChanges(); 
+                 
                 
                 return RedirectToAction("Index");
             }
