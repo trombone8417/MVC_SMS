@@ -7,12 +7,13 @@ using System.Web.Mvc;
 
 namespace MVC_SMS.ViewModels
 {
-    public class LanguageVM
+    public class EmployeeLanguageTableVM
     {
-        [Required(ErrorMessage = "欄位不得為空")]
+        public int EmployeeLanguageID { get; set; }
         public string LanguageName { get; set; }
-        [Required(ErrorMessage = "欄位不得為空")]
         public string Proficiency { get; set; }
+        public Nullable<int> EmployeeResumeID { get; set; }
+        public int UserID { get; set; }
         public List<SelectListItem> ListOfProficiency { get; set; }
     }
 }

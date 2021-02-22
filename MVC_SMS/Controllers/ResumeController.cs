@@ -64,7 +64,7 @@ namespace MVC_SMS.Controllers
 
 
         [HttpGet]
-        public ActionResult PersonnalInformtion(PersonVM model)
+        public ActionResult PersonnalInformtion(EmployeeResumeTableVM model)
         {
             //Nationality
             List<SelectListItem> nationality = new List<SelectListItem>()
@@ -91,7 +91,7 @@ namespace MVC_SMS.Controllers
 
         [HttpPost]
         [ActionName("PersonnalInformtion")]
-        public ActionResult AddPersonnalInformtion(PersonVM person)
+        public ActionResult AddPersonnalInformtion(EmployeeResumeTableVM person)
         {
             var employeeid = 0;
             int.TryParse(Convert.ToString(Session["EmployeeID"]), out employeeid);
@@ -101,17 +101,17 @@ namespace MVC_SMS.Controllers
             if (ModelState.IsValid)
             {
                 //Creating Mapping
-                Mapper.Initialize(cfg => cfg.CreateMap<PersonVM, Person>());
+                Mapper.Initialize(cfg => cfg.CreateMap<EmployeeResumeTableVM, EmployeeResumeTable>());
 
-                Person personEntity = Mapper.Map<Person>(person);
-                personEntity.EmpID = employeeid;
+                EmployeeResumeTable personEntity = Mapper.Map<EmployeeResumeTable>(person);
+                personEntity.EmployeeResumeID = employeeid;
                 HttpPostedFileBase file = Request.Files["ImageProfil"];
 
                 bool result = _resumeRepository.AddPersonnalInformation(personEntity, file);
 
                 if (result)
                 {
-                    Session["IdSelected"] = _resumeRepository.GetIdPerson(person.FirstName, person.LastName);
+                    Session["EmployeeResumeID"] = _resumeRepository.GetIdPerson(person.FirstName, person.LastName);
                     return RedirectToAction("Education");
                 }
                 else
@@ -128,13 +128,13 @@ namespace MVC_SMS.Controllers
         }
 
         [HttpGet]
-        public ActionResult Education(EducationVM education)
+        public ActionResult Education(EmployeeEducationTableVM education)
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult AddOrUpdateEducation(EducationVM education)
+        public ActionResult AddOrUpdateEducation(EmployeeEducationTableVM education)
         {
             try
             {
@@ -146,10 +146,10 @@ namespace MVC_SMS.Controllers
                 {
                     //Creating Mapping
                     Mapper.Reset();
-                    Mapper.Initialize(cfg => cfg.CreateMap<EducationVM, Education>());
-                    Education educationEntity = Mapper.Map<Education>(education);
+                    Mapper.Initialize(cfg => cfg.CreateMap<EmployeeEducationTableVM, EmployeeEducationTable>());
+                    EmployeeEducationTable educationEntity = Mapper.Map<EmployeeEducationTable>(education);
 
-                    int idPer = (int)Session["IdSelected"];
+                    int idPer = (int)Session["EmployeeResumeID"];
 
                     msg = _resumeRepository.AddOrUpdateEducation(educationEntity, idPer);
 
@@ -169,7 +169,7 @@ namespace MVC_SMS.Controllers
         }
 
         [HttpGet]
-        public PartialViewResult EducationPartial(EducationVM education)
+        public PartialViewResult EducationPartial(EmployeeEducationTableVM education)
         {
 
             education.ListOfCountry = GetCountries();
@@ -183,14 +183,14 @@ namespace MVC_SMS.Controllers
             return View();
         }
 
-        public PartialViewResult WorkExperiencePartial(WorkExperienceVM workExperience)
+        public PartialViewResult WorkExperiencePartial(EmployeeWorkExperienceTableVM workExperience)
         {
             workExperience.ListOfCountries = GetCountries();
 
             return PartialView("~/Views/Shared/_MyWorkExperience.cshtml", workExperience);
         }
 
-        public ActionResult AddOrUpdateExperience(WorkExperienceVM workExperience)
+        public ActionResult AddOrUpdateExperience(EmployeeWorkExperienceTableVM workExperience)
         {
 
             string msg = string.Empty;
@@ -199,10 +199,10 @@ namespace MVC_SMS.Controllers
             {
                 //Creating Mapping
                 Mapper.Reset();
-                Mapper.Initialize(cfg => cfg.CreateMap<WorkExperienceVM, WorkExperience>());
-                WorkExperience workExperienceEntity = Mapper.Map<WorkExperience>(workExperience);
+                Mapper.Initialize(cfg => cfg.CreateMap<EmployeeWorkExperienceTableVM, EmployeeWorkExperienceTable>());
+                EmployeeWorkExperienceTable workExperienceEntity = Mapper.Map<EmployeeWorkExperienceTable>(workExperience);
 
-                int idPer = (int)Session["IdSelected"];
+                int idPer = (int)Session["EmployeeResumeID"];
 
 
                 msg = _resumeRepository.AddOrUpdateExperience(workExperienceEntity, idPer);
@@ -227,15 +227,15 @@ namespace MVC_SMS.Controllers
             return PartialView("~/Views/Shared/_MySkills.cshtml");
         }
 
-        public ActionResult AddSkill(SkillsVM skill)
+        public ActionResult AddSkill(EmployeeSkillTableVM skill)
         {
-            int idPer = (int)Session["IdSelected"];
+            int idPer = (int)Session["EmployeeResumeID"];
             string msg = string.Empty;
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<SkillsVM, Skill>());
-            Skill skillEntity = Mapper.Map<Skill>(skill);
+            Mapper.Initialize(cfg => cfg.CreateMap<EmployeeSkillTableVM, EmployeeSkillTable>());
+            EmployeeSkillTable skillEntity = Mapper.Map<EmployeeSkillTable>(skill);
 
             if (_resumeRepository.AddSkill(skillEntity, idPer))
             {
@@ -249,7 +249,7 @@ namespace MVC_SMS.Controllers
             return Json(new { data = msg }, JsonRequestBehavior.AllowGet);
         }
 
-        public PartialViewResult CertificationsPartial(CertificationVM certification)
+        public PartialViewResult CertificationsPartial(EmployeeCertificationTableVM certification)
         {
             List<SelectListItem> certificationLevel = new List<SelectListItem>()
             {
@@ -263,15 +263,15 @@ namespace MVC_SMS.Controllers
             return PartialView("~/Views/Shared/_MyCertifications.cshtml", certification);
         }
 
-        public ActionResult AddCertification(CertificationVM certification)
+        public ActionResult AddCertification(EmployeeCertificationTableVM certification)
         {
-            int idPer = (int)Session["IdSelected"];
+            int idPer = (int)Session["EmployeeResumeID"];
             string msg = string.Empty;
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<CertificationVM, Certification>());
-            Certification certificationEntity = Mapper.Map<Certification>(certification);
+            Mapper.Initialize(cfg => cfg.CreateMap<EmployeeCertificationTableVM, EmployeeCertificationTable>());
+            EmployeeCertificationTable certificationEntity = Mapper.Map<EmployeeCertificationTable>(certification);
 
             if (_resumeRepository.AddCertification(certificationEntity, idPer))
             {
@@ -285,7 +285,7 @@ namespace MVC_SMS.Controllers
             return Json(new { data = msg }, JsonRequestBehavior.AllowGet);
         }
 
-        public PartialViewResult LanguagePartial(LanguageVM language)
+        public PartialViewResult LanguagePartial(EmployeeLanguageTableVM language)
         {
             List<SelectListItem> languageLevel = new List<SelectListItem>()
             {
@@ -301,15 +301,15 @@ namespace MVC_SMS.Controllers
             return PartialView("~/Views/Shared/_MyLanguage.cshtml", language);
         }
 
-        public ActionResult AddLanguage(LanguageVM language)
+        public ActionResult AddLanguage(EmployeeLanguageTableVM language)
         {
-            int idPer = (int)Session["IdSelected"];
+            int idPer = (int)Session["EmployeeResumeID"];
             string msg = string.Empty;
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<LanguageVM, Language>());
-            Language languageEntity = Mapper.Map<Language>(language);
+            Mapper.Initialize(cfg => cfg.CreateMap<EmployeeLanguageTableVM, EmployeeLanguageTable>());
+            EmployeeLanguageTable languageEntity = Mapper.Map<EmployeeLanguageTable>(language);
 
             if (_resumeRepository.AddLanguage(languageEntity, idPer))
             {
@@ -333,43 +333,43 @@ namespace MVC_SMS.Controllers
 
 
 
-            Session["IdSelected"] = id;
+            Session["EmployeeResumeID"] = id;
             return View();
         }
 
         public PartialViewResult GetPersonnalInfoPartial()
         {
-            int idPer = (int)Session["IdSelected"];
-            Person person = _resumeRepository.GetPersonnalInfo(idPer);
+            int idPer = (int)Session["EmployeeResumeID"];
+            EmployeeResumeTable person = _resumeRepository.GetPersonnalInfo(idPer);
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<Person, PersonVM>());
-            PersonVM personVM = Mapper.Map<PersonVM>(person);
+            Mapper.Initialize(cfg => cfg.CreateMap<EmployeeResumeTable, EmployeeResumeTableVM>());
+            EmployeeResumeTableVM personVM = Mapper.Map<EmployeeResumeTableVM>(person);
 
             return PartialView("~/Views/Shared/_MyPersonnalInfo.cshtml", personVM);
         }
 
         public PartialViewResult GetEducationCVPartial()
         {
-            int idPer = (int)Session["IdSelected"];
+            int idPer = (int)Session["EmployeeResumeID"];
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<Education, EducationVM>());
-            IQueryable<EducationVM> educationList = _resumeRepository.GetEducationById(idPer).ProjectTo<EducationVM>().AsQueryable();
+            Mapper.Initialize(cfg => cfg.CreateMap<Education, EmployeeEducationTableVM>());
+            IQueryable<EmployeeEducationTableVM> educationList = _resumeRepository.GetEducationById(idPer).ProjectTo<EmployeeEducationTableVM>().AsQueryable();
 
             return PartialView("~/Views/Shared/_MyEducationCV.cshtml", educationList);
         }
 
         public PartialViewResult WorkExperienceCVPartial()
         {
-            int idPer = (int)Session["IdSelected"];
+            int idPer = (int)Session["EmployeeResumeID"];
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<WorkExperience, WorkExperienceVM>());
-            IQueryable<WorkExperienceVM> workExperienceList = _resumeRepository.GetWorkExperienceById(idPer).ProjectTo<WorkExperienceVM>().AsQueryable();
+            Mapper.Initialize(cfg => cfg.CreateMap<WorkExperience, EmployeeWorkExperienceTableVM>());
+            IQueryable<EmployeeWorkExperienceTableVM> workExperienceList = _resumeRepository.GetWorkExperienceById(idPer).ProjectTo<EmployeeWorkExperienceTableVM>().AsQueryable();
 
 
             return PartialView("~/Views/Shared/_WorkExperienceCV.cshtml", workExperienceList);
@@ -377,12 +377,12 @@ namespace MVC_SMS.Controllers
 
         public PartialViewResult SkillsCVPartial()
         {
-            int idPer = (int)Session["IdSelected"];
+            int idPer = (int)Session["EmployeeResumeID"];
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<Skill, SkillsVM>());
-            IQueryable<SkillsVM> skillsList = _resumeRepository.GetSkillsById(idPer).ProjectTo<SkillsVM>().AsQueryable();
+            Mapper.Initialize(cfg => cfg.CreateMap<Skill, EmployeeSkillTableVM>());
+            IQueryable<EmployeeSkillTableVM> skillsList = _resumeRepository.GetSkillsById(idPer).ProjectTo<EmployeeSkillTableVM>().AsQueryable();
 
 
             return PartialView("~/Views/Shared/_MySkillsCV.cshtml", skillsList);
@@ -390,12 +390,12 @@ namespace MVC_SMS.Controllers
 
         public PartialViewResult CertificationsCVPartial()
         {
-            int idPer = (int)Session["IdSelected"];
+            int idPer = (int)Session["EmployeeResumeID"];
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<Certification, CertificationVM>());
-            IQueryable<CertificationVM> certificationList = _resumeRepository.GetCertificationsById(idPer).ProjectTo<CertificationVM>().AsQueryable();
+            Mapper.Initialize(cfg => cfg.CreateMap<Certification, EmployeeCertificationTableVM>());
+            IQueryable<EmployeeCertificationTableVM> certificationList = _resumeRepository.GetCertificationsById(idPer).ProjectTo<EmployeeCertificationTableVM>().AsQueryable();
 
 
             return PartialView("~/Views/Shared/_MyCertificationCV.cshtml", certificationList);
@@ -403,12 +403,12 @@ namespace MVC_SMS.Controllers
 
         public PartialViewResult LanguageCVPartial()
         {
-            int idPer = (int)Session["IdSelected"];
+            int idPer = (int)Session["EmployeeResumeID"];
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<Language, LanguageVM>());
-            IQueryable<LanguageVM> languageList = _resumeRepository.GetLanguageById(idPer).ProjectTo<LanguageVM>().AsQueryable();
+            Mapper.Initialize(cfg => cfg.CreateMap<Language, EmployeeLanguageTableVM>());
+            IQueryable<EmployeeLanguageTableVM> languageList = _resumeRepository.GetLanguageById(idPer).ProjectTo<EmployeeLanguageTableVM>().AsQueryable();
 
 
             return PartialView("~/Views/Shared/_MyLanguageCV.cshtml", languageList);

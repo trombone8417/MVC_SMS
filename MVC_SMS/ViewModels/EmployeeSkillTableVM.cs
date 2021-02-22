@@ -6,9 +6,11 @@ using System.Web;
 
 namespace MVC_SMS.ViewModels
 {
-    public class SkillsVM
+    public class EmployeeSkillTableVM
     {
-        [Required(ErrorMessage = "欄位不得為空")]
+        public int EmployeeSkillID { get; set; }
         public string SkillName { get; set; }
+        public Nullable<int> EmployeeResumeID { get; set; }
+        public int UserID { get; set; }
     }
 }

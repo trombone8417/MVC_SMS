@@ -7,22 +7,21 @@ using System.Web.Mvc;
 
 namespace MVC_SMS.ViewModels
 {
-    public class WorkExperienceVM
+    public class EmployeeWorkExperienceTableVM
     {
-        public int IDExp { get; set; }
-        [Required(ErrorMessage = "欄位不得為空")]
+        public int EmployeeWorkExperienceID { get; set; }
         public string Company { get; set; }
-        [Required(ErrorMessage = "欄位不得為空")]
         public string Title { get; set; }
-        [Required(ErrorMessage = "欄位不得為空")]
         public string Country { get; set; }
-        [Required(ErrorMessage = "欄位不得為空")]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FromYear { get; set; }
-        [Required(ErrorMessage = "欄位不得為空")]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> ToYear { get; set; }
-        [Required(ErrorMessage = "欄位不得為空")]
-        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+        public Nullable<int> EmployeeResumeID { get; set; }
+        public int UserID { get; set; }
 
         public List<SelectListItem> ListOfCountries { get; set; }
     }
