@@ -10,7 +10,9 @@ namespace MVC_SMS.ViewModels
     public class EmployeeLanguageTableVM
     {
         public int EmployeeLanguageID { get; set; }
+        [Required(ErrorMessage = "欄位不得為空")]
         public string LanguageName { get; set; }
+        [Required(ErrorMessage = "欄位不得為空")]
         public string Proficiency { get; set; }
         public Nullable<int> EmployeeResumeID { get; set; }
         public int UserID { get; set; }

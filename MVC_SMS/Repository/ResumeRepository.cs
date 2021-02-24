@@ -11,7 +11,7 @@ using MVC_SMS.ViewModels;
 using MVC_SMS.Repository;
 using DatabaseAccess;
 
-namespace RecruitmentSystemMgt.Repository
+namespace MVC_SMS.Repository
 {
     public class ResumeRepository : IResumeRepository
     {
@@ -180,11 +180,11 @@ namespace RecruitmentSystemMgt.Repository
             return educationList;
         }
 
-        public int GetIdPerson(string firstName, string lastName)
+        public int GetIdPerson(int EmployeeID)
         {
-            int idSelected = _dbContext.EmployeeResumeTables.Where(p => p.FirstName.ToLower().Equals(firstName.ToLower()))
-                                              .Where(p => p.LastName.ToLower().Equals(lastName.ToLower()))
-                                              .Select(p => p.EmployeeResumeID).FirstOrDefault();
+            int idSelected = _dbContext.EmployeeResumeTables
+                .Where(p => p.EmployeeID == EmployeeID)
+                .Select(p => p.EmployeeResumeID).FirstOrDefault();
 
             return idSelected;
         }
@@ -195,9 +195,9 @@ namespace RecruitmentSystemMgt.Repository
             return languageList;
         }
 
-        public EmployeeResumeTable GetPersonnalInfo(int EmployeeResumeID)
+        public EmployeeResumeTable GetPersonnalInfo(int EmployeeID)
         {
-            return _dbContext.EmployeeResumeTables.Find(EmployeeResumeID);
+            return _dbContext.EmployeeResumeTables.Find(EmployeeID);
         }
 
         public IQueryable<EmployeeSkillTable> GetSkillsById(int EmployeeResumeID)

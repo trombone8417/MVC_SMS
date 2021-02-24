@@ -26,10 +26,18 @@ namespace MVC_SMS.Controllers
             return View();
         }
 
-        public ActionResult CheckCV()
+        public ActionResult CheckCV(int? id)
         {
             var employeeid = 0;
-            int.TryParse(Convert.ToString(Session["EmployeeID"]), out employeeid);
+            if (id == null || id == 0)
+            {
+                int.TryParse(Convert.ToString(Session["EmployeeID"]), out employeeid);
+            }
+            else
+            {
+                employeeid = Convert.ToInt32(id);
+            }
+           
             using (SchoolMgtDbEntities db = new SchoolMgtDbEntities())
             {
                 var people = db.EmployeeResumeTables.Where(p => p.EmployeeID == employeeid);
@@ -111,7 +119,7 @@ namespace MVC_SMS.Controllers
 
                 if (result)
                 {
-                    Session["EmployeeResumeID"] = _resumeRepository.GetIdPerson(person.FirstName, person.LastName);
+                    Session["EmployeeResumeID"] = _resumeRepository.GetIdPerson(employeeid);
                     return RedirectToAction("Education");
                 }
                 else
@@ -333,7 +341,7 @@ namespace MVC_SMS.Controllers
 
 
 
-            Session["EmployeeResumeID"] = id;
+            Session["EmployeeID"] = id;
             return View();
         }
 
