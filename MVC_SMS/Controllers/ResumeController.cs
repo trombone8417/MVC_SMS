@@ -77,9 +77,9 @@ namespace MVC_SMS.Controllers
             //Nationality
             List<SelectListItem> nationality = new List<SelectListItem>()
             {
-                new SelectListItem { Text = "Pakistan", Value = "Pakistan", Selected = true},
+                new SelectListItem { Text = "Taiwan", Value = "Taiwan", Selected = true},
             };
-
+            model.DateOfBirth = DateTime.Now;
 
             //Educational Level
             List<SelectListItem> educationalLevel = new List<SelectListItem>()
@@ -99,23 +99,23 @@ namespace MVC_SMS.Controllers
 
         [HttpPost]
         [ActionName("PersonnalInformtion")]
-        public ActionResult AddPersonnalInformtion(EmployeeResumeTableVM person)
+        public ActionResult AddPersonnalInformtion(EmployeeResumeTableVM employeeResumeTable)
         {
             var employeeid = 0;
             int.TryParse(Convert.ToString(Session["EmployeeID"]), out employeeid);
 
-            person.DateOfBirth = DateTime.Now;
+            
 
             if (ModelState.IsValid)
             {
                 //Creating Mapping
                 Mapper.Initialize(cfg => cfg.CreateMap<EmployeeResumeTableVM, EmployeeResumeTable>());
 
-                EmployeeResumeTable personEntity = Mapper.Map<EmployeeResumeTable>(person);
-                personEntity.EmployeeResumeID = employeeid;
+                EmployeeResumeTable employeeResumeTableEntity = Mapper.Map<EmployeeResumeTable>(employeeResumeTable);
+                employeeResumeTableEntity.EmployeeResumeID = employeeid;
                 HttpPostedFileBase file = Request.Files["ImageProfil"];
 
-                bool result = _resumeRepository.AddPersonnalInformation(personEntity, file);
+                bool result = _resumeRepository.AddPersonnalInformation(employeeResumeTableEntity, file);
 
                 if (result)
                 {
@@ -125,13 +125,13 @@ namespace MVC_SMS.Controllers
                 else
                 {
                     ViewBag.Message = "Something Wrong !";
-                    return View(person);
+                    return View(employeeResumeTable);
                 }
 
             }
 
             ViewBag.MessageForm = "Please Check your form before submit !";
-            return View(person);
+            return View(employeeResumeTable);
 
         }
 
@@ -181,6 +181,11 @@ namespace MVC_SMS.Controllers
         {
 
             education.ListOfCountry = GetCountries();
+            education.ListOfCity = new List<SelectListItem>();
+            education.ListOfCity.Add(new SelectListItem() { Text = "KPK", Value = "KPK", Selected = true });
+            education.ListOfCity.Add(new SelectListItem() { Text = "Punjab", Value = "Punjab" });
+            education.ListOfCity.Add(new SelectListItem() { Text = "Sindh", Value = "Sindh" });
+            education.ListOfCity.Add(new SelectListItem() { Text = "Balochistan", Value = "Balochistan" });
 
             return PartialView("~/Views/Shared/_MyEducation.cshtml", education);
         }

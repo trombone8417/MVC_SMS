@@ -41,7 +41,7 @@
                             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-xs-3">
-                            @Html.DropDownListFor(model => model.Country, Model.ListeOfCountries, new { @class = "form-control", @placeholder = "Country" })
+                            @Html.DropDownListFor(model => model.Country, Model.ListOfCountries, new { @class = "form-control", @placeholder = "Country" })
                             @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
                         </div>
                     </div>

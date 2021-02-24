@@ -49,22 +49,16 @@
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <div class="input-group date" id="datetimepicker1">
+                                <div id="datetimepicker1">
                                     @Html.EditorFor(model => model.FromYear, new { htmlAttributes = new { @class = "form-control", @placeholder = "From Year" } })
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
                                 </div>
                             </div>
                             @Html.ValidationMessageFor(model => model.FromYear, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <div class="input-group date" id="datetimepicker2">
+                                <div id="datetimepicker2">
                                     @Html.EditorFor(model => model.ToYear, new { htmlAttributes = new { @class = "form-control", @placeholder = "To Year" } })
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
                                 </div>
                             </div>
                             @Html.ValidationMessageFor(model => model.ToYear, "", new { @class = "text-danger" })
@@ -78,7 +72,7 @@
                             @Html.DropDownListFor(model => model.City, new List<SelectListItem>(), new { @class = "form-control" })
                         </div>
                     </div>
-                    @Html.HiddenFor(model => model.IDEdu, new { @class = "form-control" })
+                    @Html.HiddenFor(model => model.EmployeeEducationID, new { @class = "form-control" })
 
                     <button type="button" id="AddOrUpdateEducation" class="btn btn-success"> <span class="glyphicon glyphicon-education" aria-hidden="true"></span>  Add Eduction </button>
                     <a href="@Url.Action("WorkExperience", "Resume")" class="btn btn-success" style="position: relative; right: -50%;"> Next Step>> Work Experience </a>

@@ -2211,10 +2211,13 @@
     <Content Include="Views\Shared\_MyWorkExperience.cshtml" />
     <Content Include="Views\Shared\_ResumeLayoutPage.cshtml" />
     <Content Include="Views\Shared\_WorkExperienceCV.cshtml" />
+    <Content Include="Views\Resume\Education.cshtml" />
+    <Content Include="Views\Resume\WorkExperience.cshtml" />
+    <Content Include="Views\Resume\PersonnalInformtion.cshtml" />
+    <Content Include="Views\Resume\SkiCerfLang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Resume\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

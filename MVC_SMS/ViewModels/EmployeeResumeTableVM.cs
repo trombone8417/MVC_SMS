@@ -16,6 +16,8 @@ namespace MVC_SMS.ViewModels
         [Required(ErrorMessage = "欄位不得為空")]
         public string LastName { get; set; }
         [Required(ErrorMessage = "欄位不得為空")]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         [Required(ErrorMessage = "欄位不得為空")]
         public string Nationality { get; set; }
@@ -32,7 +34,7 @@ namespace MVC_SMS.ViewModels
         public string FaceBookProfil { get; set; }
         public string C_CornerProfil { get; set; }
         public string TwitterProfil { get; set; }
-        [Required(ErrorMessage = "欄位不得為空")]
+        //[Required(ErrorMessage = "欄位不得為空")]
         public byte[] Profil { get; set; }
         public Nullable<int> EmployeeID { get; set; }
         public List<SelectListItem> ListNationality { get; set; }
