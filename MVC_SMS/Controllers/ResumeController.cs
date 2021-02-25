@@ -23,11 +23,23 @@ namespace MVC_SMS.Controllers
         // GET: Resume
         public ActionResult Index()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
 
         public ActionResult CheckCV(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             var employeeid = 0;
             if (id == null || id == 0)
             {
@@ -61,12 +73,24 @@ namespace MVC_SMS.Controllers
 
         public ActionResult ViewCV(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             return RedirectToAction("CV", new { id = id });
         }
 
 
         public ActionResult PersonnalInformtion()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
 
@@ -74,6 +98,12 @@ namespace MVC_SMS.Controllers
         [HttpGet]
         public ActionResult PersonnalInformtion(EmployeeResumeTableVM model)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             //Nationality
             List<SelectListItem> nationality = new List<SelectListItem>()
             {
@@ -101,18 +131,21 @@ namespace MVC_SMS.Controllers
         [ActionName("PersonnalInformtion")]
         public ActionResult AddPersonnalInformtion(EmployeeResumeTableVM employeeResumeTable)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             var employeeid = 0;
-            int.TryParse(Convert.ToString(Session["EmployeeID"]), out employeeid);
-
-            
-
+            int.TryParse(Convert.ToString(Session["UserID"]), out employeeid);
             if (ModelState.IsValid)
             {
                 //Creating Mapping
                 Mapper.Initialize(cfg => cfg.CreateMap<EmployeeResumeTableVM, EmployeeResumeTable>());
 
                 EmployeeResumeTable employeeResumeTableEntity = Mapper.Map<EmployeeResumeTable>(employeeResumeTable);
-                employeeResumeTableEntity.EmployeeResumeID = employeeid;
+                employeeResumeTableEntity.EmployeeID = employeeid;
                 HttpPostedFileBase file = Request.Files["ImageProfil"];
 
                 bool result = _resumeRepository.AddPersonnalInformation(employeeResumeTableEntity, file);
@@ -138,16 +171,29 @@ namespace MVC_SMS.Controllers
         [HttpGet]
         public ActionResult Education(EmployeeEducationTableVM education)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
+
             return View();
         }
 
         [HttpPost]
         public ActionResult AddOrUpdateEducation(EmployeeEducationTableVM education)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             try
             {
-
-
+                education.UserID = (int)Session["UserID"];
+                education.EmployeeResumeID = (int)Session["EmployeeResumeID"];
                 string msg = string.Empty;
 
                 if (education != null)
@@ -157,9 +203,9 @@ namespace MVC_SMS.Controllers
                     Mapper.Initialize(cfg => cfg.CreateMap<EmployeeEducationTableVM, EmployeeEducationTable>());
                     EmployeeEducationTable educationEntity = Mapper.Map<EmployeeEducationTable>(education);
 
-                    int idPer = (int)Session["EmployeeResumeID"];
+                    //int idPer = (int)Session["EmployeeResumeID"];
 
-                    msg = _resumeRepository.AddOrUpdateEducation(educationEntity, idPer);
+                    msg = _resumeRepository.AddOrUpdateEducation(educationEntity, education.EmployeeResumeID.GetValueOrDefault());
 
                 }
                 else
@@ -179,7 +225,6 @@ namespace MVC_SMS.Controllers
         [HttpGet]
         public PartialViewResult EducationPartial(EmployeeEducationTableVM education)
         {
-
             education.ListOfCountry = GetCountries();
             education.ListOfCity = new List<SelectListItem>();
             education.ListOfCity.Add(new SelectListItem() { Text = "KPK", Value = "KPK", Selected = true });
@@ -193,6 +238,12 @@ namespace MVC_SMS.Controllers
         [HttpGet]
         public ActionResult WorkExperience()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
 
@@ -205,9 +256,15 @@ namespace MVC_SMS.Controllers
 
         public ActionResult AddOrUpdateExperience(EmployeeWorkExperienceTableVM workExperience)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
 
             string msg = string.Empty;
-
+            workExperience.UserID = (int)Session["UserID"];
             if (workExperience != null)
             {
                 //Creating Mapping
@@ -215,10 +272,10 @@ namespace MVC_SMS.Controllers
                 Mapper.Initialize(cfg => cfg.CreateMap<EmployeeWorkExperienceTableVM, EmployeeWorkExperienceTable>());
                 EmployeeWorkExperienceTable workExperienceEntity = Mapper.Map<EmployeeWorkExperienceTable>(workExperience);
 
-                int idPer = (int)Session["EmployeeResumeID"];
+                int employeeResumeID = (int)Session["EmployeeResumeID"];
 
 
-                msg = _resumeRepository.AddOrUpdateExperience(workExperienceEntity, idPer);
+                msg = _resumeRepository.AddOrUpdateExperience(workExperienceEntity, employeeResumeID);
 
             }
             else
@@ -232,17 +289,31 @@ namespace MVC_SMS.Controllers
         [HttpGet]
         public ActionResult SkiCerfLang()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
 
         public PartialViewResult SkillsPartial()
         {
+            
             return PartialView("~/Views/Shared/_MySkills.cshtml");
         }
 
         public ActionResult AddSkill(EmployeeSkillTableVM skill)
         {
-            int idPer = (int)Session["EmployeeResumeID"];
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
+            int employeeResumeID = (int)Session["EmployeeResumeID"];
+            skill.UserID = (int)Session["UserID"];
             string msg = string.Empty;
 
             //Creating Mapping
@@ -250,7 +321,7 @@ namespace MVC_SMS.Controllers
             Mapper.Initialize(cfg => cfg.CreateMap<EmployeeSkillTableVM, EmployeeSkillTable>());
             EmployeeSkillTable skillEntity = Mapper.Map<EmployeeSkillTable>(skill);
 
-            if (_resumeRepository.AddSkill(skillEntity, idPer))
+            if (_resumeRepository.AddSkill(skillEntity, employeeResumeID))
             {
                 msg = "skill added successfully";
             }
@@ -278,7 +349,14 @@ namespace MVC_SMS.Controllers
 
         public ActionResult AddCertification(EmployeeCertificationTableVM certification)
         {
-            int idPer = (int)Session["EmployeeResumeID"];
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
+            int employeeResumeID = (int)Session["EmployeeResumeID"];
+            certification.UserID = (int)Session["UserID"];
             string msg = string.Empty;
 
             //Creating Mapping
@@ -286,7 +364,7 @@ namespace MVC_SMS.Controllers
             Mapper.Initialize(cfg => cfg.CreateMap<EmployeeCertificationTableVM, EmployeeCertificationTable>());
             EmployeeCertificationTable certificationEntity = Mapper.Map<EmployeeCertificationTable>(certification);
 
-            if (_resumeRepository.AddCertification(certificationEntity, idPer))
+            if (_resumeRepository.AddCertification(certificationEntity, employeeResumeID))
             {
                 msg = "Certification added successfully";
             }
@@ -316,7 +394,14 @@ namespace MVC_SMS.Controllers
 
         public ActionResult AddLanguage(EmployeeLanguageTableVM language)
         {
-            int idPer = (int)Session["EmployeeResumeID"];
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
+            int employeeResumeID = (int)Session["EmployeeResumeID"];
+            language.UserID = (int)Session["UserID"];
             string msg = string.Empty;
 
             //Creating Mapping
@@ -324,7 +409,7 @@ namespace MVC_SMS.Controllers
             Mapper.Initialize(cfg => cfg.CreateMap<EmployeeLanguageTableVM, EmployeeLanguageTable>());
             EmployeeLanguageTable languageEntity = Mapper.Map<EmployeeLanguageTable>(language);
 
-            if (_resumeRepository.AddLanguage(languageEntity, idPer))
+            if (_resumeRepository.AddLanguage(languageEntity, employeeResumeID))
             {
                 msg = "Language added successfully";
             }
@@ -338,6 +423,12 @@ namespace MVC_SMS.Controllers
 
         public ActionResult CV(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             using (SchoolMgtDbEntities db = new SchoolMgtDbEntities())
             {
                 var person = db.EmployeeResumeTables.Where(p => p.EmployeeID == id).FirstOrDefault();
@@ -371,6 +462,7 @@ namespace MVC_SMS.Controllers
             Mapper.Reset();
             Mapper.Initialize(cfg => cfg.CreateMap<Education, EmployeeEducationTableVM>());
             IQueryable<EmployeeEducationTableVM> educationList = _resumeRepository.GetEducationById(idPer).ProjectTo<EmployeeEducationTableVM>().AsQueryable();
+            
 
             return PartialView("~/Views/Shared/_MyEducationCV.cshtml", educationList);
         }
@@ -429,6 +521,12 @@ namespace MVC_SMS.Controllers
 
         public ActionResult GetProfilImage(int id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             byte[] image = _resumeRepository.GetPersonnalInfo(id).Profil;
             if (image != null)
             {
@@ -443,6 +541,12 @@ namespace MVC_SMS.Controllers
 
         public ActionResult GetCities(string country)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             List<SelectListItem> listOfCities = new List<SelectListItem>();
 
 
