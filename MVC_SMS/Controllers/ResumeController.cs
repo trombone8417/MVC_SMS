@@ -48,6 +48,7 @@ namespace MVC_SMS.Controllers
             else
             {
                 employeeid = Convert.ToInt32(id);
+                Session["EmployeeId"] = employeeid;
             }
            
             using (SchoolMgtDbEntities db = new SchoolMgtDbEntities())
@@ -138,7 +139,7 @@ namespace MVC_SMS.Controllers
                 return RedirectToAction("Login", "Home");
             }
             var employeeid = 0;
-            int.TryParse(Convert.ToString(Session["UserID"]), out employeeid);
+            int.TryParse(Convert.ToString(Session["EmployeeId"]), out employeeid);
             if (ModelState.IsValid)
             {
                 //Creating Mapping
@@ -429,15 +430,15 @@ namespace MVC_SMS.Controllers
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
+            var employeeResumeID = 0;
             using (SchoolMgtDbEntities db = new SchoolMgtDbEntities())
             {
                 var person = db.EmployeeResumeTables.Where(p => p.EmployeeID == id).FirstOrDefault();
                 id = person.EmployeeID;
+                employeeResumeID = person.EmployeeResumeID;
             }
-
-
-
             Session["EmployeeID"] = id;
+            Session["EmployeeResumeID"] = employeeResumeID;
             return View();
         }
 
@@ -460,7 +461,7 @@ namespace MVC_SMS.Controllers
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<Education, EmployeeEducationTableVM>());
+            Mapper.Initialize(cfg => cfg.CreateMap<EmployeeEducationTable, EmployeeEducationTableVM>());
             IQueryable<EmployeeEducationTableVM> educationList = _resumeRepository.GetEducationById(idPer).ProjectTo<EmployeeEducationTableVM>().AsQueryable();
             
 
@@ -473,7 +474,7 @@ namespace MVC_SMS.Controllers
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<WorkExperience, EmployeeWorkExperienceTableVM>());
+            Mapper.Initialize(cfg => cfg.CreateMap<EmployeeWorkExperienceTable, EmployeeWorkExperienceTableVM>());
             IQueryable<EmployeeWorkExperienceTableVM> workExperienceList = _resumeRepository.GetWorkExperienceById(idPer).ProjectTo<EmployeeWorkExperienceTableVM>().AsQueryable();
 
 
@@ -486,7 +487,7 @@ namespace MVC_SMS.Controllers
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<Skill, EmployeeSkillTableVM>());
+            Mapper.Initialize(cfg => cfg.CreateMap<EmployeeSkillTable, EmployeeSkillTableVM>());
             IQueryable<EmployeeSkillTableVM> skillsList = _resumeRepository.GetSkillsById(idPer).ProjectTo<EmployeeSkillTableVM>().AsQueryable();
 
 
@@ -499,7 +500,7 @@ namespace MVC_SMS.Controllers
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<Certification, EmployeeCertificationTableVM>());
+            Mapper.Initialize(cfg => cfg.CreateMap<EmployeeCertificationTable, EmployeeCertificationTableVM>());
             IQueryable<EmployeeCertificationTableVM> certificationList = _resumeRepository.GetCertificationsById(idPer).ProjectTo<EmployeeCertificationTableVM>().AsQueryable();
 
 
@@ -512,7 +513,7 @@ namespace MVC_SMS.Controllers
 
             //Creating Mapping
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<Language, EmployeeLanguageTableVM>());
+            Mapper.Initialize(cfg => cfg.CreateMap<EmployeeLanguageTable, EmployeeLanguageTableVM>());
             IQueryable<EmployeeLanguageTableVM> languageList = _resumeRepository.GetLanguageById(idPer).ProjectTo<EmployeeLanguageTableVM>().AsQueryable();
 
 

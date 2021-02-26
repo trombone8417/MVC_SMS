@@ -2215,6 +2215,7 @@
     <Content Include="Views\Resume\WorkExperience.cshtml" />
     <Content Include="Views\Resume\PersonnalInformtion.cshtml" />
     <Content Include="Views\Resume\SkiCerfLang.cshtml" />
+    <Content Include="Views\Resume\CV.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
