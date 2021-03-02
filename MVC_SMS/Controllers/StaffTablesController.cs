@@ -82,11 +82,12 @@ namespace MVC_SMS.Controllers
             staffTable.Photo = "/Content/EmployeePhoto/default.png";
             if (ModelState.IsValid)
             {
+                //先新增資料
+                db.StaffTables.Add(staffTable);
+                db.SaveChanges();
                 if (staffTable.PhotoFile != null)
                 {
-                    //先新增資料
-                    db.StaffTables.Add(staffTable);
-                    db.SaveChanges();
+
                     var folder = "/Content/EmployeePhoto";
                     //新增之後才有staffTable.StaffID的資料
                     var file = string.Format("{0}.png", staffTable.StaffID);
@@ -100,8 +101,8 @@ namespace MVC_SMS.Controllers
                         db.SaveChanges();
                     }
                 }
-                 
-                
+
+
                 return RedirectToAction("Index");
             }
 
@@ -150,16 +151,18 @@ namespace MVC_SMS.Controllers
             staffTable.UserID = userid;
             if (ModelState.IsValid)
             {
-                var folder = "/Content/EmployeePhoto";
-                var file = string.Format("{0}.png", staffTable.StaffID);
-                var response = FileHelper.UploadFile.UploadPhoto(staffTable.PhotoFile, folder, file);
-                if (response)
+                if (staffTable.PhotoFile != null)
                 {
-                    var pic = string.Format("{0}/{1}", folder, file);
-                    staffTable.Photo = pic;
-                    db.Entry(staffTable).State = EntityState.Modified;
-                    db.SaveChanges();
+                    var folder = "/Content/EmployeePhoto";
+                    var file = string.Format("{0}.png", staffTable.StaffID);
+                    var response = FileHelper.UploadFile.UploadPhoto(staffTable.PhotoFile, folder, file);
+                    if (response)
+                    {
+                        var pic = string.Format("{0}/{1}", folder, file);
+                        staffTable.Photo = pic;
+                    }
                 }
+
                 db.Entry(staffTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

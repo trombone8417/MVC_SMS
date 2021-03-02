@@ -12,6 +12,9 @@ namespace DatabaseAccess
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class StudentTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,31 +32,52 @@ namespace DatabaseAccess
         public int ProgrameID { get; set; }
         public int ClassID { get; set; }
         public int UserID { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string FatherName { get; set; }
         [DataType(DataType.Date, ErrorMessage = "Date only")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "{0} Required Field!")]
         public System.DateTime DateofBirth { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string Gender { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string ContactNo { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string CNIC { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string FNIC { get; set; }
         public string Photo { get; set; }
         [DataType(DataType.Date, ErrorMessage = "Date only")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "{0} Required Field!")]
         public System.DateTime AdmissionDate { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string PreviousSchool { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public Nullable<double> PreviousPercentage { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string EmailAddress { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string Address { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string Nationality { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string Religion { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string TribeorCaste { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string FathersGuardiansOccupationofProfession { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string FathersGuardiansPostalAddress { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string PhoneOffice { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string PhoneResident { get; set; }
-    
+        [NotMapped]
+        public HttpPostedFileBase PhotoFile { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AttendanceTable> AttendanceTables { get; set; }
         public virtual ClassTable ClassTable { get; set; }
