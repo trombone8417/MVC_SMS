@@ -30,6 +30,9 @@
             @Html.DisplayNameFor(model => model.ProgrameSessionTable.Details)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.SectionTable.SectionName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.StudentTable.Name)
         </th>
         <th></th>
@@ -54,6 +57,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProgrameSessionTable.Details)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SectionTable.SectionName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StudentTable.Name)
