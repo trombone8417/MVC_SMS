@@ -17,7 +17,7 @@ namespace MVC_SMS.Controllers
         // GET: StudentPromoteTables
         public ActionResult Index()
         {
-            var studentPromoteTables = db.StudentPromoteTables.Include(s => s.ClassTable).Include(s => s.ProgrameSessionTable).Include(s => s.SectionTable).Include(s => s.StudentTable).OrderByDescending(s=>s.StudentPromoteID);
+            var studentPromoteTables = db.StudentPromoteTables.Include(s => s.ClassTable).Include(s => s.ProgrameSessionTable).Include(s => s.SectionTable).Include(s => s.StudentTable).OrderByDescending(s => s.StudentPromoteID);
             return View(studentPromoteTables.ToList());
         }
 
@@ -25,11 +25,33 @@ namespace MVC_SMS.Controllers
         {
             int studentid = Convert.ToInt32(sid);
             var student = db.StudentTables.Find(studentid);
-            List<ClassTable> classTable = new List<ClassTable>();
-            foreach (var cls in db.ClassTables.Where(cls => cls.ClassID > student.ClassID))
+            var promotelist = db.StudentPromoteTables.Where(p => p.StudentID == studentid);//
+            var promoteid=-1;
+            if (promotelist.Any())
             {
-                classTable.Add(new ClassTable { ClassID = cls.ClassID, Name = cls.Name });
+                promoteid = promotelist.Max(m => m.StudentPromoteID);
             }
+            else
+            {
+                promoteid = 0;
+            }
+            List<ClassTable> classTable = new List<ClassTable>();
+            if (promoteid > 0)
+            {
+                var promotetable = db.StudentPromoteTables.Find(promoteid);
+                foreach (var cls in db.ClassTables.Where(cls => cls.ClassID > promotetable.ClassID))
+                {
+                    classTable.Add(new ClassTable { ClassID = cls.ClassID, Name = cls.Name });
+                }
+            }
+            else
+            {
+                foreach (var cls in db.ClassTables.Where(cls => cls.ClassID > student.ClassID))
+                {
+                    classTable.Add(new ClassTable { ClassID = cls.ClassID, Name = cls.Name });
+                }
+            }
+
             return Json(new { data = classTable }, JsonRequestBehavior.AllowGet);
         }
 
@@ -72,7 +94,7 @@ namespace MVC_SMS.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentPromoteID,StudentID,ClassID,ProgrameSessionID,PromoteDate,AnnualFee,isActive,IsSubmit,SectionID")] StudentPromoteTable studentPromoteTable)
+        public ActionResult Create(StudentPromoteTable studentPromoteTable)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +134,7 @@ namespace MVC_SMS.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentPromoteID,StudentID,ClassID,ProgrameSessionID,PromoteDate,AnnualFee,isActive,IsSubmit,SectionID")] StudentPromoteTable studentPromoteTable)
+        public ActionResult Edit(StudentPromoteTable studentPromoteTable)
         {
             if (ModelState.IsValid)
             {

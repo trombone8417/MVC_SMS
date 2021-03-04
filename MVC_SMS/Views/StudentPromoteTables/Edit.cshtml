@@ -4,12 +4,12 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>StudentPromoteTable</h4>
         <hr />
@@ -86,12 +86,47 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#StudentID').change(function () {
+            $('#ClassID').html('');
+            $.ajax({
+                url: '@Url.Action("GetPromotClsList", "StudentPromoteTables")',
+                type: 'GET',
+                data: { sid: $(this).val() },
+                dataType: 'Json',
+                success: function (response) {
+                    console.log(response.data);
+                    for (var i = 0; i < response.data.length; i++) {
+                        $('#ClassID').append("<option value =" + response.data[i].ClassID + ">" + response.data[i].Name + "</option>");
+                    }
+                },
+                error: function () {
+
+                }
+            });
+        });
+        $('#ProgrameSessionID').change(function () {
+
+            $.ajax({
+                url: '@Url.Action("GetAnnualFee", "StudentPromoteTables")',
+                type: 'GET',
+                data: { sid: $(this).val() },
+                dataType: 'Json',
+                success: function (response) {
+                    $('#AnnualFee').val(response.fees);
+                },
+                error: function (error) {
+                }
+            });
+        });
+    });
+</script>
+@Scripts.Render("~/bundles/jqueryval")
