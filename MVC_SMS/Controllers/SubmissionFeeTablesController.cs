@@ -23,8 +23,16 @@ namespace MVC_SMS.Controllers
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
-            var submissionFeeTables = db.SubmissionFeeTables.Include(s => s.ProgrameTable).Include(s => s.StudentTable).Include(s => s.UserTable).Include(s => s.ClassTable);
+            var submissionFeeTables = db.SubmissionFeeTables.Include(s => s.ProgrameTable).Include(s => s.StudentTable).Include(s => s.UserTable).Include(s => s.ClassTable).OrderByDescending(s=>s.SubmissionFeeID);
             return View(submissionFeeTables.ToList());
+        }
+
+        public ActionResult GetByPromotID(string sid)
+        {
+            int promoteid = Convert.ToInt32(sid);
+            var promoterecord = db.StudentPromoteTables.Find(promoteid);
+
+            return Json(new { StudentID = promoterecord.SectionID, ClassID = promoterecord.ClassID, ProgrameID = promoterecord.ProgrameSessionTable.ProgrameID }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: SubmissionFeeTables/Details/5

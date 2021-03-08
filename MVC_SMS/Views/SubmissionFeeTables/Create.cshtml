@@ -5,20 +5,29 @@
 }
 
 <h2>Create</h2>
-
-@using (Html.BeginForm()) 
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>SubmissionFeeTable</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.StudentID, "StudentID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StudentID, "Select Student", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("StudentID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("StudentID", null, htmlAttributes: new { @class = "form-control", @id = "StudentID" })
                 @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control" placeholder="Enter Promote ID" id="promoteid" />
+                    <input type="button" class="btn btn-primary" value="Find" id="FindPromoteRecord" />
+                </div>
             </div>
         </div>
 
@@ -33,7 +42,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProgrameID, "ProgrameID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ProgrameID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("ProgrameID", null, htmlAttributes: new { @class = "form-control", @id = "ProgrameID" })
                 @Html.ValidationMessageFor(model => model.ProgrameID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -65,7 +74,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ClassID, "ClassID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ClassID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("ClassID", null, htmlAttributes: new { @class = "form-control", @id = "ClassID" })
                 @Html.ValidationMessageFor(model => model.ClassID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -81,3 +90,26 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $('#FindPromoteRecord').click(function () {
+
+            $.ajax({
+                url: '@Url.Action("GetByPromotID", "SubmissionFeeTables")',
+                type: 'GET',
+                data: { sid: $('#promoteid').val() },
+                dataType: 'Json',
+                success: function (response) {
+                    console.log(response);
+                    $('#StudentID').val(response.StudentID);
+                    $('#ClassID').val(response.ClassID);
+                    $('#ProgrameID').val(response.ProgrameID);
+                },
+                error: function (error) {
+                }
+            });
+        });
+    });
+</script>
+@Scripts.Render("~/bundles/jqueryval")
