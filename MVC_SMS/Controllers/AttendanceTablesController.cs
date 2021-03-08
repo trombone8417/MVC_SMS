@@ -59,6 +59,7 @@ namespace MVC_SMS.Controllers
             }
             ViewBag.StudentID = new SelectList(db.StudentTables, "StudentID", "Name");
             ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name");
+            ViewBag.SessionID = new SelectList(db.SessionTables, "SessionID", "Name");
             return View();
         }
 
@@ -84,6 +85,7 @@ namespace MVC_SMS.Controllers
 
             ViewBag.StudentID = new SelectList(db.StudentTables, "StudentID", "Name", attendanceTable.StudentID);
             ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name", attendanceTable.ClassID);
+           
             return View(attendanceTable);
         }
 
