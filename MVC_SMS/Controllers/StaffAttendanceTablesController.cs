@@ -57,7 +57,7 @@ namespace MVC_SMS.Controllers
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
-            ViewBag.StaffID = new SelectList(db.StaffTables, "StaffID", "Name");
+            ViewBag.StaffID = new SelectList(db.StaffTables.Where(s=>s.IsActive==true), "StaffID", "Name");
             return View();
         }
 
@@ -103,7 +103,7 @@ namespace MVC_SMS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StaffID = new SelectList(db.StaffTables, "StaffID", "Name", staffAttendanceTable.StaffID);
+            ViewBag.StaffID = new SelectList(db.StaffTables.Where(s => s.IsActive == true), "StaffID", "Name", staffAttendanceTable.StaffID);
             return View(staffAttendanceTable);
         }
 
