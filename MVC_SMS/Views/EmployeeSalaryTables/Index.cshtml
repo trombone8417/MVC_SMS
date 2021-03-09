@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DatabaseAccess.EmployeeSalaryTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalaryMonth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalaryYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalaryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserTable.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffTable.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalaryMonth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalaryYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalaryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserTable.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffTable.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeSalaryID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EmployeeSalaryID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeSalaryID })
+        </td>
+    </tr>
+}
+
+</table>
