@@ -23,6 +23,7 @@ namespace DatabaseAccess
         [DataType(DataType.Date, ErrorMessage = "Date only")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime EndDate { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Descrption { get; set; }
     
         public virtual UserTable UserTable { get; set; }

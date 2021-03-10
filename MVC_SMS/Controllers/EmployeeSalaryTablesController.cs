@@ -17,13 +17,31 @@ namespace MVC_SMS.Controllers
         // GET: EmployeeSalaryTables
         public ActionResult Index()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             var employeeSalaryTables = db.EmployeeSalaryTables.Include(e => e.UserTable).Include(e => e.StaffTable);
             return View(employeeSalaryTables.ToList());
         }
-
+        public ActionResult GetSalary(string sid)
+        {
+            int staffid = Convert.ToInt32(sid);
+            var ps = db.StaffTables.Find(staffid);
+            double? salary = ps.BasicSalary;
+            return Json(new { Salary = salary }, JsonRequestBehavior.AllowGet);
+        }
         // GET: EmployeeSalaryTables/Details/5
         public ActionResult Details(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,9 +57,20 @@ namespace MVC_SMS.Controllers
         // GET: EmployeeSalaryTables/Create
         public ActionResult Create()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
+            EmployeeSalaryTable employeeSalaryTable = new EmployeeSalaryTable();
+            employeeSalaryTable.SalaryMonth = DateTime.Now.ToString("MMMM");
+            employeeSalaryTable.SalaryDate = DateTime.Now;
+            employeeSalaryTable.SalaryYear = DateTime.Now.ToString("yyyy");
+
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName");
-            ViewBag.StaffID = new SelectList(db.StaffTables, "StaffID", "Name");
-            return View();
+            ViewBag.StaffID = new SelectList(db.StaffTables.Where(s => s.IsActive == true), "StaffID", "Name");
+            return View(employeeSalaryTable);
         }
 
         // POST: EmployeeSalaryTables/Create
@@ -49,8 +78,16 @@ namespace MVC_SMS.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeSalaryID,UserID,StaffID,Amount,SalaryMonth,SalaryYear,SalaryDate,Comments")] EmployeeSalaryTable employeeSalaryTable)
+        public ActionResult Create(EmployeeSalaryTable employeeSalaryTable)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
+            int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            employeeSalaryTable.UserID = userid;
             if (ModelState.IsValid)
             {
                 db.EmployeeSalaryTables.Add(employeeSalaryTable);
@@ -59,13 +96,19 @@ namespace MVC_SMS.Controllers
             }
 
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", employeeSalaryTable.UserID);
-            ViewBag.StaffID = new SelectList(db.StaffTables, "StaffID", "Name", employeeSalaryTable.StaffID);
+            ViewBag.StaffID = new SelectList(db.StaffTables.Where(s => s.IsActive == true), "StaffID", "Name", employeeSalaryTable.StaffID);
             return View(employeeSalaryTable);
         }
 
         // GET: EmployeeSalaryTables/Edit/5
         public ActionResult Edit(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -76,7 +119,7 @@ namespace MVC_SMS.Controllers
                 return HttpNotFound();
             }
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", employeeSalaryTable.UserID);
-            ViewBag.StaffID = new SelectList(db.StaffTables, "StaffID", "Name", employeeSalaryTable.StaffID);
+            ViewBag.StaffID = new SelectList(db.StaffTables.Where(s => s.IsActive == true), "StaffID", "Name", employeeSalaryTable.StaffID);
             return View(employeeSalaryTable);
         }
 
@@ -85,8 +128,16 @@ namespace MVC_SMS.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeSalaryID,UserID,StaffID,Amount,SalaryMonth,SalaryYear,SalaryDate,Comments")] EmployeeSalaryTable employeeSalaryTable)
+        public ActionResult Edit(EmployeeSalaryTable employeeSalaryTable)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
+            int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            employeeSalaryTable.UserID = userid;
             if (ModelState.IsValid)
             {
                 db.Entry(employeeSalaryTable).State = EntityState.Modified;
@@ -94,13 +145,19 @@ namespace MVC_SMS.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", employeeSalaryTable.UserID);
-            ViewBag.StaffID = new SelectList(db.StaffTables, "StaffID", "Name", employeeSalaryTable.StaffID);
+            ViewBag.StaffID = new SelectList(db.StaffTables.Where(s => s.IsActive == true), "StaffID", "Name", employeeSalaryTable.StaffID);
             return View(employeeSalaryTable);
         }
 
         // GET: EmployeeSalaryTables/Delete/5
         public ActionResult Delete(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -118,6 +175,12 @@ namespace MVC_SMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             EmployeeSalaryTable employeeSalaryTable = db.EmployeeSalaryTables.Find(id);
             db.EmployeeSalaryTables.Remove(employeeSalaryTable);
             db.SaveChanges();
