@@ -23,9 +23,10 @@ namespace MVC_SMS.Controllers
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
-            var examMarksTables = db.ExamMarksTables.Include(e => e.StudentTable).Include(e => e.UserTable);
+            var examMarksTables = db.ExamMarksTables.Include(e => e.ClassSubjectTable).Include(e => e.StudentTable).Include(e => e.UserTable);
             return View(examMarksTables.ToList());
         }
+
 
         // GET: ExamMarksTables/Details/5
         public ActionResult Details(int? id)
@@ -64,6 +65,29 @@ namespace MVC_SMS.Controllers
             return View();
         }
 
+        public ActionResult GetByPromotID(string sid)
+        {
+            int promoteid = Convert.ToInt32(sid);
+            var promoterecord = db.StudentPromoteTables.Find(promoteid);
+            List<StudentTable> stdlist = new List<StudentTable>();
+            stdlist.Add(new StudentTable { StudentID = promoterecord.StudentID, Name = promoterecord.StudentTable.Name });
+            var student = promoterecord.StudentTable.Name;
+            List<ClassSubjectTable> subjectlist = new List<ClassSubjectTable>();
+            var classsubjects = db.ClassSubjectTables.Where(cls => cls.ClassID == promoterecord.ClassID && cls.IsActive == true);
+            foreach (var subj in classsubjects)
+            {
+                subjectlist.Add(new ClassSubjectTable { ClassSubjectID = subj.ClassSubjectID, Name = subj.Name });
+            }
+            return Json(new { students = stdlist, subjects = subjectlist }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetTotalMarks(string sid)
+        {
+            int classsubjectid = Convert.ToInt32(sid);
+            var totalmarks = db.ClassSubjectTables.Find(classsubjectid).SubjectTable.TotalMarks;
+
+            return Json(new { data = totalmarks }, JsonRequestBehavior.AllowGet);
+        }
+
         // POST: ExamMarksTables/Create
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
@@ -77,7 +101,6 @@ namespace MVC_SMS.Controllers
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
-
             int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             examMarksTable.UserID = userid;
             if (ModelState.IsValid)
@@ -86,7 +109,7 @@ namespace MVC_SMS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ExamID = new SelectList(db.ExamTables, "ExamID", "Title", examMarksTable.ExamID);
+            ViewBag.ExamID = new SelectList(db.ExamTables, "ExamID", "Name", examMarksTable.ExamID);
             ViewBag.ClassSubjectID = new SelectList(db.ClassSubjectTables, "ClassSubjectID", "Name", examMarksTable.ClassSubjectID);
             ViewBag.StudentID = new SelectList(db.StudentTables, "StudentID", "Name", examMarksTable.StudentID);
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", examMarksTable.UserID);
@@ -111,7 +134,7 @@ namespace MVC_SMS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ExamID = new SelectList(db.ExamTables, "ExamID", "Title", examMarksTable.ExamID);
+            ViewBag.ExamID = new SelectList(db.ExamTables, "ExamID", "Name", examMarksTable.ExamID);
             ViewBag.ClassSubjectID = new SelectList(db.ClassSubjectTables, "ClassSubjectID", "Name", examMarksTable.ClassSubjectID);
             ViewBag.StudentID = new SelectList(db.StudentTables, "StudentID", "Name", examMarksTable.StudentID);
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", examMarksTable.UserID);
@@ -131,7 +154,6 @@ namespace MVC_SMS.Controllers
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
-
             int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             examMarksTable.UserID = userid;
             if (ModelState.IsValid)
@@ -140,8 +162,8 @@ namespace MVC_SMS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ExamID = new SelectList(db.ExamTables, "ExamID", "Title",examMarksTable.ExamID);
-            ViewBag.ClassSubjectID = new SelectList(db.ClassSubjectTables, "ClassSubjectID", "Name",examMarksTable.ClassSubjectID);
+            ViewBag.ExamID = new SelectList(db.ExamTables, "ExamID", "Name", examMarksTable.ExamID);
+            ViewBag.ClassSubjectID = new SelectList(db.ClassSubjectTables, "ClassSubjectID", "Name", examMarksTable.ClassSubjectID);
             ViewBag.StudentID = new SelectList(db.StudentTables, "StudentID", "Name", examMarksTable.StudentID);
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", examMarksTable.UserID);
             return View(examMarksTable);

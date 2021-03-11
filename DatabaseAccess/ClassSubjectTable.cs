@@ -18,6 +18,7 @@ namespace DatabaseAccess
         public ClassSubjectTable()
         {
             this.TimeTblTables = new HashSet<TimeTblTable>();
+            this.ExamMarksTables = new HashSet<ExamMarksTable>();
         }
     
         public int ClassSubjectID { get; set; }
@@ -30,5 +31,7 @@ namespace DatabaseAccess
         public virtual SubjectTable SubjectTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TimeTblTable> TimeTblTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExamMarksTable> ExamMarksTables { get; set; }
     }
 }
