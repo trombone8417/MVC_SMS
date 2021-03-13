@@ -23,7 +23,7 @@ namespace MVC_SMS.Controllers
                 //導至登入頁
                 return RedirectToAction("Login", "Home");
             }
-            var examMarksTables = db.ExamMarksTables.Include(e => e.ClassSubjectTable).Include(e => e.StudentTable).Include(e => e.UserTable);
+            var examMarksTables = db.ExamMarksTables.Include(e => e.ClassSubjectTable).Include(e => e.StudentTable).Include(e => e.UserTable).OrderByDescending(e=>e.MarksID);
             return View(examMarksTables.ToList());
         }
 
