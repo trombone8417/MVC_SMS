@@ -25,9 +25,9 @@
         @Html.HiddenFor(model => model.MarksID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ExamID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ExamID, "ExamID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ExamID, new { htmlAttributes = new { @class = "form-control", @id = "ExamID" } })
+                @Html.DropDownList("ExamID", null, htmlAttributes: new { @class = "form-control", @id = "ExamID" })
                 @Html.ValidationMessageFor(model => model.ExamID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -95,6 +95,7 @@
                     for (var i = 0; i < response.subjects.length; i++) {
                         $('#ClassSubjectID').append("<option value =" + response.subjects[i].ClassSubjectID + ">" + response.subjects[i].Name + "</option>");
                     }
+                    $('#ClassSubjectID').trigger("change");
                 },
                 error: function (error) {
                 }

@@ -93,6 +93,7 @@
                     for (var i = 0; i < response.subjects.length; i++) {
                         $('#ClassSubjectID').append("<option value =" + response.subjects[i].ClassSubjectID + ">" + response.subjects[i].Name + "</option>");
                     }
+                    $('#ClassSubjectID').trigger("change");
                 },
                 error: function (error) {
                 }
