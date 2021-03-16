@@ -221,7 +221,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Event Setting:</h6>
                         @Html.ActionLink("Event", "Index", "EventTables", null, new { @class = "collapse-item" })
-                        
+
                     </div>
                 </div>
             </li>
@@ -238,7 +238,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTimeTable"
                    aria-expanded="true" aria-controls="collapseTimeTable">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Time Table Setting</span>
+                    <span>ExpensesTables Setting</span>
                 </a>
                 <div id="collapseTimeTable" class="collapse" aria-labelledby="headingTimeTable" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -247,6 +247,31 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Class Wise:</h6>
                         @Html.ActionLink("Time Table", "Index", "TimeTblTables", null, new { @class = "collapse-item" })
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Expense
+            </div>
+
+            <!-- Nav Item - Expense Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpense"
+                   aria-expanded="true" aria-controls="collapseExpense">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Expense Setting</span>
+                </a>
+                <div id="collapseExpense" class="collapse" aria-labelledby="headingExpense" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Expense Type:</h6>
+                        @Html.ActionLink("Expense Type", "Index", "ExpenseTypeTables", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Expenses:</h6>
+                        @Html.ActionLink("Expenses", "Index", "ExpensesTables", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>

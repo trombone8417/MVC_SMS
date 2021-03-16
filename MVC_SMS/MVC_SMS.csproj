@@ -178,6 +178,8 @@
     <Compile Include="Controllers\EventTablesController.cs" />
     <Compile Include="Controllers\ExamMarksTablesController.cs" />
     <Compile Include="Controllers\ExamTablesController.cs" />
+    <Compile Include="Controllers\ExpensesTablesController.cs" />
+    <Compile Include="Controllers\ExpenseTypeTablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProgrameSessionTablesController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
@@ -2228,6 +2230,16 @@
     <Content Include="Views\EventTables\Details.cshtml" />
     <Content Include="Views\EventTables\Edit.cshtml" />
     <Content Include="Views\EventTables\Index.cshtml" />
+    <Content Include="Views\ExpensesTables\Create.cshtml" />
+    <Content Include="Views\ExpensesTables\Delete.cshtml" />
+    <Content Include="Views\ExpensesTables\Details.cshtml" />
+    <Content Include="Views\ExpensesTables\Edit.cshtml" />
+    <Content Include="Views\ExpensesTables\Index.cshtml" />
+    <Content Include="Views\ExpenseTypeTables\Create.cshtml" />
+    <Content Include="Views\ExpenseTypeTables\Delete.cshtml" />
+    <Content Include="Views\ExpenseTypeTables\Details.cshtml" />
+    <Content Include="Views\ExpenseTypeTables\Edit.cshtml" />
+    <Content Include="Views\ExpenseTypeTables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

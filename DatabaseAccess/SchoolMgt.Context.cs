@@ -56,5 +56,7 @@ namespace DatabaseAccess
         public virtual DbSet<UserTypeTable> UserTypeTables { get; set; }
         public virtual DbSet<StaffTable> StaffTables { get; set; }
         public virtual DbSet<ExamMarksTable> ExamMarksTables { get; set; }
+        public virtual DbSet<ExpensesTable> ExpensesTables { get; set; }
+        public virtual DbSet<ExpenseTypeTable> ExpenseTypeTables { get; set; }
     }
 }

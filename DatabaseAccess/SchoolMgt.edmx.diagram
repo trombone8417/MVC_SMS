@@ -92,6 +92,10 @@
         <AssociationConnector Association="SchoolMgtDbModel.FK_ExamMarksTable_ExamTable" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_ExamMarksTable_StudentTable" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_ExamMarksTable_UserTable" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.ExpensesTable" Width="1.5" PointX="8.25" PointY="42" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.ExpenseTypeTable" Width="1.5" PointX="6" PointY="45.375" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_ExpensesTable_ExpenseTypeTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_ExpensesTable_UserTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

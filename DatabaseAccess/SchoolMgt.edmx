@@ -195,6 +195,25 @@
           <Property Name="EndDate" Type="datetime" Nullable="false" />
           <Property Name="Descrption" Type="varchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="ExpensesTable">
+          <Key>
+            <PropertyRef Name="ExpensesID" />
+          </Key>
+          <Property Name="ExpensesID" Type="int" Nullable="false" />
+          <Property Name="ExpensesTypeID" Type="int" Nullable="false" />
+          <Property Name="ExpensesDate" Type="date" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpenseTypeTable">
+          <Key>
+            <PropertyRef Name="ExpensesTypeID" />
+          </Key>
+          <Property Name="ExpensesTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="ProgrameSessionTable">
           <Key>
             <PropertyRef Name="ProgrameSessionID" />
@@ -721,6 +740,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ExpensesTable_ExpenseTypeTable">
+          <End Role="ExpenseTypeTable" Type="Self.ExpenseTypeTable" Multiplicity="1" />
+          <End Role="ExpensesTable" Type="Self.ExpensesTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpenseTypeTable">
+              <PropertyRef Name="ExpensesTypeID" />
+            </Principal>
+            <Dependent Role="ExpensesTable">
+              <PropertyRef Name="ExpensesTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExpensesTable_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="ExpensesTable" Type="Self.ExpensesTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ExpensesTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProgrameSessionTable_ProgrameTable">
           <End Role="ProgrameTable" Type="Self.ProgrameTable" Multiplicity="1" />
           <End Role="ProgrameSessionTable" Type="Self.ProgrameSessionTable" Multiplicity="*" />
@@ -1086,6 +1129,8 @@
           <EntitySet Name="EventTable" EntityType="Self.EventTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExamMarksTable" EntityType="Self.ExamMarksTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExamTable" EntityType="Self.ExamTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpensesTable" EntityType="Self.ExpensesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpenseTypeTable" EntityType="Self.ExpenseTypeTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProgrameSessionTable" EntityType="Self.ProgrameSessionTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProgrameTable" EntityType="Self.ProgrameTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SchoolLeavingTable" EntityType="Self.SchoolLeavingTable" Schema="dbo" store:Type="Tables" />
@@ -1208,6 +1253,14 @@
           <AssociationSet Name="FK_ExamTable_UserTable" Association="Self.FK_ExamTable_UserTable">
             <End Role="UserTable" EntitySet="UserTable" />
             <End Role="ExamTable" EntitySet="ExamTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExpensesTable_ExpenseTypeTable" Association="Self.FK_ExpensesTable_ExpenseTypeTable">
+            <End Role="ExpenseTypeTable" EntitySet="ExpenseTypeTable" />
+            <End Role="ExpensesTable" EntitySet="ExpensesTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExpensesTable_UserTable" Association="Self.FK_ExpensesTable_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="ExpensesTable" EntitySet="ExpensesTable" />
           </AssociationSet>
           <AssociationSet Name="FK_ProgrameSessionTable_ProgrameTable" Association="Self.FK_ProgrameSessionTable_ProgrameTable">
             <End Role="ProgrameTable" EntitySet="ProgrameTable" />
@@ -1776,6 +1829,7 @@
           <NavigationProperty Name="UserTypeTable" Relationship="Self.FK_UserTable_UserTypeTable" FromRole="UserTable" ToRole="UserTypeTable" />
           <NavigationProperty Name="StaffTables" Relationship="SchoolMgtDbModel.FK_StaffTable_UserTable" FromRole="UserTable" ToRole="StaffTable" />
           <NavigationProperty Name="ExamMarksTables" Relationship="SchoolMgtDbModel.FK_ExamMarksTable_UserTable" FromRole="UserTable" ToRole="ExamMarksTable" />
+          <NavigationProperty Name="ExpensesTables" Relationship="SchoolMgtDbModel.FK_ExpensesTable_UserTable" FromRole="UserTable" ToRole="ExpensesTable" />
         </EntityType>
         <EntityType Name="UserTypeTable">
           <Key>
@@ -2594,6 +2648,16 @@
             <End Role="UserTable" EntitySet="UserTables" />
             <End Role="ExamMarksTable" EntitySet="ExamMarksTables" />
           </AssociationSet>
+          <EntitySet Name="ExpensesTables" EntityType="SchoolMgtDbModel.ExpensesTable" />
+          <EntitySet Name="ExpenseTypeTables" EntityType="SchoolMgtDbModel.ExpenseTypeTable" />
+          <AssociationSet Name="FK_ExpensesTable_ExpenseTypeTable" Association="SchoolMgtDbModel.FK_ExpensesTable_ExpenseTypeTable">
+            <End Role="ExpenseTypeTable" EntitySet="ExpenseTypeTables" />
+            <End Role="ExpensesTable" EntitySet="ExpensesTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExpensesTable_UserTable" Association="SchoolMgtDbModel.FK_ExpensesTable_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="ExpensesTable" EntitySet="ExpensesTables" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="StaffTable">
           <Key>
@@ -2759,6 +2823,52 @@
               <PropertyRef Name="UserID" />
             </Principal>
             <Dependent Role="ExamMarksTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ExpensesTable">
+          <Key>
+            <PropertyRef Name="ExpensesID" />
+          </Key>
+          <Property Name="ExpensesID" Type="Int32" Nullable="false" />
+          <Property Name="ExpensesTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ExpensesDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ExpenseTypeTable" Relationship="SchoolMgtDbModel.FK_ExpensesTable_ExpenseTypeTable" FromRole="ExpensesTable" ToRole="ExpenseTypeTable" />
+          <NavigationProperty Name="UserTable" Relationship="SchoolMgtDbModel.FK_ExpensesTable_UserTable" FromRole="ExpensesTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="ExpenseTypeTable">
+          <Key>
+            <PropertyRef Name="ExpensesTypeID" />
+          </Key>
+          <Property Name="ExpensesTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExpensesTables" Relationship="SchoolMgtDbModel.FK_ExpensesTable_ExpenseTypeTable" FromRole="ExpenseTypeTable" ToRole="ExpensesTable" />
+        </EntityType>
+        <Association Name="FK_ExpensesTable_ExpenseTypeTable">
+          <End Type="SchoolMgtDbModel.ExpenseTypeTable" Role="ExpenseTypeTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.ExpensesTable" Role="ExpensesTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpenseTypeTable">
+              <PropertyRef Name="ExpensesTypeID" />
+            </Principal>
+            <Dependent Role="ExpensesTable">
+              <PropertyRef Name="ExpensesTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExpensesTable_UserTable">
+          <End Type="SchoolMgtDbModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.ExpensesTable" Role="ExpensesTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ExpensesTable">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -3189,6 +3299,27 @@
                 <ScalarProperty Name="ClassSubjectID" ColumnName="ClassSubjectID" />
                 <ScalarProperty Name="ExamID" ColumnName="ExamID" />
                 <ScalarProperty Name="MarksID" ColumnName="MarksID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpensesTables">
+            <EntityTypeMapping TypeName="SchoolMgtDbModel.ExpensesTable">
+              <MappingFragment StoreEntitySet="ExpensesTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ExpensesDate" ColumnName="ExpensesDate" />
+                <ScalarProperty Name="ExpensesTypeID" ColumnName="ExpensesTypeID" />
+                <ScalarProperty Name="ExpensesID" ColumnName="ExpensesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpenseTypeTables">
+            <EntityTypeMapping TypeName="SchoolMgtDbModel.ExpenseTypeTable">
+              <MappingFragment StoreEntitySet="ExpenseTypeTable">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ExpensesTypeID" ColumnName="ExpensesTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
