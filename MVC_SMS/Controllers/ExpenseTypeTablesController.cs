@@ -17,12 +17,24 @@ namespace MVC_SMS.Controllers
         // GET: ExpenseTypeTables
         public ActionResult Index()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             return View(db.ExpenseTypeTables.ToList());
         }
 
         // GET: ExpenseTypeTables/Details/5
         public ActionResult Details(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -38,6 +50,12 @@ namespace MVC_SMS.Controllers
         // GET: ExpenseTypeTables/Create
         public ActionResult Create()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
 
@@ -46,8 +64,14 @@ namespace MVC_SMS.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ExpensesTypeID,Name,IsActive")] ExpenseTypeTable expenseTypeTable)
+        public ActionResult Create(ExpenseTypeTable expenseTypeTable)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.ExpenseTypeTables.Add(expenseTypeTable);
@@ -61,6 +85,12 @@ namespace MVC_SMS.Controllers
         // GET: ExpenseTypeTables/Edit/5
         public ActionResult Edit(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -78,8 +108,14 @@ namespace MVC_SMS.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ExpensesTypeID,Name,IsActive")] ExpenseTypeTable expenseTypeTable)
+        public ActionResult Edit(ExpenseTypeTable expenseTypeTable)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(expenseTypeTable).State = EntityState.Modified;
@@ -92,6 +128,12 @@ namespace MVC_SMS.Controllers
         // GET: ExpenseTypeTables/Delete/5
         public ActionResult Delete(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -109,6 +151,12 @@ namespace MVC_SMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             ExpenseTypeTable expenseTypeTable = db.ExpenseTypeTables.Find(id);
             db.ExpenseTypeTables.Remove(expenseTypeTable);
             db.SaveChanges();

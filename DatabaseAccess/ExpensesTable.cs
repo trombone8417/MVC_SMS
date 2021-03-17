@@ -11,11 +11,14 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ExpensesTable
     {
         public int ExpensesID { get; set; }
         public int ExpensesTypeID { get; set; }
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime ExpensesDate { get; set; }
         public double Amount { get; set; }
         public string Reason { get; set; }
