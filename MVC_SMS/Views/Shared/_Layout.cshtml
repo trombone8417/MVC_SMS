@@ -294,6 +294,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">General Reports:</h6>
                         @Html.ActionLink("Student Reports", "#", "#", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">Teacher Reports:</h6>
+                        @Html.ActionLink("Time Table", "TeacherReport", "TimeTableReports", null, new { @class = "collapse-item" })
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Adminstration Reports:</h6>
                         @Html.ActionLink("Apply Students List", "#", "#", null, new { @class = "collapse-item" })
