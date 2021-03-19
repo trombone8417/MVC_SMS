@@ -16,5 +16,10 @@ namespace MVC_SMS.Controllers
             var teacherclas = db.TimeTblTables.Where(t => t.StaffID == id).OrderByDescending(e => e.TimeTableID);
             return View(teacherclas);
         }
+        public ActionResult TeacherWiseReport()
+        {
+            var teacherclas = db.TimeTblTables.Where(t => t.IsActive == true).OrderBy(e => e.StaffID);
+            return View(teacherclas);
+        }
     }
 }
