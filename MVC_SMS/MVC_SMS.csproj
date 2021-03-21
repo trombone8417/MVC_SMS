@@ -2243,6 +2243,7 @@
     <Content Include="Views\ExpenseTypeTables\Index.cshtml" />
     <Content Include="Views\TimeTableReports\TeacherReport.cshtml" />
     <Content Include="Views\TimeTableReports\TeacherWiseReport.cshtml" />
+    <Content Include="Views\TimeTableReports\StudentReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

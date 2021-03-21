@@ -21,5 +21,11 @@ namespace MVC_SMS.Controllers
             var teacherclas = db.TimeTblTables.Where(t => t.IsActive == true).OrderBy(e => e.StaffID);
             return View(teacherclas);
         }
+        public ActionResult StudentReport(int? id)
+        {
+            var classid = db.StudentPromoteTables.Where(p => p.SectionID == id && p.isActive == true).FirstOrDefault().ClassID;
+            var subjectime = db.TimeTblTables.Where(t => t.ClassSubjectTable.ClassID == classid && t.IsActive == true);
+            return View(subjectime);
+        }
     }
 }
