@@ -171,6 +171,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AnnualTablesController.cs" />
+    <Compile Include="Controllers\AttendanceReportsController.cs" />
     <Compile Include="Controllers\AttendanceTablesController.cs" />
     <Compile Include="Controllers\ClassSubjectTablesController.cs" />
     <Compile Include="Controllers\ClassTablesController.cs" />
@@ -2244,6 +2245,7 @@
     <Content Include="Views\TimeTableReports\TeacherReport.cshtml" />
     <Content Include="Views\TimeTableReports\TeacherWiseReport.cshtml" />
     <Content Include="Views\TimeTableReports\StudentReport.cshtml" />
+    <Content Include="Views\AttendanceReports\StudentAttendance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
