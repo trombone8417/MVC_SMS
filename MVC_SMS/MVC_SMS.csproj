@@ -2246,6 +2246,7 @@
     <Content Include="Views\TimeTableReports\TeacherWiseReport.cshtml" />
     <Content Include="Views\TimeTableReports\StudentReport.cshtml" />
     <Content Include="Views\AttendanceReports\StudentAttendance.cshtml" />
+    <Content Include="Views\AttendanceReports\StaffAttendance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
