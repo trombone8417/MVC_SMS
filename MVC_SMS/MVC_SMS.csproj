@@ -182,6 +182,7 @@
     <Compile Include="Controllers\ExpenseReportController.cs" />
     <Compile Include="Controllers\ExpensesTablesController.cs" />
     <Compile Include="Controllers\ExpenseTypeTablesController.cs" />
+    <Compile Include="Controllers\FeeReportController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProgrameSessionTablesController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
@@ -2249,6 +2250,10 @@
     <Content Include="Views\AttendanceReports\StudentAttendance.cshtml" />
     <Content Include="Views\AttendanceReports\StaffAttendance.cshtml" />
     <Content Include="Views\ExpenseReport\AllExpenses.cshtml" />
+    <Content Include="Views\AttendanceReports\AllStudentAttendance.cshtml" />
+    <Content Include="Views\AttendanceReports\AllStaffAttendance.cshtml" />
+    <Content Include="Views\ExpenseReport\DateExpenses.cshtml" />
+    <Content Include="Views\FeeReport\DateSubmissionFee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

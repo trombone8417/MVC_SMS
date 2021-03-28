@@ -1,0 +1,88 @@
+﻿@model IEnumerable<DatabaseAccess.ExpensesTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<style>
+    @@media print {
+        .no-print-button, .no-print-from {
+            display: none !important;
+        }
+    }
+</style>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance Time Table</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <div class="container body-content">
+        
+        @using (Html.BeginForm("DateExpenses", "ExpenseReport", FormMethod.Post, htmlAttributes: new { @class = "form-inline no-print-from" }))
+        {
+            <div class="form-group">
+                <label id="ReportBeginDate">Begin Date</label>
+                <input type="date" name="fromDate" class="form-control mb-2 mr-sm-2 mb-sm-0" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+            </div>
+
+            <div class="form-group">
+                <label id="ReportEndDate">End Date</label>
+                <input type="date" name="toDate" class="form-control mb-2 mr-sm-2 mb-sm-0" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-success" />
+        <a href="javascript:window.print()" class="btn btn-primary pull-right no-print-button">Print Report</a>
+        }
+        <h3>Teacher Time Table</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Expenses Date
+                </th>
+                <th>
+                    Amount
+                </th>
+                <th>
+                    Reason
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    UserTable
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExpensesDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reason)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExpenseTypeTable.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserTable.FullName)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

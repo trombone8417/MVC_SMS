@@ -10,6 +10,8 @@ namespace MVC_SMS.Controllers
     public class AttendanceReportsController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
+
+        
         // GET: AttendanceReports
         /// <summary>
         /// 學生上課點名(個人)
@@ -18,8 +20,18 @@ namespace MVC_SMS.Controllers
         /// <returns></returns>
         public ActionResult StudentAttendance(int? id)
         {
+            if (id == 0)
+            {
+                int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+                id = db.StudentTables.Where(e => e.UserID == userid).FirstOrDefault().StudentID;
+            }
             var classid = db.StudentPromoteTables.Where(p => p.StudentID == id && p.isActive == true).FirstOrDefault().ClassID;
-            var studentattandance = db.AttendanceTables.Where(a => a.StudentID == id && a.ClassID == classid).OrderByDescending(a => a.AttendanceID);
+            var studentattandance = db.AttendanceTables.Where(a => a.StudentID == id && a.ClassID == classid).OrderByDescending(a => a.ClassID).ThenByDescending(a=>a.StudentID);
+            return View(studentattandance);
+        }
+        public ActionResult AllStudentAttendance()
+        {
+            var studentattandance = db.AttendanceTables.OrderByDescending(a => a.ClassID).ThenByDescending(a => a.StudentID);
             return View(studentattandance);
         }
         /// <summary>
@@ -29,7 +41,17 @@ namespace MVC_SMS.Controllers
         /// <returns></returns>
         public ActionResult StaffAttendance(int? id)
         {
+            if (id == 0)
+            {
+                int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+                id = db.StaffTables.Where(e => e.UserID == userid).FirstOrDefault().StaffID;
+            }
             var staffattandance = db.StaffAttendanceTables.Where(a => a.StaffID == id).OrderByDescending(a => a.StaffID);
+            return View(staffattandance);
+        }
+        public ActionResult AllStaffAttendance()
+        {
+            var staffattandance = db.StaffAttendanceTables.OrderByDescending(a => a.StaffID);
             return View(staffattandance);
         }
     }

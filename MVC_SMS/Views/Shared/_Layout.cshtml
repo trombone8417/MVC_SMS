@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    int usertypeid = Convert.ToInt32(Convert.ToString(Session["UserTypeID"]));
+}
+<!DOCTYPE html>
 <html>
 <head>
     @*<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -44,7 +47,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                    @Html.ActionLink(" Dashboard", "About", "Home", null, new { @class = "nav-link fas fa-fw fa-tachometer-alt" })
+                @Html.ActionLink(" 儀錶板", "About", "Home", null, new { @class = "nav-link fas fa-fw fa-tachometer-alt" })
             </li>
 
             <!-- Divider -->
@@ -52,7 +55,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Student Registration
+                學生註冊
             </div>
 
             <!-- Nav Item - Student Collapse Menu -->
@@ -60,23 +63,23 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStudent"
                    aria-expanded="true" aria-controls="collapseStudent">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Student's</span>
+                    <span>學生</span>
                 </a>
                 <div id="collapseStudent" class="collapse" aria-labelledby="headingStudent" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Student Registration:</h6>
-                        @Html.ActionLink("New Registration", "Create", "StudentTables", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Students Lists", "Index", "StudentTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">學生註冊:</h6>
+                        @Html.ActionLink("註冊", "Create", "StudentTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("學生列表", "Index", "StudentTables", null, new { @class = "collapse-item" })
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Promotion:</h6>
-                        @Html.ActionLink("Students Promote", "Index", "StudentPromoteTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">學分:</h6>
+                        @Html.ActionLink("學分註冊", "Index", "StudentPromoteTables", null, new { @class = "collapse-item" })
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Fee's:</h6>
-                        @Html.ActionLink("Tution Fee", "Index", "SubmissionFeeTables", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Annual Fee", "Index", "StudentPromoteTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">費用:</h6>
+                        @Html.ActionLink("學分制收費", "Index", "SubmissionFeeTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("學年費用", "Index", "StudentPromoteTables", null, new { @class = "collapse-item" })
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Student Attendance:</h6>
-                        @Html.ActionLink("Student Attendance", "Index", "AttendanceTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">學生出勤:</h6>
+                        @Html.ActionLink("學生出勤", "Index", "AttendanceTables", null, new { @class = "collapse-item" })
 
 
                     </div>
@@ -87,7 +90,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Staff Registration
+                教職員
             </div>
 
             <!-- Nav Item - Employee Collapse Menu -->
@@ -95,29 +98,33 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmployee"
                    aria-expanded="true" aria-controls="collapseEmployee">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Employee's</span>
+                    <span>
+                        教職員
+                    </span>
                 </a>
                 <div id="collapseEmployee" class="collapse" aria-labelledby="headingEmployee" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Staff Registration:</h6>
-                        @Html.ActionLink("Staff", "Index", "StaffTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">教職員註冊:</h6>
+                        @Html.ActionLink("教職員註冊", "Index", "StaffTables", null, new { @class = "collapse-item" })
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Attendance:</h6>
-                        @Html.ActionLink("Staff Attendance", "Index", "StaffAttendanceTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">教職員出勤:</h6>
+                        @Html.ActionLink("教職員出勤", "Index", "StaffAttendanceTables", null, new { @class = "collapse-item" })
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Salary:</h6>
-                        @Html.ActionLink("Staff Salary", "Index", "EmployeeSalaryTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">教職員薪水:</h6>
+                        @Html.ActionLink("教職員薪水", "Index", "EmployeeSalaryTables", null, new { @class = "collapse-item" })
 
                     </div>
                 </div>
             </li>
-
+            @*Admin*@
+            @if (usertypeid == 1)
+            {
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                設定
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -130,28 +137,26 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Setting</h6>
-                        @Html.ActionLink("User Types", "Index", "UserTypeTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("使用者角色", "Index", "UserTypeTables", null, new { @class = "collapse-item" })
                         @Html.ActionLink("全部使用者", "Index", "UserTables", null, new { @class = "collapse-item" })
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
             </li>
-
+            }
             <!-- Nav Item - Session Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSession"
                    aria-expanded="true" aria-controls="collapseSession">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Session's</span>
+                    <span>年度</span>
                 </a>
                 <div id="collapseSession" class="collapse" aria-labelledby="headingSession"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
+                        <h6 class="collapse-header">課表:</h6>
 
-                        @Html.ActionLink("Session", "Index", "SessionTables", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Programe Setting", "Index", "ProgrameSessionTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("年度", "Index", "SessionTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("課程時段", "Index", "ProgrameSessionTables", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
@@ -160,15 +165,15 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClass"
                    aria-expanded="true" aria-controls="collapseClass">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Class's</span>
+                    <span>課程</span>
                 </a>
                 <div id="collapseClass" class="collapse" aria-labelledby="headingClass"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
+                        <h6 class="collapse-header">課程:</h6>
 
-                        @Html.ActionLink("Class", "Index", "ClassTables", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Class Subject Setting", "Index", "ClassSubjectTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("課程分級", "Index", "ClassTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("課程時段", "Index", "ClassSubjectTables", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
@@ -178,7 +183,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Examination
+                考試
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -186,15 +191,15 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                    aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Exam Setting</span>
+                    <span>考試</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Exam Setting:</h6>
-                        @Html.ActionLink("Exam Types", "Index", "ExamTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">考試:</h6>
+                        @Html.ActionLink("時程", "Index", "ExamTables", null, new { @class = "collapse-item" })
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Examination:</h6>
-                        @Html.ActionLink("Add Marks Sheet", "Index", "ExamMarksTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("考試分數", "Index", "ExamMarksTables", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
@@ -204,7 +209,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Event
+                活動
             </div>
 
             <!-- Nav Item - Event Collapse Menu -->
@@ -212,12 +217,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent"
                    aria-expanded="true" aria-controls="collapseEvent">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Event Setting</span>
+                    <span>活動</span>
                 </a>
                 <div id="collapseEvent" class="collapse" aria-labelledby="headingEvent" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Event Setting:</h6>
-                        @Html.ActionLink("Event", "Index", "EventTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">活動:</h6>
+                        @Html.ActionLink("活動", "Index", "EventTables", null, new { @class = "collapse-item" })
 
                     </div>
                 </div>
@@ -227,7 +232,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Time Table
+                時程表
             </div>
 
             <!-- Nav Item - TimeTable Collapse Menu -->
@@ -235,15 +240,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTimeTable"
                    aria-expanded="true" aria-controls="collapseTimeTable">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>ExpensesTables Setting</span>
+                    <span>時程表</span>
                 </a>
                 <div id="collapseTimeTable" class="collapse" aria-labelledby="headingTimeTable" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Setting:</h6>
-                        @Html.ActionLink("Set Time Table", "Index", "TimeTblTables", null, new { @class = "collapse-item" })
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Class Wise:</h6>
-                        @Html.ActionLink("Time Table", "Index", "TimeTblTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">時程表:</h6>
+                        @Html.ActionLink("時程表", "Index", "TimeTblTables", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
@@ -252,7 +254,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Expense
+                繳費
             </div>
 
             <!-- Nav Item - Expense Collapse Menu -->
@@ -260,15 +262,15 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpense"
                    aria-expanded="true" aria-controls="collapseExpense">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Expense Setting</span>
+                    <span>繳費</span>
                 </a>
                 <div id="collapseExpense" class="collapse" aria-labelledby="headingExpense" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Expense Type:</h6>
-                        @Html.ActionLink("Expense Type", "Index", "ExpenseTypeTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">繳費方式:</h6>
+                        @Html.ActionLink("繳費方式", "Index", "ExpenseTypeTables", null, new { @class = "collapse-item" })
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Expenses:</h6>
-                        @Html.ActionLink("Expenses", "Index", "ExpensesTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">繳費時間:</h6>
+                        @Html.ActionLink("繳費時間", "Index", "ExpensesTables", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
@@ -277,7 +279,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Reports
+                報表PDF
             </div>
 
             <!-- Nav Item - Report Collapse Menu -->
@@ -285,7 +287,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport"
                    aria-expanded="true" aria-controls="collapseReport">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Basic Reports</span>
+                    <span>報表PDF</span>
                 </a>
                 <div id="collapseReport" class="collapse" aria-labelledby="headingReport" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -306,13 +308,36 @@
                         <h6 class="collapse-header">Examination Reports:</h6>
                         @Html.ActionLink("Print DMC", "#", "#", null, new { @class = "collapse-item" })
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Attendance Reports:</h6>
-                        @Html.ActionLink("Student Attendance", "#", "#", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Teacher Attendance", "#", "#", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">出席表:</h6>
+                        @{
+                            //Admin或操作員
+                            if (usertypeid == 1 || usertypeid == 2)
+                            {
+                                @Html.ActionLink("Teacher Attendance", "StaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
+                                @Html.ActionLink("All Teacher Attendance", "AllStaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
+                                @Html.ActionLink("Student Attendance", "StudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
+                                @Html.ActionLink("All Student Attendance", "AllStudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
+                            }
+                            //非學生或非職員
+                            else if (usertypeid != 4 && usertypeid != 6)
+                            {
+                                @Html.ActionLink("Teacher Attendance", "StaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
+                            }
+                            //其他
+                            else
+                            {
+                                @Html.ActionLink("Student Attendance", "StudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
+                            }
+                        }
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Fee's Reports:</h6>
-                        @Html.ActionLink("Annual Fee Report", "#", "#", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Student Fee Report", "#", "#", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Annual Fee Report", "DateStudentPromote", "FeeReport", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Student Fee Report", "DateSubmissionFee", "FeeReport", null, new { @class = "collapse-item" })
+                        
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Expense:</h6>
+                        @Html.ActionLink("Expense Report", "AllExpenses", "ExpenseReport", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Expense Date Report", "DateExpenses", "ExpenseReport", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
@@ -383,10 +408,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
+                                
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
@@ -394,7 +416,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    登出
                                 </a>
                             </div>
                         </li>
@@ -445,7 +467,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    @Html.ActionLink("登出", "Logout", "Home", null, new { @class="btn btn-primary"})
+                    @Html.ActionLink("登出", "Logout", "Home", null, new { @class = "btn btn-primary" })
                 </div>
             </div>
         </div>
