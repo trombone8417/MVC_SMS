@@ -1,0 +1,106 @@
+﻿@model IEnumerable<DatabaseAccess.StudentPromoteTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<style>
+    @@media print {
+        .no-print-button, .no-print-from {
+            display: none !important;
+        }
+    }
+</style>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Student Promote</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container body-content">
+
+        @using (Html.BeginForm("DateStudentPromote", "FeeReport", FormMethod.Post, htmlAttributes: new { @class = "form-inline no-print-from" }))
+        {
+            <div class="form-group">
+                <label id="ReportBeginDate">Begin Date</label>
+                <input type="date" name="fromDate" class="form-control mb-2 mr-sm-2 mb-sm-0" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+            </div>
+
+            <div class="form-group">
+                <label id="ReportEndDate">End Date</label>
+                <input type="date" name="toDate" class="form-control mb-2 mr-sm-2 mb-sm-0" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-success" />
+            <a href="javascript:window.print()" class="btn btn-primary pull-right no-print-button">Print Report</a>
+        }
+
+        <h3>Submission Fee Date</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                     Promote Date 
+                </th>
+                <th>
+                     Annual Fee 
+                </th>
+                <th>
+                     is Active 
+                </th>
+                <th>
+                     Is Submit 
+                </th>
+                <th>
+                     Class 
+                </th>
+                <th>
+                     Programe Session 
+                </th>
+                <th>
+                     Section 
+                </th>
+                <th>
+                     Student 
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PromoteDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AnnualFee)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.isActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsSubmit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassTable.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProgrameSessionTable.Details)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SectionTable.SectionName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentTable.Name)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

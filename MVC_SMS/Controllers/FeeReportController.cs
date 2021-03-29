@@ -25,6 +25,19 @@ namespace MVC_SMS.Controllers
             return View(allsubmissionfee);
         }
 
-        
+        // GET: FeeReport
+        public ActionResult DateStudentPromote()
+        {
+            var allstudentpromote = db.StudentPromoteTables.Where(e => e.PromoteDate >= DateTime.Now && e.PromoteDate <= DateTime.Now).ToList().OrderByDescending(e => e.StudentPromoteID);
+
+            return View(allstudentpromote);
+        }
+
+        [HttpPost]
+        public ActionResult DateStudentPromote(DateTime fromDate, DateTime toDate)
+        {
+            var allstudentpromote = db.StudentPromoteTables.Where(e => e.PromoteDate >= fromDate && e.PromoteDate <= toDate).ToList().OrderByDescending(e => e.StudentPromoteID);
+            return View(allstudentpromote);
+        }
     }
 }

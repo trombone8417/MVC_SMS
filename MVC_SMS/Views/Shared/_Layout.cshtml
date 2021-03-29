@@ -292,52 +292,52 @@
                 <div id="collapseReport" class="collapse" aria-labelledby="headingReport" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">General Reports:</h6>
-                        @Html.ActionLink("Student Reports", "#", "#", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Student Reports", "#", "#", null, new { @class = "collapse-item", target = "_blank" })
                         <h6 class="collapse-header">Teacher Reports:</h6>
-                        @Html.ActionLink("Time Table", "TeacherReport", "TimeTableReports", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Time Table", "TeacherReport", "TimeTableReports", null, new { @class = "collapse-item", target = "_blank" })
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Teacher Reports:</h6>
-                        @Html.ActionLink("Time Wise Table", "TeacherWiseReport", "TimeTableReports", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Time Wise Table", "TeacherWiseReport", "TimeTableReports", null, new { @class = "collapse-item", target = "_blank" })
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Student Reports:</h6>
-                        @Html.ActionLink("Time Wise Table", "StudentReport", "TimeTableReports", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Time Wise Table", "StudentReport", "TimeTableReports", null, new { @class = "collapse-item", target = "_blank" })
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Adminstration Reports:</h6>
-                        @Html.ActionLink("Apply Students List", "#", "#", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Apply Students List", "#", "#", null, new { @class = "collapse-item", target = "_blank" })
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Examination Reports:</h6>
-                        @Html.ActionLink("Print DMC", "#", "#", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Print DMC", "#", "#", null, new { @class = "collapse-item", target = "_blank" })
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">出席表:</h6>
                         @{
                             //Admin或操作員
                             if (usertypeid == 1 || usertypeid == 2)
                             {
-                                @Html.ActionLink("Teacher Attendance", "StaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
-                                @Html.ActionLink("All Teacher Attendance", "AllStaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
-                                @Html.ActionLink("Student Attendance", "StudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
-                                @Html.ActionLink("All Student Attendance", "AllStudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
+                                @Html.ActionLink("Teacher Attendance", "StaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
+                                @Html.ActionLink("All Teacher Attendance", "AllStaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
+                                @Html.ActionLink("Student Attendance", "StudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
+                                @Html.ActionLink("All Student Attendance", "AllStudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
                             }
                             //非學生或非職員
                             else if (usertypeid != 4 && usertypeid != 6)
                             {
-                                @Html.ActionLink("Teacher Attendance", "StaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
+                                @Html.ActionLink("Teacher Attendance", "StaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
                             }
                             //其他
                             else
                             {
-                                @Html.ActionLink("Student Attendance", "StudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item" })
+                                @Html.ActionLink("Student Attendance", "StudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
                             }
                         }
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Fee's Reports:</h6>
-                        @Html.ActionLink("Annual Fee Report", "DateStudentPromote", "FeeReport", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Student Fee Report", "DateSubmissionFee", "FeeReport", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Annual Fee Report", "DateStudentPromote", "FeeReport", null, new { @class = "collapse-item", target = "_blank" })
+                        @Html.ActionLink("Student Fee Report", "DateSubmissionFee", "FeeReport", null, new { @class = "collapse-item", target = "_blank" })
                         
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Expense:</h6>
-                        @Html.ActionLink("Expense Report", "AllExpenses", "ExpenseReport", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Expense Date Report", "DateExpenses", "ExpenseReport", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Expense Report", "AllExpenses", "ExpenseReport", null, new { @class = "collapse-item", target = "_blank" })
+                        @Html.ActionLink("Expense Date Report", "DateExpenses", "ExpenseReport", null, new { @class = "collapse-item", target = "_blank" })
                     </div>
                 </div>
             </li>
