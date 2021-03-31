@@ -178,6 +178,7 @@
     <Compile Include="Controllers\EmployeeSalaryTablesController.cs" />
     <Compile Include="Controllers\EventTablesController.cs" />
     <Compile Include="Controllers\ExamMarksTablesController.cs" />
+    <Compile Include="Controllers\ExamReportController.cs" />
     <Compile Include="Controllers\ExamTablesController.cs" />
     <Compile Include="Controllers\ExpenseReportController.cs" />
     <Compile Include="Controllers\ExpensesTablesController.cs" />
@@ -2255,6 +2256,7 @@
     <Content Include="Views\ExpenseReport\DateExpenses.cshtml" />
     <Content Include="Views\FeeReport\DateSubmissionFee.cshtml" />
     <Content Include="Views\FeeReport\DateStudentPromote.cshtml" />
+    <Content Include="Views\ExamReport\PrintDMC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

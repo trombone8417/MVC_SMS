@@ -1,186 +1,202 @@
 ﻿@{
     ViewBag.Title = "儀錶板";
+
+    //1   Admin 最高權限
+    //2   Operator 操作員
+    //3   Teacher 教員
+    //4   Student 學生
+    //5   Accountant 會計
+    //6   Employee 職員
+    int usertypeid = Convert.ToInt32(Convert.ToString(Session["UserTypeID"]));
+
 }
 @*<h3>@ViewBag.Message</h3>*@
-<div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                Student Managment
+@if (usertypeid == 1)
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Student Managment
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Create", "StudentTables")">
+                                <i class="fas fa-user-graduate fa-2x"></i>
+                                <p>Add New Student</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Create", "StudentPromoteTables")">
+                                <i class="fas fa-user fa-2x"></i>
+                                <p>Student Promote</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Create", "ExamTables")">
+                                <i class="fas fa-poll-h fa-2x"></i>
+                                <p>Students Exam</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Index", "StudentTables")">
+                                <i class="fas fa-user-friends fa-2x"></i>
+                                <p>Students List</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Create","StudentTables")">
-                            <i class="fas fa-user-graduate fa-2x"></i>
-                            <p>Add New Student</p>
-                        </a>
+
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Student Managment
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Create", "StaffTables")">
+                                <i class="fas fa-user-tie fa-2x"></i>
+                                <p>Add New Employee</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Create", "StaffAttendance")">
+                                <i class="fas fa-chart-line fa-2x"></i>
+                                <p>Staff Attendance</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Index", "StaffTables")">
+                                <i class="fas fa-users fa-2x"></i>
+                                <p>Employee List</p>
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Create","StudentPromoteTables")">
-                            <i class="fas fa-user fa-2x"></i>
-                            <p>Student Promote</p>
-                        </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Student Management
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Register", "Account")">
+                                <i class="fas fa-user fa-2x"></i>
+                                <p>Add New User</p>
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Create","ExamTables")">
-                            <i class="fas fa-poll-h fa-2x"></i>
-                            <p>Students Exam</p>
-                        </a>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Index","StudentTables")">
-                            <i class="fas fa-user-friends fa-2x"></i>
-                            <p>Students List</p>
-                        </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Account and Fiance
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Create", "SubmissionFeeTables")">
+                                <i class="fas fa-funnel-dollar fa-2x"></i>
+                                <p>Student Fee</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Create", "EmployeeSalary")">
+                                <i class="fas fa-funnel-dollar fa-2x"></i>
+                                <p>Staff Salaries</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Create", "ExpensesTables")">
+                                <i class="fas fa-list fa-2x"></i>
+                                <p>Expenses</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                Student Managment
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Create","StaffTables")">
-                            <i class="fas fa-user-tie fa-2x"></i>
-                            <p>Add New Employee</p>
-                        </a>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Create","StaffAttendance")">
-                            <i class="fas fa-chart-line fa-2x"></i>
-                            <p>Staff Attendance</p>
-                        </a>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Index","StaffTables")">
-                            <i class="fas fa-users fa-2x"></i>
-                            <p>Employee List</p>
-                        </a>
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    System Setup
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("ListTypes", "SystemSetup")">
+                                <i class="fas fa-ellipsis-v fa-2x"></i>
+                                <p>List Types</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("ListTypesData", "SystemSetup")">
+                                <i class="fas fa-list fa-2x"></i>
+                                <p>List Types Data</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Create", "ExpensesTables")">
+                                <i class="fas fa-list fa-2x"></i>
+                                <p>Expenses</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
-</div>
-<br />
-<div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                Student Management
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Register","Account")">
-                            <i class="fas fa-user fa-2x"></i>
-                            <p>Add New User</p>
-                        </a>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Help & Support
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <a href="#">
+                                <i class="fas fa-desktop fa-2x"></i>
+                                <p>Email</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="#">
+                                <i class="fas fa-sms fa-2x text-success"></i>
+                                <p>Alert System</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("VideosInfo", "Videos")">
+                                <i class="fas fa-eye fa-2x text-danger"></i>
+                                <p>Videos</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                Account and Fiance
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Create","SubmissionFeeTables")">
-                            <i class="fas fa-funnel-dollar fa-2x"></i>
-                            <p>Student Fee</p>
-                        </a>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Create","EmployeeSalary")">
-                            <i class="fas fa-funnel-dollar fa-2x"></i>
-                            <p>Staff Salaries</p>
-                        </a>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Create","ExpensesTables")">
-                            <i class="fas fa-list fa-2x"></i>
-                            <p>Expenses</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-</div>
-<br />
-<div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                System Setup
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("ListTypes","SystemSetup")">
-                            <i class="fas fa-ellipsis-v fa-2x"></i>
-                            <p>List Types</p>
-                        </a>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("ListTypesData","SystemSetup")">
-                            <i class="fas fa-list fa-2x"></i>
-                            <p>List Types Data</p>
-                        </a>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("Create","ExpensesTables")">
-                            <i class="fas fa-list fa-2x"></i>
-                            <p>Expenses</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                Help & Support
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <a href="#">
-                            <i class="fas fa-desktop fa-2x"></i>
-                            <p>Email</p>
-                        </a>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <a href="#">
-                            <i class="fas fa-sms fa-2x text-success"></i>
-                            <p>Alert System</p>
-                        </a>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <a href="@Url.Action("VideosInfo","Videos")">
-                            <i class="fas fa-eye fa-2x text-danger"></i>
-                            <p>Videos</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
+}
+else
+{
+    <h1>歡迎來到校園資訊系統</h1>
+}
