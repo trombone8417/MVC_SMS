@@ -48,6 +48,17 @@ namespace MVC_SMS.Controllers
                         Session["ContactNo"] = finduser[0].ContactNo;
                         Session["EmailAddress"] = finduser[0].EmailAddress;
                         Session["Address"] = finduser[0].Address;
+                        var userid = (int)Session["UserID"];
+                        var studentphoto = db.StudentTables.Where(s => s.UserID == userid).FirstOrDefault();
+                        if (studentphoto!=null)
+                        {
+                            Session["Photo"] = studentphoto.Photo;
+                        }
+                        else
+                        {
+                            var employee = db.StaffTables.Where(e => e.UserID == finduser[0].UserID).FirstOrDefault();
+                            Session["Photo"] = employee.Photo;
+                        }
                         string url = string.Empty;
                         //使用者角色Operator
                         if (finduser[0].UserTypeID == 2)

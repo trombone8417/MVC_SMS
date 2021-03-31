@@ -190,6 +190,7 @@
     <Compile Include="Controllers\SessionTablesController.cs" />
     <Compile Include="Controllers\StaffAttendanceTablesController.cs" />
     <Compile Include="Controllers\StaffTablesController.cs" />
+    <Compile Include="Controllers\StudentCertificateReportController.cs" />
     <Compile Include="Controllers\StudentPromoteTablesController.cs" />
     <Compile Include="Controllers\StudentTablesController.cs" />
     <Compile Include="Controllers\SubmissionFeeTablesController.cs" />
@@ -2257,6 +2258,7 @@
     <Content Include="Views\FeeReport\DateSubmissionFee.cshtml" />
     <Content Include="Views\FeeReport\DateStudentPromote.cshtml" />
     <Content Include="Views\ExamReport\PrintDMC.cshtml" />
+    <Content Include="Views\StudentCertificateReport\LeavingC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

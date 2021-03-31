@@ -1,0 +1,113 @@
+﻿@model DatabaseAccess.StudentPromoteTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<style>
+    .certificate-body {
+        letter-spacing: 17px;
+        text-align: center;
+        line-height: 45px;
+    }
+    .pull-right {
+        margin-right: 33px;
+    }
+</style>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>畢業證書</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <div class="container">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary">Save Record</button>
+                            <a href="@Url.Action("Print","#")" class="btn btn-default"><i class="fas fa-print"></i>Print</a>
+                            <a href="@Url.Action("SendEmail","#")" class="btn btn-default"><i class="fas fa-envelope-open"></i>Send Email</a>
+                            <br />
+                            <br />
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="text-center">
+                                        <h1>
+                                            <b>OOXX 大學</b>
+                                        </h1>
+                                    </div>
+                                    <div class="text-center">
+                                        <h2>
+                                            <b>學士學位證書</b>
+                                        </h2>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    
+                                            <span class="pull-right"><b>S.No xxxxxxxxxx</b></span>
+                                            <br />
+                                            <div>
+                                                <span class="pull-right"><br /><b> 日期:@DateTime.Now.ToShortDateString()</b></span>
+                                            </div>
+                                        
+                                    <div class="clearfix"></div>
+                                    <br />
+                                    <div>
+                                        <h3 class="certificate-body">
+                                            學生
+                                            <b> @Model.StudentTable.Name </b> <b>學號：@Model.SectionID</b> 於中華民國
+                                            <b>@Model.StudentTable.AdmissionDate.ToShortDateString()</b>在本校大學部四年制OOXX系修業期滿成績及格准予畢業依學位授予法規定授予學士學位
+                                        </h3>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h2>
+                                                        <b>校長</b>
+                                                    </h2>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h2>
+                                                        <b>院長</b>
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h2>
+                                                        <b>教務長</b>
+                                                    </h2>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h2>
+                                                        <b>系主任</b>
+                                                    </h2>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
