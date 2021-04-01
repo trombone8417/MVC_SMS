@@ -1,0 +1,88 @@
+﻿@model DatabaseAccess.StaffTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<style>
+    .certificate-body {
+        letter-spacing: 17px;
+        line-height: 45px;
+    }
+
+    .pull-right {
+        margin-right: 33px;
+    }
+    @@media print {
+        .no-print {
+            visibility: hidden !important;
+        }
+    }
+</style>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>離職證明書</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <div class="container">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-md-9">
+                            <button type="button" class="btn btn-primary no-print">Save Record</button>
+                            <a href="@Url.Action("Print","#")" class="btn btn-default no-print"><i class="fas fa-print"></i>Print</a>
+                            <a href="@Url.Action("SendEmail","#")" class="btn btn-default no-print"><i class="fas fa-envelope-open"></i>Send Email</a>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="text-center">
+                                        <h1>
+                                            <b>OOXX 大學</b>
+                                        </h1>
+                                    </div>
+                                    <div class="text-center">
+                                        <h2>
+                                            <b>離職證明書</b>
+                                        </h2>
+                                    </div>
+                                    <br />
+                                    
+                                    <div class="clearfix"></div>
+                                    
+                                    <div>
+                                        <h3 class="certificate-body">
+                                            &nbsp;&nbsp;茲證明
+                                            <b> @Model.Name </b>先生/女士 (身分證字號) 於
+                                            <b>@ViewBag.FromDate</b> 到
+                                            <b>@ViewBag.ToDate.ToShortDateString()</b>在OOXX公司任職，因用人單位與勞動者協商一致原因離職，屬非志願離職性質，離職前擔任OOXX職務，在職期間無不良表現，相關離職手續已辦妥。
+                                            <br />
+                                        
+                                            &nbsp;&nbsp;因未簽訂相關保密協議和競業限制協議，遵從擇業自由。
+                                            <br />
+                                            <br />
+                                            &nbsp;&nbsp;特此證明
+                                            <br />
+                                            <br />
+                                            <span class="pull-right">OOXX股份有限公司</span>
+                                            <br />
+                                            <span class="pull-right">@DateTime.Now.ToString("yyyy/MM/dd")</span>
+                                        </h3>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

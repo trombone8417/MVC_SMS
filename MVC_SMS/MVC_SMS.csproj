@@ -175,6 +175,7 @@
     <Compile Include="Controllers\AttendanceTablesController.cs" />
     <Compile Include="Controllers\ClassSubjectTablesController.cs" />
     <Compile Include="Controllers\ClassTablesController.cs" />
+    <Compile Include="Controllers\EmployeeCertificateController.cs" />
     <Compile Include="Controllers\EmployeeSalaryTablesController.cs" />
     <Compile Include="Controllers\EventTablesController.cs" />
     <Compile Include="Controllers\ExamMarksTablesController.cs" />
@@ -2259,6 +2260,7 @@
     <Content Include="Views\FeeReport\DateStudentPromote.cshtml" />
     <Content Include="Views\ExamReport\PrintDMC.cshtml" />
     <Content Include="Views\StudentCertificateReport\LeavingC.cshtml" />
+    <Content Include="Views\EmployeeCertificate\ExperienceC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

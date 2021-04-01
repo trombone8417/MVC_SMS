@@ -20,6 +20,12 @@ namespace MVC_SMS.Controllers
         /// <returns></returns>
         public ActionResult StudentAttendance(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == 0)
             {
                 int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
@@ -31,6 +37,12 @@ namespace MVC_SMS.Controllers
         }
         public ActionResult AllStudentAttendance()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             var studentattandance = db.AttendanceTables.OrderByDescending(a => a.ClassID).ThenByDescending(a => a.StudentID);
             return View(studentattandance);
         }
@@ -41,6 +53,12 @@ namespace MVC_SMS.Controllers
         /// <returns></returns>
         public ActionResult StaffAttendance(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == 0)
             {
                 int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
@@ -51,6 +69,12 @@ namespace MVC_SMS.Controllers
         }
         public ActionResult AllStaffAttendance()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             var staffattandance = db.StaffAttendanceTables.OrderByDescending(a => a.StaffID);
             return View(staffattandance);
         }

@@ -13,12 +13,24 @@ namespace MVC_SMS.Controllers
         // GET: StudentCertificateReport
         public ActionResult LeavingC(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             var student = db.StudentPromoteTables.Where(std => std.StudentID == id && std.isActive == true).FirstOrDefault();
             return View(student);
         }
 
         public ActionResult PrintLeavingC(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             var student = db.StudentPromoteTables.Where(std => std.StudentID == id && std.isActive == true).FirstOrDefault();
             if (student==null)
             {
@@ -32,9 +44,5 @@ namespace MVC_SMS.Controllers
             return View("LeavingC",student);
         }
 
-        public ActionResult ProvisionalC(int? id)
-        {
-            return View();
-        }
     }
 }

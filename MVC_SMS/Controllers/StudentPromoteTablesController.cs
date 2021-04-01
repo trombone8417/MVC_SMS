@@ -17,12 +17,24 @@ namespace MVC_SMS.Controllers
         // GET: StudentPromoteTables
         public ActionResult Index()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             var studentPromoteTables = db.StudentPromoteTables.Include(s => s.ClassTable).Include(s => s.ProgrameSessionTable).Include(s => s.SectionTable).Include(s => s.StudentTable).OrderByDescending(s => s.StudentPromoteID);
             return View(studentPromoteTables.ToList());
         }
 
         public ActionResult GetPromotClsList(string sid)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             int studentid = Convert.ToInt32(sid);
             var student = db.StudentTables.Find(studentid);
             var promotelist = db.StudentPromoteTables.Where(p => p.StudentID == studentid);//
@@ -57,6 +69,12 @@ namespace MVC_SMS.Controllers
 
         public ActionResult GetAnnualFee(string sid)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             int progsessid = Convert.ToInt32(sid);
             var ps = db.ProgrameSessionTables.Find(progsessid);
             var annualfee = db.AnnualTables.Where(a => a.AnnualID == ps.ProgrameID).SingleOrDefault();
@@ -67,6 +85,12 @@ namespace MVC_SMS.Controllers
         // GET: StudentPromoteTables/Details/5
         public ActionResult Details(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -82,6 +106,12 @@ namespace MVC_SMS.Controllers
         // GET: StudentPromoteTables/Create
         public ActionResult Create()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name");
             ViewBag.ProgrameSessionID = new SelectList(db.ProgrameSessionTables, "ProgrameSessionID", "Details");
             ViewBag.SectionID = new SelectList(db.SectionTables, "SectionID", "SectionName");
@@ -96,6 +126,12 @@ namespace MVC_SMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(StudentPromoteTable studentPromoteTable)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.StudentPromoteTables.Add(studentPromoteTable);
@@ -113,6 +149,12 @@ namespace MVC_SMS.Controllers
         // GET: StudentPromoteTables/Edit/5
         public ActionResult Edit(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -136,6 +178,12 @@ namespace MVC_SMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(StudentPromoteTable studentPromoteTable)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(studentPromoteTable).State = EntityState.Modified;
@@ -152,6 +200,12 @@ namespace MVC_SMS.Controllers
         // GET: StudentPromoteTables/Delete/5
         public ActionResult Delete(int? id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -169,6 +223,12 @@ namespace MVC_SMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             StudentPromoteTable studentPromoteTable = db.StudentPromoteTables.Find(id);
             db.StudentPromoteTables.Remove(studentPromoteTable);
             db.SaveChanges();

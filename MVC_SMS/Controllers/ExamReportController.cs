@@ -12,6 +12,12 @@ namespace MVC_SMS.Controllers
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
         public ActionResult PrintDMC()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             ViewBag.ExamID = new SelectList(db.ExamTables, "ExamID", "Title");
             return View(new List<ExamMarksTable>());
         }
@@ -19,6 +25,12 @@ namespace MVC_SMS.Controllers
         [HttpPost()]
         public ActionResult PrintDMC(int? promoteid,int? examid)
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             ViewBag.ExamID = new SelectList(db.ExamTables, "ExamID", "Title");
             var promoterecord = db.StudentPromoteTables.Find(promoteid);
             if (promoterecord!=null)
