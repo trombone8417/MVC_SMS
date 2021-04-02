@@ -3,15 +3,13 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("新生註冊", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">All Class's</h6>
+        <h6 class="m-0 font-weight-bold text-primary">學生列表</h6>
+
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -19,24 +17,24 @@
                 <thead>
                     <tr>
                         <th>
-                            Student Name
+                            姓名
                         </th>
                         <th>
-                            Father Name
+                            父親
                         </th>
                         <th>
-                            Contact No
+                            聯絡方式
                         </th>
                         <th>
-                            Photo
+                            照片
                         </th>
                         <th>
-                            Class
+                            班級
                         </th>
                         <th>
-                            User
+                            修改者
                         </th>
-                        <th>Action</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,8 +63,9 @@
                                 @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.StudentID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.StudentID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.StudentID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("出勤", "StudentAttendance", "AttendanceReports", new { id = item.StudentID }, new { @class = "btn btn-secondary", target = "_blank" })
                             </td>
                         </tr>
                     }

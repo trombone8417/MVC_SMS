@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Student Promote</h6>
+        <h6 class="m-0 font-weight-bold text-primary">學分費</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -19,30 +16,30 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.PromoteDate)
+                            日期
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.AnnualFee)
+                            費用
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.isActive)
+                            狀態
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.IsSubmit)
+                            送出
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ClassTable.Name)
+                            班級
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ProgrameSessionTable.Details)
+                            課程
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.SectionTable.SectionName)
+                            班別
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.StudentTable.Name)
+                            學生
                         </th>
-                        <th></th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,9 +71,9 @@
                                 @Html.DisplayFor(modelItem => item.StudentTable.Name)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.StudentPromoteID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.StudentPromoteID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.StudentPromoteID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.StudentPromoteID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.StudentPromoteID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("刪除", "Delete", new { id = item.StudentPromoteID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }

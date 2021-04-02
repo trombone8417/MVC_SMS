@@ -4,22 +4,26 @@
     ViewBag.Title = "Promote Fee";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Annual/Promote Fee</h4>
+    <h4>學雜費</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Annual/Promote Fee Title
+            學/雜費
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Title)
         </dd>
-
         <dt>
-            Details
+            科系
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgrameTable.Name)
+        </dd>
+        <dt>
+            內容
         </dt>
 
         <dd>
@@ -27,7 +31,7 @@
         </dd>
 
         <dt>
-            Fees
+            費用
         </dt>
 
         <dd>
@@ -35,23 +39,17 @@
         </dd>
 
         <dt>
-            Status
+            狀態
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.IsActive)
         </dd>
 
-        <dt>
-            Programe
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProgrameTable.Name)
-        </dd>
 
         <dt>
-            User
+            姓名
         </dt>
 
         <dd>
@@ -61,6 +59,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AnnualID }, new { @class = "btn btn-primary" })
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("編輯", "Edit", new { id = Model.AnnualID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
 </p>

@@ -17,32 +17,32 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    Student Managment
+                    學生管理
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
                             <a href="@Url.Action("Create", "StudentTables")">
                                 <i class="fas fa-user-graduate fa-2x"></i>
-                                <p>Add New Student</p>
+                                <p>註冊</p>
                             </a>
                         </div>
                         <div class="col-md-3 text-center">
                             <a href="@Url.Action("Create", "StudentPromoteTables")">
                                 <i class="fas fa-user fa-2x"></i>
-                                <p>Student Promote</p>
+                                <p>學分</p>
                             </a>
                         </div>
                         <div class="col-md-3 text-center">
                             <a href="@Url.Action("Create", "ExamTables")">
                                 <i class="fas fa-poll-h fa-2x"></i>
-                                <p>Students Exam</p>
+                                <p>考試</p>
                             </a>
                         </div>
                         <div class="col-md-3 text-center">
                             <a href="@Url.Action("Index", "StudentTables")">
                                 <i class="fas fa-user-friends fa-2x"></i>
-                                <p>Students List</p>
+                                <p>列表</p>
                             </a>
                         </div>
                     </div>
@@ -53,26 +53,26 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    Student Managment
+                    教職員管理
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
                             <a href="@Url.Action("Create", "StaffTables")">
                                 <i class="fas fa-user-tie fa-2x"></i>
-                                <p>Add New Employee</p>
+                                <p>註冊</p>
                             </a>
                         </div>
                         <div class="col-md-3 text-center">
                             <a href="@Url.Action("Create", "StaffAttendance")">
                                 <i class="fas fa-chart-line fa-2x"></i>
-                                <p>Staff Attendance</p>
+                                <p>出勤</p>
                             </a>
                         </div>
                         <div class="col-md-3 text-center">
                             <a href="@Url.Action("Index", "StaffTables")">
                                 <i class="fas fa-users fa-2x"></i>
-                                <p>Employee List</p>
+                                <p>列表</p>
                             </a>
                         </div>
                     </div>
@@ -86,14 +86,14 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    Student Management
+                    設定
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
                             <a href="@Url.Action("Register", "Account")">
                                 <i class="fas fa-user fa-2x"></i>
-                                <p>Add New User</p>
+                                <p>帳號管理</p>
                             </a>
                         </div>
                     </div>
@@ -104,26 +104,26 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    Account and Fiance
+                    會計
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
                             <a href="@Url.Action("Create", "SubmissionFeeTables")">
                                 <i class="fas fa-funnel-dollar fa-2x"></i>
-                                <p>Student Fee</p>
+                                <p>學分費</p>
                             </a>
                         </div>
                         <div class="col-md-3 text-center">
                             <a href="@Url.Action("Create", "EmployeeSalary")">
                                 <i class="fas fa-funnel-dollar fa-2x"></i>
-                                <p>Staff Salaries</p>
+                                <p>薪資</p>
                             </a>
                         </div>
                         <div class="col-md-3 text-center">
                             <a href="@Url.Action("Create", "ExpensesTables")">
                                 <i class="fas fa-list fa-2x"></i>
-                                <p>Expenses</p>
+                                <p>繳費</p>
                             </a>
                         </div>
                     </div>
@@ -136,59 +136,17 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    System Setup
+                    聯絡我們
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
-                            <a href="@Url.Action("ListTypes", "SystemSetup")">
-                                <i class="fas fa-ellipsis-v fa-2x"></i>
-                                <p>List Types</p>
-                            </a>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <a href="@Url.Action("ListTypesData", "SystemSetup")">
-                                <i class="fas fa-list fa-2x"></i>
-                                <p>List Types Data</p>
-                            </a>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <a href="@Url.Action("Create", "ExpensesTables")">
-                                <i class="fas fa-list fa-2x"></i>
-                                <p>Expenses</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    Help & Support
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3 text-center">
-                            <a href="#">
+                            <a href="@Url.Action("SendEmail", "SendEmail")">
                                 <i class="fas fa-desktop fa-2x"></i>
                                 <p>Email</p>
                             </a>
                         </div>
-                        <div class="col-md-3 text-center">
-                            <a href="#">
-                                <i class="fas fa-sms fa-2x text-success"></i>
-                                <p>Alert System</p>
-                            </a>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <a href="@Url.Action("VideosInfo", "Videos")">
-                                <i class="fas fa-eye fa-2x text-danger"></i>
-                                <p>Videos</p>
-                            </a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

@@ -1,5 +1,10 @@
-﻿@{ //不要顯示側邊面板
-    Layout = null; }
+﻿@model MVC_SMS.Models.MailModel
+
+@{ 
+    //不要顯示側邊面板
+    ViewBag.Title = "SendEmail";
+    Layout = null;
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,51 +30,44 @@
 </head>
 
 <body class="bg-gradient-primary">
-
     <div class="container">
-
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-xl-5 col-lg- col-md-5">
-
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
-
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">校園資訊系統</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Send Email</h1>
                             </div>
-                            @*登入失敗，顯示錯誤訊息*@
-                            <h5 class="alert-danger">@ViewBag.message</h5>
-                            @using (Html.BeginForm("LoginUser", "Home", FormMethod.Post, new { @class = "form-horizontal user", role = "form", enctype = "multipart/form-data" }))
+                            @*寄信失敗，顯示錯誤訊息*@
+                            <h5 class="alert-danger">@ViewBag.messageError</h5>
+                            @*寄信成功，顯示寄出訊息*@
+                            <h5 class="alert-success">@ViewBag.messageSuccess</h5>
+                            @using (Html.BeginForm())
                             {
                                 @Html.AntiForgeryToken()
-
-
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user"
-                                           id="email" name="email" aria-describedby="emailHelp"
-                                           placeholder="Enter Email Address...">
+                                    <label>To</label>
+                                    @Html.TextBoxFor(m => m.To, new { @class = "form-control form-control-user" })
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-user"
-                                           id="password" name="password" placeholder="Password">
+                                    <label>Subject</label>
+                                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control form-control-user" })
                                 </div>
-                                <input type="submit" value="登入" class="btn btn-primary btn-user btn-block" />
+                                <div class="form-group">
+                                    <label>Body</label>
+                                    @Html.TextAreaFor(m => m.Body, new { @class = "form-control form-control-user" })
+                                </div>
+                                <input type="submit" value="Send" class="btn btn-primary btn-user btn-block" />
                                 <hr>
-
                             }
-
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <!-- Bootstrap core JavaScript-->

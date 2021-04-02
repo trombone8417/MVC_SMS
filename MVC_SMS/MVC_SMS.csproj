@@ -188,6 +188,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProgrameSessionTablesController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
+    <Compile Include="Controllers\SendEmailController.cs" />
     <Compile Include="Controllers\SessionTablesController.cs" />
     <Compile Include="Controllers\StaffAttendanceTablesController.cs" />
     <Compile Include="Controllers\StaffTablesController.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Models\Certification.cs" />
     <Compile Include="Models\Education.cs" />
     <Compile Include="Models\Language.cs" />
+    <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\WorkExperience.cs" />
@@ -2261,6 +2263,7 @@
     <Content Include="Views\ExamReport\PrintDMC.cshtml" />
     <Content Include="Views\StudentCertificateReport\LeavingC.cshtml" />
     <Content Include="Views\EmployeeCertificate\ExperienceC.cshtml" />
+    <Content Include="Views\SendEmail\SendEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

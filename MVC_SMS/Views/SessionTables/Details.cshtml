@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Session";
 }
-
-<h2>Details</h2>
-
 <div>
-    <h4>Session</h4>
+    <h4>學年度</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Session
+            學年度
         </dt>
 
         <dd>
@@ -19,7 +16,7 @@
         </dd>
 
         <dt>
-            Start Date
+            開始日期
         </dt>
 
         <dd>
@@ -27,7 +24,7 @@
         </dd>
 
         <dt>
-            End Date
+            結束日期
         </dt>
 
         <dd>
@@ -35,7 +32,7 @@
         </dd>
 
         <dt>
-            User
+            登入人員
         </dt>
 
         <dd>
@@ -45,6 +42,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SessionID }, new { @class = "btn btn-primary" })
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("更新", "Edit", new { id = Model.SessionID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
 </p>

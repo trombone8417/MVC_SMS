@@ -79,12 +79,14 @@
                                 @Html.ActionLink("註冊", "Create", "StudentTables", null, new { @class = "collapse-item" })
                                 @Html.ActionLink("學生列表", "Index", "StudentTables", null, new { @class = "collapse-item" })
                                 <div class="collapse-divider"></div>
-                                <h6 class="collapse-header">學分:</h6>
-                                @Html.ActionLink("學分註冊", "Index", "StudentPromoteTables", null, new { @class = "collapse-item" })
+                                <h6 class="collapse-header">系上課程:</h6>
+                                @Html.ActionLink("學系", "Index", "ProgrameTables", null, new { @class = "collapse-item" })
+                                @Html.ActionLink("系上課程", "Index", "ProgrameSessionTables", null, new { @class = "collapse-item" })
                                 <div class="collapse-divider"></div>
                                 <h6 class="collapse-header">費用:</h6>
-                                @Html.ActionLink("學分制收費", "Index", "SubmissionFeeTables", null, new { @class = "collapse-item" })
-                                @Html.ActionLink("學年費用", "Index", "StudentPromoteTables", null, new { @class = "collapse-item" })
+                                @*@Html.ActionLink("報名費", "Index", "SubmissionFeeTables", null, new { @class = "collapse-item" })*@
+                                @Html.ActionLink("學分費", "Index", "StudentPromoteTables", null, new { @class = "collapse-item" })
+                                @Html.ActionLink("學雜費", "Index", "AnnualTables", null, new { @class = "collapse-item" })
                                 <div class="collapse-divider"></div>
                                 <h6 class="collapse-header">學生出勤:</h6>
                                 @Html.ActionLink("學生出勤", "Index", "AttendanceTables", null, new { @class = "collapse-item" })
@@ -154,6 +156,7 @@
                             <h6 class="collapse-header">Custom Setting</h6>
                             @Html.ActionLink("使用者角色", "Index", "UserTypeTables", null, new { @class = "collapse-item" })
                             @Html.ActionLink("全部使用者", "Index", "UserTables", null, new { @class = "collapse-item" })
+                            @Html.ActionLink("職員職稱", "Index", "DesignationTables", null, new { @class = "collapse-item" })
                         </div>
                     </div>
                 </li>
@@ -370,10 +373,8 @@
                                     //Admin或操作員
                                     if (usertypeid == 1 || usertypeid == 2)
                                     {
-                                        @Html.ActionLink("Teacher Attendance", "StaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
-                                        @Html.ActionLink("All Teacher Attendance", "AllStaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
-                                        @Html.ActionLink("Student Attendance", "StudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
-                                        @Html.ActionLink("All Student Attendance", "AllStudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
+                                        @Html.ActionLink("職員全體出勤", "AllStaffAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
+                                        @Html.ActionLink("學生全體出勤", "AllStudentAttendance", "AttendanceReports", new { id = 0 }, new { @class = "collapse-item", target = "_blank" })
                                     }
                                     //非學生或非職員
                                     else if (usertypeid != 4 && usertypeid != 6)
@@ -548,11 +549,11 @@
     <script src="~/Content/AdminTemplate/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="~/Content/AdminTemplate/vendor/chart.js/Chart.min.js"></script>
+    @*<script src="~/Content/AdminTemplate/vendor/chart.js/Chart.min.js"></script>*@
 
     <!-- Page level custom scripts -->
-    <script src="~/Content/AdminTemplate/js/demo/chart-area-demo.js"></script>
-    <script src="~/Content/AdminTemplate/js/demo/chart-pie-demo.js"></script>
+    @*<script src="~/Content/AdminTemplate/js/demo/chart-area-demo.js"></script>*@
+    @*<script src="~/Content/AdminTemplate/js/demo/chart-pie-demo.js"></script>*@
     <!-- Page level plugins -->
     <script src="~/Content/AdminTemplate/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="~/Content/AdminTemplate/vendor/datatables/dataTables.bootstrap4.min.js"></script>

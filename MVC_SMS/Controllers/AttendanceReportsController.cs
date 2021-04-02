@@ -7,14 +7,17 @@ using System.Web.Mvc;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 出勤報表
+    /// </summary>
     public class AttendanceReportsController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
 
-        
         // GET: AttendanceReports
         /// <summary>
         /// 學生上課點名(個人)
+        /// button 在 StudentTables Index
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -35,6 +38,10 @@ namespace MVC_SMS.Controllers
             var studentattandance = db.AttendanceTables.Where(a => a.StudentID == id && a.ClassID == classid).OrderByDescending(a => a.ClassID).ThenByDescending(a=>a.StudentID);
             return View(studentattandance);
         }
+        /// <summary>
+        /// 全部學生出勤
+        /// </summary>
+        /// <returns></returns>
         public ActionResult AllStudentAttendance()
         {
             //若未登入
@@ -67,6 +74,10 @@ namespace MVC_SMS.Controllers
             var staffattandance = db.StaffAttendanceTables.Where(a => a.StaffID == id).OrderByDescending(a => a.StaffID);
             return View(staffattandance);
         }
+        /// <summary>
+        /// 全部職員出勤
+        /// </summary>
+        /// <returns></returns>
         public ActionResult AllStaffAttendance()
         {
             //若未登入

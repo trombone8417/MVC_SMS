@@ -150,10 +150,10 @@ namespace MVC_SMS.Controllers
                 {
                     if (!programeSessionTable.Details.Contains(sessionName.Name))
                     {
-                        var details = "(" + sessionName.Name + "-" + (programeName != null ? programeName.Name: "") + ") " + programeSessionTable.Details;
-                                            programeSessionTable.Details = details;
+                        var details = "(" + sessionName.Name + "-" + (programeName != null ? programeName.Name : "") + ") " + programeSessionTable.Details;
+                        programeSessionTable.Details = details;
                     }
-                    
+
                 }
                 db.Entry(programeSessionTable).State = EntityState.Modified;
                 db.SaveChanges();

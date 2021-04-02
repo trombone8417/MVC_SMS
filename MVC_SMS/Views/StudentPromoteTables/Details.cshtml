@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
 <div>
-    <h4>StudentPromoteTable</h4>
+    <h4>學分費</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.PromoteDate)
+            日期
         </dt>
 
         <dd>
@@ -19,7 +16,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AnnualFee)
+            費用
         </dt>
 
         <dd>
@@ -27,7 +24,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.isActive)
+            狀態
         </dt>
 
         <dd>
@@ -35,7 +32,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsSubmit)
+            送出
         </dt>
 
         <dd>
@@ -43,7 +40,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ClassTable.Name)
+            班級
         </dt>
 
         <dd>
@@ -51,7 +48,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ProgrameSessionTable.Details)
+            課程
         </dt>
 
         <dd>
@@ -59,7 +56,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SectionTable.SectionName)
+            班別
         </dt>
 
         <dd>
@@ -67,7 +64,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StudentTable.Name)
+            學生
         </dt>
 
         <dd>
@@ -77,6 +74,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentPromoteID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("編輯", "Edit", new { id = Model.StudentPromoteID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("回主頁", "Index",null, new { @class = "btn btn-default" })
 </p>

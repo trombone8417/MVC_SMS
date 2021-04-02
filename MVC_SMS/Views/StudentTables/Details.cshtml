@@ -3,211 +3,286 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
 <div>
-    <h4>StudentTable</h4>
-    <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+        <div class="card mb-4 shadow">
+            <div class="card-header">
+                學生資料
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                學生姓名
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.Name)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                父親姓名
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FatherName)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.FatherName)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                出生日期
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FatherName)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.DateofBirth)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                性別
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateofBirth)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Gender)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                聯絡方式
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateofBirth)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.ContactNo)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                身份證字號
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.CNIC)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                其他
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.FNIC)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                照片
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ContactNo)
-        </dt>
+                            <dd>
+                                @{
+                                    string imagepath = Model.Photo;
+                                    <img src="@Url.Content(imagepath)" alt="Image" style="width:100px;height:150px;max-width:100px;height:auto" />
+                                }
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                註冊日期
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ContactNo)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.AdmissionDate)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                畢業學校
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CNIC)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.PreviousSchool)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                畢業排名
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CNIC)
-        </dd>
+                            <dd>
+                                @Html.DisplayNameFor(model => model.PreviousPercentage)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                Email
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FNIC)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.EmailAddress)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                地址
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FNIC)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.Address)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                國籍
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Photo)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Nationality)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                地區
+                            </dt>
 
-        <dd>
-            @{
-                string imagepath = Model.Photo;
-                <img src="@Url.Content(imagepath)" alt="Image" style="width:100px;height:150px;max-width:100px;height:auto" />
-            }
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.Religion)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                是否為原住民
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AdmissionDate)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.TribeorCaste)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                父親職業
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AdmissionDate)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.FathersGuardiansOccupationofProfession)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                戶籍地址
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PreviousSchool)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.FathersGuardiansPostalAddress)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                工作電話
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PreviousSchool)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.PhoneOffice)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                住家電話
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PreviousPercentage)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.PhoneResident)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                班級
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PreviousPercentage)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.ClassTable.Name)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                科系
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailAddress)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ProgrameTable.Name)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                年度
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EmailAddress)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.SessionTable.Name)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                修改人員
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nationality)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nationality)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Religion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Religion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TribeorCaste)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TribeorCaste)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FathersGuardiansOccupationofProfession)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FathersGuardiansOccupationofProfession)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FathersGuardiansPostalAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FathersGuardiansPostalAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneOffice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneOffice)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneResident)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneResident)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ClassTable.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ClassTable.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProgrameTable.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProgrameTable.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SessionTable.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SessionTable.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserTable.FullName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserTable.FullName)
-        </dd>
-
+                            <dd>
+                                @Html.DisplayFor(model => model.UserTable.FullName)
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
 </p>

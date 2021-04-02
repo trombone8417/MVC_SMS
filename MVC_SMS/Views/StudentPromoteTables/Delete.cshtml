@@ -3,16 +3,13 @@
 @{
     ViewBag.Title = "Delete";
 }
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h3>確定要刪除嗎</h3>
 <div>
-    <h4>StudentPromoteTable</h4>
+    <h4>學分費</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.PromoteDate)
+            日期
         </dt>
 
         <dd>
@@ -20,7 +17,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AnnualFee)
+            費用
         </dt>
 
         <dd>
@@ -28,7 +25,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.isActive)
+            狀態
         </dt>
 
         <dd>
@@ -36,7 +33,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsSubmit)
+            送出
         </dt>
 
         <dd>
@@ -44,7 +41,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ClassTable.Name)
+            班級
         </dt>
 
         <dd>
@@ -52,7 +49,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ProgrameSessionTable.Details)
+            課程
         </dt>
 
         <dd>
@@ -60,7 +57,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SectionTable.SectionName)
+            班別
         </dt>
 
         <dd>
@@ -68,7 +65,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StudentTable.Name)
+            學生
         </dt>
 
         <dd>
@@ -81,8 +78,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-primary" /> 
+            @Html.ActionLink("回主頁", "Index",null, new { @class = "btn btn-default" })
         </div>
     }
 </div>

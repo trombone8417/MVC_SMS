@@ -5,11 +5,11 @@
 }
 
 <p>
-    @Html.ActionLink("Programe Configuration", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Programe Session's Setting</h6>
+        <h6 class="m-0 font-weight-bold text-primary">系上課程</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -18,24 +18,24 @@
                     <tr>
 
                         <th>
-                            Session
+                            學年度
                         </th>
                         <th>
-                            Programe
+                            科系
                         </th>
                         <th>
-                            Details
+                            課程
                         </th>
                         <th>
-                            RegDate
+                            課程時間
                         </th>
                         <th>
-                            Description
+                            描述
                         </th>
                         <th>
-                            Users
+                            登入人員
                         </th>
-                        <th>Actions</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,9 +63,9 @@
                                 @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ProgrameSessionID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.ProgrameSessionID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ProgrameSessionID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.ProgrameSessionID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.ProgrameSessionID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("刪除", "Delete", new { id = item.ProgrameSessionID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }

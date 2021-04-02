@@ -5,11 +5,11 @@
 }
 
 <p>
-    @Html.ActionLink("Annual/Promote Fee", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Annual/Promote Fee's</h6>
+        <h6 class="m-0 font-weight-bold text-primary">學雜費</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -17,25 +17,25 @@
                 <thead>
                     <tr>
                         <th>
-                            Annual/Promote Fee Title
+                            學/雜費
                         </th>
 
                         <th>
-                            Programe
+                            科系
                         </th>
                         <th>
-                            Details
+                            內容
                         </th>
                         <th>
-                            Fees
+                            費用
                         </th>
                         <th>
-                            Status
+                            狀態
                         </th>
                         <th>
-                            User
+                            登入人員
                         </th>
-                        <th>Actions</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,9 +62,9 @@
                                 @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.AnnualID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.AnnualID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.AnnualID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.AnnualID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.AnnualID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("刪除", "Delete", new { id = item.AnnualID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }

@@ -6,11 +6,11 @@
 
 
 <p>
-    @Html.ActionLink("Add New Session", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">All Session</h6>
+        <h6 class="m-0 font-weight-bold text-primary">學年度</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -18,18 +18,18 @@
                 <thead>
                     <tr>
                         <th>
-                            Session
+                            學年度
                         </th>
                         <th>
-                            Start Date
+                            開始日期
                         </th>
                         <th>
-                            End Date
+                            結束日期
                         </th>
                         <th>
-                            User
+                            登入人員
                         </th>
-                        <th>Actions</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,9 +49,9 @@
                                 @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.SessionID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.SessionID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.SessionID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.SessionID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.SessionID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("刪除", "Delete", new { id = item.SessionID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }

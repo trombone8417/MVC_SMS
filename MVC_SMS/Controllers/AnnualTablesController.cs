@@ -10,8 +10,13 @@ using DatabaseAccess;
 
 namespace MVC_SMS.Controllers
 {
+    
+    /// <summary>
+    /// 學雜費
+    /// </summary>
     public class AnnualTablesController : Controller
     {
+        //連接資料庫
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
 
         // GET: AnnualTables
