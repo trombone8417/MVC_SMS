@@ -15,6 +15,9 @@ namespace DatabaseAccess
     
     public partial class SchoolMgtDbEntities : DbContext
     {
+        /// <summary>
+        /// 連接資料庫
+        /// </summary>
         public SchoolMgtDbEntities()
             : base("name=SchoolMgtDbEntities")
         {

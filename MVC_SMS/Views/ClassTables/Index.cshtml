@@ -9,7 +9,7 @@
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">All Class's</h6>
+        <h6 class="m-0 font-weight-bold text-primary">全部班級</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -17,12 +17,12 @@
                 <thead>
                     <tr>
                         <th>
-                            Class Title
+                            班級
                         </th>
                         <th>
-                            Status
+                            啟用
                         </th>
-                        <th>Actions</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,9 +36,9 @@
                                 @Html.DisplayFor(modelItem => item.IsActive)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ClassID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.ClassID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ClassID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.ClassID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.ClassID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("刪除", "Delete", new { id = item.ClassID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }

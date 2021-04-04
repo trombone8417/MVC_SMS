@@ -10,6 +10,9 @@ using DatabaseAccess;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 員工薪資
+    /// </summary>
     public class EmployeeSalaryTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
@@ -26,11 +29,20 @@ namespace MVC_SMS.Controllers
             var employeeSalaryTables = db.EmployeeSalaryTables.Include(e => e.UserTable).Include(e => e.StaffTable);
             return View(employeeSalaryTables.ToList());
         }
+        /// <summary>
+        /// 員工薪資
+        /// </summary>
+        /// <param name="sid"></param>
+        /// <returns></returns>
         public ActionResult GetSalary(string sid)
         {
+            //員工id
             int staffid = Convert.ToInt32(sid);
+            //找出員工
             var ps = db.StaffTables.Find(staffid);
+            //員工的薪資
             double? salary = ps.BasicSalary;
+            //回傳資訊，允許get資料
             return Json(new { Salary = salary }, JsonRequestBehavior.AllowGet);
         }
         // GET: EmployeeSalaryTables/Details/5

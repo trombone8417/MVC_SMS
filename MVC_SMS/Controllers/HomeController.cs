@@ -49,14 +49,19 @@ namespace MVC_SMS.Controllers
                         Session["EmailAddress"] = finduser[0].EmailAddress;
                         Session["Address"] = finduser[0].Address;
                         var userid = (int)Session["UserID"];
+                        //查詢學生的照片
                         var studentphoto = db.StudentTables.Where(s => s.UserID == userid).FirstOrDefault();
+                        //若有學生的照片的話
                         if (studentphoto!=null)
                         {
+                            //Session存學生的照片位址
                             Session["Photo"] = studentphoto.Photo;
                         }
                         else
                         {
+                            //沒有的話查詢職員的資料
                             var employee = db.StaffTables.Where(e => e.UserID == finduser[0].UserID).FirstOrDefault();
+                            //儲存職員的照片
                             Session["Photo"] = employee.Photo;
                         }
                         string url = string.Empty;

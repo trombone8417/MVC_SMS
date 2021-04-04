@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create Employee Salary", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">All Employee Salary</h6>
+        <h6 class="m-0 font-weight-bold text-primary">全體員工薪資</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -19,31 +16,31 @@
                 <thead>
                     <tr>
                         <th>
-                            Employee ID
+                            員工ID
                         </th>
                         <th>
-                            Employee
+                            員工姓名
                         </th>
                         <th>
-                            Amount
+                            月數
                         </th>
                         <th>
-                            Salary(Month)
+                            月薪
                         </th>
                         <th>
-                            Salary(Year)
+                            年薪
                         </th>
                         <th>
-                            Salary Date
+                            發薪日
                         </th>
                         <th>
-                            Comments
+                            補充說明
                         </th>
                         <th>
-                            User
+                            登入人員
                         </th>
 
-                        <th>Actions</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>

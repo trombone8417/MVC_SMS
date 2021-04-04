@@ -10,6 +10,9 @@ using DatabaseAccess;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 節日
+    /// </summary>
     public class EventTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();

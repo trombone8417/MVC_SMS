@@ -10,6 +10,9 @@ using DatabaseAccess;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 繳費方式
+    /// </summary>
     public class ExpenseTypeTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();

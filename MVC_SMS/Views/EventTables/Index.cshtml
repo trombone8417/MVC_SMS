@@ -3,11 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -19,21 +16,21 @@
                 <thead>
                     <tr>
                         <th>
-                            Event Title
+                            節日
                         </th>
                         <th>
-                            Event Date
+                            日期
                         </th>
                         <th>
-                            Location
+                            地點
                         </th>
                         <th>
-                            Description
+                            詳細內容
                         </th>
                         <th>
-                            User
+                            登入人員
                         </th>
-                        <th>Actions</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>

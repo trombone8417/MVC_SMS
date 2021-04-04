@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "使用者";
 }
-
-<h2>使用者</h2>
-
 <div>
-    <h4>UserTable</h4>
+    <h4>使用者</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Full Name
+            真實姓名
         </dt>
 
         <dd>
@@ -19,7 +16,7 @@
         </dd>
 
         <dt>
-            User Name
+            帳號名稱
         </dt>
 
         <dd>
@@ -27,7 +24,7 @@
         </dd>
 
         <dt>
-            Contact No
+            聯絡方式
         </dt>
 
         <dd>
@@ -35,7 +32,7 @@
         </dd>
 
         <dt>
-            Email Address
+            Email
         </dt>
 
         <dd>
@@ -43,7 +40,7 @@
         </dd>
 
         <dt>
-            Address
+            地址
         </dt>
 
         <dd>
@@ -51,7 +48,7 @@
         </dd>
 
         <dt>
-            User Type
+            使用者角色
         </dt>
 
         <dd>
@@ -61,6 +58,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }, new { @class="btn btn-primary"}) 
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("編輯", "Edit", new { id = Model.UserID }, new { @class="btn btn-primary"}) 
+    @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
 </p>

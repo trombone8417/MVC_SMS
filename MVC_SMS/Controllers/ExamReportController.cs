@@ -7,9 +7,16 @@ using System.Web.Mvc;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 考試報表
+    /// </summary>
     public class ExamReportController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
+        /// <summary>
+        /// 考試報表(get)
+        /// </summary>
+        /// <returns></returns>
         public ActionResult PrintDMC()
         {
             //若未登入
@@ -22,6 +29,12 @@ namespace MVC_SMS.Controllers
             return View(new List<ExamMarksTable>());
         }
         // GET: ExamReport
+        /// <summary>
+        /// 考試報表(post)
+        /// </summary>
+        /// <param name="promoteid"></param>
+        /// <param name="examid"></param>
+        /// <returns></returns>
         [HttpPost()]
         public ActionResult PrintDMC(int? promoteid,int? examid)
         {

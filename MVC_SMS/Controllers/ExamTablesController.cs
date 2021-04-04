@@ -10,6 +10,9 @@ using DatabaseAccess;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 考試時間
+    /// </summary>
     public class ExamTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();

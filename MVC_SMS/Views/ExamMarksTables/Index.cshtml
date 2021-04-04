@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Exam Marks</h6>
+        <h6 class="m-0 font-weight-bold text-primary"></h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -19,24 +16,24 @@
                 <thead>
                     <tr>
                         <th>
-                            Exam ID
+                            考試
                         </th>
                         <th>
-                            Total Marks
+                            總分
                         </th>
                         <th>
-                            Obtain Marks
+                            獲得分數
                         </th>
                         <th>
-                            Class Subject
+                            課程
                         </th>
                         <th>
-                            Student
+                            學生
                         </th>
                         <th>
-                            User
+                            登入人員
                         </th>
-                        <th>Actions</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
