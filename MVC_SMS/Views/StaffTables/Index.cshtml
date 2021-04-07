@@ -69,6 +69,7 @@
                                 @Html.ActionLink("內容", "Details", new { id = item.StaffID }, new { @class = "btn btn-info" })
                                 @Html.ActionLink("新增履歷", "CheckCV", "Resume", new { id = item.StaffID }, new { @class = "btn btn-success" })
                                 @Html.ActionLink("查看履歷", "CV", "Resume", new { id = item.StaffID }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("出勤", "StaffAttendance", "AttendanceReports", new { id = item.StaffID }, new { @class = "btn btn-secondary", target = "_blank" })
                             </td>
                         </tr>
                     }

@@ -5,37 +5,43 @@
 }
 
 <!DOCTYPE html>
-
+<style>
+    @@media print {
+        .no-print {
+            display: none !important;
+        }
+    }
+</style>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Staff Attendance Time Table</title>
+    <title>全體教職員出勤</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
 
     <div class="container body-content">
-        <a href="javascript:window.print()" class="btn btn-primary">Print Report</a>
-        <h3>Teacher Time Table</h3>
+        <a href="javascript:window.print()" class="btn btn-primary no-print">列印</a>
+        <h3>全體教職員出勤</h3>
         <table class="table table-bordered">
             <tr>
                 <th>
-                    Attend Date
+                    日期
                 </th>
                 <th>
-                    Coming Time
+                    簽到
                 </th>
                 <th>
-                    Closing Time
+                    簽退
                 </th>
                 <th>
-                    Staff Name
+                    姓名
                 </th>
                 <th>
-                    Designation
+                    職稱
                 </th>
             </tr>
 

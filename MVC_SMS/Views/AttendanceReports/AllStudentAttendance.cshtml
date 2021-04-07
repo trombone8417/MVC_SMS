@@ -5,7 +5,13 @@
 }
 
 <!DOCTYPE html>
-
+<style>
+    @@media print {
+        .no-print {
+            display: none !important;
+        }
+    }
+</style>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,7 +24,7 @@
 <body>
 
     <div class="container body-content">
-        <a href="javascript:window.print()" class="btn btn-primary">Print Report</a>
+        <a href="javascript:window.print()" class="btn btn-primary no-print">列印</a>
         <h3>學生全體出勤</h3>
         <table class="table table-bordered">
             <tr>

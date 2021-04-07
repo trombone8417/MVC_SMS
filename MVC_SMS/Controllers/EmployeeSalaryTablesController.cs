@@ -76,9 +76,9 @@ namespace MVC_SMS.Controllers
                 return RedirectToAction("Login", "Home");
             }
             EmployeeSalaryTable employeeSalaryTable = new EmployeeSalaryTable();
-            employeeSalaryTable.SalaryMonth = DateTime.Now.ToString("MMMM");
+            //employeeSalaryTable.SalaryMonth = DateTime.Now.ToString("MMMM");
             employeeSalaryTable.SalaryDate = DateTime.Now;
-            employeeSalaryTable.SalaryYear = DateTime.Now.ToString("yyyy");
+            //employeeSalaryTable.SalaryYear = DateTime.Now.ToString("yyyy");
 
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName");
             ViewBag.StaffID = new SelectList(db.StaffTables.Where(s => s.IsActive == true), "StaffID", "Name");

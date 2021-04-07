@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
 <div>
-    <h4>EmployeeSalaryTable</h4>
+    <h4>員工薪資</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Amount)
+            月數
         </dt>
 
         <dd>
@@ -19,7 +16,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SalaryMonth)
+            月薪
         </dt>
 
         <dd>
@@ -27,7 +24,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SalaryYear)
+            年薪
         </dt>
 
         <dd>
@@ -35,7 +32,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SalaryDate)
+            發薪日
         </dt>
 
         <dd>
@@ -43,7 +40,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Comments)
+            補充說明
         </dt>
 
         <dd>
@@ -51,7 +48,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserTable.FullName)
+            登入人員
         </dt>
 
         <dd>
@@ -59,7 +56,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StaffTable.Name)
+            員工姓名
         </dt>
 
         <dd>
@@ -69,6 +66,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeSalaryID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("編輯", "Edit", new { id = Model.EmployeeSalaryID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
 </p>

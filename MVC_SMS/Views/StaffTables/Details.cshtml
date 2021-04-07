@@ -4,172 +4,239 @@
     ViewBag.Title = "Details";
 }
 <div>
-    <h4>新進教職員</h4>
-    <hr />
     <dl class="dl-horizontal">
-        <dt>
-            全名
-        </dt>
+        <div class="card mb-4 shadow">
+            <div class="card-header">
+                新進教職員
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                全名
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.Name)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                聯絡方式
+                            </dt>
 
-        <dt>
-            聯絡方式
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ContactNo)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                薪資
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ContactNo)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.BasicSalary)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                Email
+                            </dt>
 
-        <dt>
-            薪資
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.EmailAddress)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                地址
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BasicSalary)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.Address)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                單位
+                            </dt>
 
-        <dt>
-            Email
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Qualification)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                照片
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EmailAddress)
-        </dd>
+                            <dd>
+                                @{
+                                    string imagepath = Model.Photo;
+                                    <img src="@Url.Content(imagepath)" alt="Image" style="width:100px;height:150px;max-width:100px;height:auto" />
+                                }
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                描述
+                            </dt>
 
-        <dt>
-            地址
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Description)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                狀態
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.IsActive)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                性別
+                            </dt>
 
-        <dt>
-            單位
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Gender)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                家用電話
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Qualification)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.HomePhone)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                是否身障?
+                            </dt>
 
-        <dt>
-            照片
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Doyouhaveanydisability)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                身障種類
+                            </dt>
 
-        <dd>
-            @{
-                string imagepath = Model.Photo;
-                <img src= "@Url.Content(imagepath)" alt ="Image" style="width:100px;height:150px;max-width:100px;height:auto" />
-            }
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.Ifdisabilityyesthengiveusdetail)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                是否用藥?
+                            </dt>
 
-        <dt>
-            描述
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Areyoutakinganymedication)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                用藥種類
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.Ifmedicationyesthengiveus)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                是否有刑事紀錄?
+                            </dt>
 
-        <dt>
-            狀態
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.AnyCriminaloffcenceagainstyou)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                案件種類
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.Ifcriminaloffcenceyesthengiveusdetail)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                註冊日期
+                            </dt>
 
-        <dt>
-            性別
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.RegistrationDate)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                職稱
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.DesignationTable.Title)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <dt>
+                                登入人員
+                            </dt>
 
-        <dt>
-            家用電話
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HomePhone)
-        </dd>
-
-        <dt>
-            是否身障?
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Doyouhaveanydisability)
-        </dd>
-
-        <dt>
-            身障種類
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ifdisabilityyesthengiveusdetail)
-        </dd>
-
-        <dt>
-            是否用藥?
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Areyoutakinganymedication)
-        </dd>
-
-        <dt>
-            用藥種類
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ifmedicationyesthengiveus)
-        </dd>
-
-        <dt>
-            是否有刑事紀錄?
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnyCriminaloffcenceagainstyou)
-        </dd>
-
-        <dt>
-            案件種類
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ifcriminaloffcenceyesthengiveusdetail)
-        </dd>
-
-        <dt>
-            註冊日期
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RegistrationDate)
-        </dd>
-
-        <dt>
-            職稱
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DesignationTable.Title)
-        </dd>
-
-        <dt>
-            登入人員
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserTable.FullName)
-        </dd>
-
+                            <dd>
+                                @Html.DisplayFor(model => model.UserTable.FullName)
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </dl>
 </div>
 <p>

@@ -3,22 +3,19 @@
 @{
     ViewBag.Title = "Edit";
 }
-
-<h2>Edit</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>EmployeeSalaryTable</h4>
+        <h4>員工薪資</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.EmployeeSalaryID)
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.StaffID, "StaffID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StaffID, "選擇員工", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("StaffID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.StaffID, "", new { @class = "text-danger" })
@@ -26,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Amount, "月數", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
@@ -34,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SalaryMonth, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SalaryMonth, "月薪", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SalaryMonth, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SalaryMonth, "", new { @class = "text-danger" })
@@ -42,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SalaryYear, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SalaryYear, "年薪", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SalaryYear, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SalaryYear, "", new { @class = "text-danger" })
@@ -50,7 +47,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SalaryDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SalaryDate, "發薪日", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SalaryDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SalaryDate, "", new { @class = "text-danger" })
@@ -58,7 +55,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Comments, "補充說明", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
@@ -67,12 +64,9 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="更新" class="btn btn-success" />
+                @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

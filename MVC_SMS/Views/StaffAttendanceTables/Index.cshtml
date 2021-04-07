@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">All Staff Attendance's</h6>
+        <h6 class="m-0 font-weight-bold text-primary">全體教職員出勤</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -19,22 +16,22 @@
                 <thead>
                     <tr>
                         <th>
-                            Staff ID
+                            員編
                         </th>
                         <th>
-                            Staff Name
+                            姓名
                         </th>
                         <th>
-                            Attend Date
+                            日期
                         </th>
                         <th>
-                            Coming Time
+                            簽到
                         </th>
                         <th>
-                            Closing Time
+                            簽退
                         </th>
 
-                        <th>Actions</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,9 +55,9 @@
                         </td>
 
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.StaffAttendanceID }, new { @class = "btn btn-primary" })
-                            @Html.ActionLink("Details", "Details", new { id = item.StaffAttendanceID }, new { @class = "btn btn-info" })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.StaffAttendanceID }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("編輯", "Edit", new { id = item.StaffAttendanceID }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("內容", "Details", new { id = item.StaffAttendanceID }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("刪除", "Delete", new { id = item.StaffAttendanceID }, new { @class = "btn btn-danger" })
                         </td>
                     </tr>
                     }
