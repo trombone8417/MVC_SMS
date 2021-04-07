@@ -3,22 +3,19 @@
 @{
     ViewBag.Title = "Edit";
 }
-
-<h2>Edit</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Programe Configuration</h4>
+        <h4>系上課程</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ProgrameSessionID)
 
         
         <div class="form-group">
-            @Html.LabelFor(model => model.SessionID, "Select Session", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SessionID, "選擇學年度", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
                 @Html.DropDownList("SessionID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.SessionID, "", new { @class = "text-danger" })
@@ -26,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ProgrameID, "Select Programe", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProgrameID, "選擇科系", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
                 @Html.DropDownList("ProgrameID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ProgrameID, "", new { @class = "text-danger" })
@@ -34,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Details, "Enter Details", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Details, "課程", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
                 @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
@@ -42,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RegDate, "Reg Date", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RegDate, "課程時間", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
                 @Html.EditorFor(model => model.RegDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.RegDate, "", new { @class = "text-danger" })
@@ -50,7 +47,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Description, "描述", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
@@ -59,8 +56,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-success" />
-                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+                <input type="submit" value="更新" class="btn btn-success" />
+                @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>

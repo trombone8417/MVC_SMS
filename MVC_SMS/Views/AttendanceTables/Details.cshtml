@@ -3,23 +3,26 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
 <div>
-    <h4>AttendanceTable</h4>
+    <h4>學生出勤</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.SessionID)
+            學號
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.SessionID)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.AttendDate)
+            年度
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentTable.SessionTable.Name)
+        </dd>
+        <dt>
+            日期
         </dt>
 
         <dd>
@@ -27,7 +30,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AttendTime)
+            時間
         </dt>
 
         <dd>
@@ -35,7 +38,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StudentTable.Name)
+            姓名
         </dt>
 
         <dd>
@@ -43,7 +46,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ClassTable.Name)
+            班級
         </dt>
 
         <dd>
@@ -53,6 +56,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AttendanceID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AttendanceID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
 </p>

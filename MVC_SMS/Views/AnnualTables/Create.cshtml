@@ -4,8 +4,6 @@
     ViewBag.Title = "Promote Fee";
 }
 
-<h2>Setting</h2>
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -60,7 +58,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="新增" class="btn btn-success" />
-                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>

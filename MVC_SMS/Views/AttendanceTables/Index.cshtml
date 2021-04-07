@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">All Attendance's</h6>
+        <h6 class="m-0 font-weight-bold text-primary">全體學生出勤</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -19,25 +16,25 @@
                 <thead>
                     <tr>
                         <th>
-                            ID
+                            學號
                         </th>
                         <th>
-                            Name
+                            姓名
                         </th>
                         <th>
-                            Session
+                            年度
                         </th>
                         <th>
-                            Date
+                            日期
                         </th>
                         <th>
-                           Time
+                           時間
                         </th>
 
                         <th>
-                           Class
+                           班級
                         </th>
-                        <th>Actions</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,7 +48,7 @@
                             @Html.DisplayFor(modelItem => item.StudentTable.Name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.SessionID)
+                            @Html.DisplayFor(modelItem => item.StudentTable.SessionTable.Name)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.AttendDate)
@@ -64,9 +61,9 @@
                             @Html.DisplayFor(modelItem => item.ClassTable.Name)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceID }, new { @class = "btn btn-primary" })
-                            @Html.ActionLink("Details", "Details", new { id = item.AttendanceID }, new { @class = "btn btn-info" })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.AttendanceID }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("編輯", "Edit", new { id = item.AttendanceID }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("內容", "Details", new { id = item.AttendanceID }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("刪除", "Delete", new { id = item.AttendanceID }, new { @class = "btn btn-danger" })
                         </td>
                     </tr>
                     }

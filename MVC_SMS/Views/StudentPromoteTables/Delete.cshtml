@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Delete";
 }
-<h3>確定要刪除嗎</h3>
+<h3 class="text-danger">確定要刪除嗎?</h3>
+
 <div>
     <h4>學分費</h4>
     <hr />
@@ -74,12 +75,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-primary" /> 
-            @Html.ActionLink("回主頁", "Index",null, new { @class = "btn btn-default" })
+            <input type="submit" value="Delete" class="btn btn-primary" />
+            @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
         </div>
     }
 </div>

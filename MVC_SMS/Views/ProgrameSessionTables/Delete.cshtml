@@ -4,16 +4,13 @@
     ViewBag.Title = "Delete";
     
 }
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="text-danger">確定要刪除嗎?</h3>
 <div>
-    <h4>Programe Configuration</h4>
+    <h4>系上課程</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Session
+            學年度
         </dt>
 
         <dd>
@@ -21,7 +18,7 @@
         </dd>
 
         <dt>
-            Programe
+            科系
         </dt>
 
         <dd>
@@ -29,7 +26,7 @@
         </dd>
 
         <dt>
-            Details
+            課程
         </dt>
 
         <dd>
@@ -37,7 +34,7 @@
         </dd>
 
         <dt>
-            RegDate
+            課程時間
         </dt>
 
         <dd>
@@ -45,7 +42,7 @@
         </dd>
 
         <dt>
-            Description
+            描述
         </dt>
 
         <dd>
@@ -53,7 +50,7 @@
         </dd>
 
         <dt>
-            Users
+            登入人員
         </dt>
 
         <dd>
@@ -67,8 +64,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" />
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+            <input type="submit" value="刪除" class="btn btn-danger" />
+            @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
         </div>
     }
 </div>

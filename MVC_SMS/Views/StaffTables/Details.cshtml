@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
 <div>
-    <h4>StaffTable</h4>
+    <h4>新進教職員</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            全名
         </dt>
 
         <dd>
@@ -19,7 +16,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ContactNo)
+            聯絡方式
         </dt>
 
         <dd>
@@ -27,7 +24,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BasicSalary)
+            薪資
         </dt>
 
         <dd>
@@ -35,7 +32,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EmailAddress)
+            Email
         </dt>
 
         <dd>
@@ -43,7 +40,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            地址
         </dt>
 
         <dd>
@@ -51,7 +48,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Qualification)
+            單位
         </dt>
 
         <dd>
@@ -59,7 +56,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Photo)
+            照片
         </dt>
 
         <dd>
@@ -70,7 +67,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            描述
         </dt>
 
         <dd>
@@ -78,7 +75,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
+            狀態
         </dt>
 
         <dd>
@@ -86,7 +83,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Gender)
+            性別
         </dt>
 
         <dd>
@@ -94,7 +91,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HomePhone)
+            家用電話
         </dt>
 
         <dd>
@@ -102,7 +99,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Doyouhaveanydisability)
+            是否身障?
         </dt>
 
         <dd>
@@ -110,7 +107,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ifdisabilityyesthengiveusdetail)
+            身障種類
         </dt>
 
         <dd>
@@ -118,7 +115,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Areyoutakinganymedication)
+            是否用藥?
         </dt>
 
         <dd>
@@ -126,7 +123,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ifmedicationyesthengiveus)
+            用藥種類
         </dt>
 
         <dd>
@@ -134,7 +131,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AnyCriminaloffcenceagainstyou)
+            是否有刑事紀錄?
         </dt>
 
         <dd>
@@ -142,7 +139,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ifcriminaloffcenceyesthengiveusdetail)
+            案件種類
         </dt>
 
         <dd>
@@ -150,7 +147,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.RegistrationDate)
+            註冊日期
         </dt>
 
         <dd>
@@ -158,7 +155,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DesignationTable.Title)
+            職稱
         </dt>
 
         <dd>
@@ -166,7 +163,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserTable.FullName)
+            登入人員
         </dt>
 
         <dd>
@@ -176,6 +173,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StaffID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("編輯", "Edit", new { id = Model.StaffID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
 </p>

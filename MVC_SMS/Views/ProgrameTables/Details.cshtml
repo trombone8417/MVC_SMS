@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
 <div>
-    <h4>ProgrameTable</h4>
+    <h4>科系</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Programe
+            學系
         </dt>
 
         <dd>
@@ -19,7 +16,7 @@
         </dd>
 
         <dt>
-            Start Date
+            開始日期
         </dt>
 
         <dd>
@@ -27,7 +24,7 @@
         </dd>
 
         <dt>
-            Status
+            啟用
         </dt>
 
         <dd>
@@ -35,7 +32,7 @@
         </dd>
 
         <dt>
-            User
+            登入人員
         </dt>
 
         <dd>
@@ -46,6 +43,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProgrameID }, new { @class = "btn btn-primary" })
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("編輯", "Edit", new { id = Model.ProgrameID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
 </p>

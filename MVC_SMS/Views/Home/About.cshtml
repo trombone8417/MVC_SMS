@@ -64,7 +64,7 @@
                             </a>
                         </div>
                         <div class="col-md-3 text-center">
-                            <a href="@Url.Action("Create", "StaffAttendance")">
+                            <a href="@Url.Action("Create", "StaffAttendanceTables")">
                                 <i class="fas fa-chart-line fa-2x"></i>
                                 <p>出勤</p>
                             </a>
@@ -91,9 +91,22 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
-                            <a href="@Url.Action("Register", "Account")">
+                            <a href="@Url.Action("Index", "UserTables")">
                                 <i class="fas fa-user fa-2x"></i>
-                                <p>帳號管理</p>
+                                <p>全部使用者</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Index", "UserTypeTables")">
+                                <i class="fas fa-users fa-2x"></i>
+                                <p>使用者角色</p>
+                            </a>
+                        </div>
+
+                        <div class="col-md-3 text-center">
+                            <a href="@Url.Action("Index", "DesignationTables")">
+                                <i class="fas fa-user-friends fa-2x"></i>
+                                <p>職員職稱</p>
                             </a>
                         </div>
                     </div>
@@ -115,7 +128,7 @@
                             </a>
                         </div>
                         <div class="col-md-3 text-center">
-                            <a href="@Url.Action("Create", "EmployeeSalary")">
+                            <a href="@Url.Action("Create", "EmployeeSalaryTables")">
                                 <i class="fas fa-funnel-dollar fa-2x"></i>
                                 <p>薪資</p>
                             </a>
