@@ -1,18 +1,13 @@
-﻿<style>
-    .container {
-        margin-top: -53px;
-    }
-</style>
+﻿
 @{
     ViewBag.Title = "Work Experience";
-    Layout = "~/Views/Shared/_ResumeLayoutPage.cshtml";
 }
 @{ Html.RenderAction("WorkExperiencePartial", "Resume");}
 
-@section scripts{
-    <script type="text/javascript">
-    
-        
+
+<script type="text/javascript">
+
+
         $('#AddOrUpdateExperience').on('click', function () {
             var serializeModel = {
                 EmployeeEducationID: $('#EmployeeWorkExperienceID').val(),
@@ -36,7 +31,6 @@
                 }
             });
         });
-    
-    </script>
+</script>
+
     @Scripts.Render("~/bundles/jqueryval");
-}

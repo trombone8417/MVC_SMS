@@ -136,8 +136,18 @@ namespace MVC_SMS.Controllers
             }
             return View("Login");
         }
+        /// <summary>
+        /// 儀錶板
+        /// </summary>
+        /// <returns></returns>
         public ActionResult About()
         {
+            //若未登入
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            {
+                //導至登入頁
+                return RedirectToAction("Login", "Home");
+            }
             ViewBag.Message = "歡迎來到校園資訊管理系統";
 
             return View();

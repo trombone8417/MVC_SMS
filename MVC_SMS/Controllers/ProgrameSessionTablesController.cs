@@ -10,6 +10,9 @@ using DatabaseAccess;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 系上課程
+    /// </summary>
     public class ProgrameSessionTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();

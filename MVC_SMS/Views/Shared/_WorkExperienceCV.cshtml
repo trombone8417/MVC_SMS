@@ -1,32 +1,32 @@
 ﻿@model IQueryable<MVC_SMS.ViewModels.EmployeeWorkExperienceTableVM>
 
-<div class="panel panel-default">
-    <div style="margin-left:3%; margin-top: 2%;">
-        <span class="IconTitle" style="background-color:#e066ff">
-            <span class="glyphicon glyphicon-book" aria-hidden="true" style="margin-left:26px; margin-top: 23px; color:#FFF;"></span>
-        </span>
-        <h4 style="margin-left: 12%; margin-top: -6%;">Work Experience</h4>
+<div class="card mb-4 shadow border-warning">
+    <div class="card-header">
+        工作經驗
     </div>
-    <div class="panel-body">
-        @if (Model != null && Model.Any())
-        {
-            foreach (var work in Model)
-            {
-                <div class="box">
-                    <div class="details">
+    <div class="card-body">
+            <div class="form-horizontal">
+                <div class="row">
 
-                        <p style="margin-left: 4%; ">
-                            <b> @string.Format("{0} : {1}", work.Company, work.Title) </b>
-                            <span class="yearStyle" style="position: relative; left: 38%; background-color: #e066ff;">@string.Format("{0: yyyy} - {1: yyyy}", work.FromYear, work.ToYear)</span><br>
-                            <span> <i>@work.Country</i></span>
-                        <p class="description">
-                            @work.Description
-                        </p>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var work in Model)
+                        {
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @string.Format("{0} : {1}", work.Company, work.Title)
+                                    @string.Format("{0: yyyy} - {1: yyyy}", work.FromYear, work.ToYear)
+                                    @work.Country
 
-                    </div> <!--END DETAILS-->
-                </div> <!--END BOX-->
-            }
-        }
+                                    @work.Description
 
-    </div> <!-- END PANEL BODY -->
-</div> <!-- END PANEL DEFAULT WORK EXPERIENCE -->
+
+                                </div> <!--END DETAILS-->
+                            </div> <!--END BOX-->
+                        }
+                    }
+
+                </div> <!-- END PANEL BODY -->
+            </div> <!-- END PANEL DEFAULT WORK EXPERIENCE -->
+    </div>
+</div>

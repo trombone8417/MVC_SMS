@@ -7,6 +7,9 @@ using System.Web.Mvc;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 繳費報表
+    /// </summary>
     public class FeeReportController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();

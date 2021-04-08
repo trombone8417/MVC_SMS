@@ -9,6 +9,9 @@ using System.Web.Mvc;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 寄信
+    /// </summary>
     public class SendEmailController : Controller
     {
         // GET: SendEmail

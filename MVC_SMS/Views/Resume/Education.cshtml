@@ -1,15 +1,9 @@
-﻿<style>
-    .container{
-        margin-top:-53px;
-    }
-</style>
-@{
+﻿@{
     ViewBag.Title = "Education";
-    Layout = "~/Views/Shared/_ResumeLayoutPage.cshtml";
 }
 @{ Html.RenderAction("EducationPartial", "Resume");}
 
-@section scripts{
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('#Country').change(function () {
@@ -56,5 +50,3 @@
         });
     });
     </script>
-    @Scripts.Render("~/bundles/jqueryval");
-}

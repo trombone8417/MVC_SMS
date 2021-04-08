@@ -11,6 +11,9 @@ using DatabaseAccess;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 教職員資料
+    /// </summary>
     public class StaffTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();

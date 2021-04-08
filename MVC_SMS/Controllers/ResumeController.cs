@@ -12,6 +12,9 @@ using System.Web.Mvc;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 履歷
+    /// </summary>
     public class ResumeController : Controller
     {
         private readonly IResumeRepository _resumeRepository;
@@ -108,18 +111,18 @@ namespace MVC_SMS.Controllers
             //Nationality
             List<SelectListItem> nationality = new List<SelectListItem>()
             {
-                new SelectListItem { Text = "Taiwan", Value = "Taiwan", Selected = true},
+                new SelectListItem { Text = "台灣", Value = "Taiwan", Selected = true},
             };
             model.DateOfBirth = DateTime.Now;
 
             //Educational Level
             List<SelectListItem> educationalLevel = new List<SelectListItem>()
             {
-                new SelectListItem { Text = "Hight School", Value = "Hight School", Selected = true},
-                new SelectListItem { Text = "Diploma", Value = "Diploma"},
-                new SelectListItem { Text = "Bachelor's degree", Value = "Bachelor's degree"},
-                new SelectListItem { Text = "Master's degree", Value = "Master's degree"},
-                new SelectListItem { Text = "Doctorate", Value = "Doctorate"},
+                new SelectListItem { Text = "碩士", Value = "碩士", Selected = true},
+                new SelectListItem { Text = "大學", Value = "大學"},
+                new SelectListItem { Text = "高中", Value = "高中"},
+                new SelectListItem { Text = "國中", Value = "國中"},
+                new SelectListItem { Text = "國小", Value = "國小"},
             };
 
             model.ListNationality = nationality;
@@ -142,6 +145,7 @@ namespace MVC_SMS.Controllers
             int.TryParse(Convert.ToString(Session["EmployeeId"]), out employeeid);
             if (ModelState.IsValid)
             {
+                AutoMapper.Mapper.Reset();
                 //Creating Mapping
                 Mapper.Initialize(cfg => cfg.CreateMap<EmployeeResumeTableVM, EmployeeResumeTable>());
 
@@ -228,10 +232,10 @@ namespace MVC_SMS.Controllers
         {
             education.ListOfCountry = GetCountries();
             education.ListOfCity = new List<SelectListItem>();
-            education.ListOfCity.Add(new SelectListItem() { Text = "KPK", Value = "KPK", Selected = true });
-            education.ListOfCity.Add(new SelectListItem() { Text = "Punjab", Value = "Punjab" });
-            education.ListOfCity.Add(new SelectListItem() { Text = "Sindh", Value = "Sindh" });
-            education.ListOfCity.Add(new SelectListItem() { Text = "Balochistan", Value = "Balochistan" });
+            education.ListOfCity.Add(new SelectListItem() { Text = "台灣", Value = "台灣", Selected = true });
+            education.ListOfCity.Add(new SelectListItem() { Text = "美國", Value = "美國" });
+            education.ListOfCity.Add(new SelectListItem() { Text = "中國", Value = "中國" });
+            education.ListOfCity.Add(new SelectListItem() { Text = "日本", Value = "日本" });
 
             return PartialView("~/Views/Shared/_MyEducation.cshtml", education);
         }
@@ -324,11 +328,11 @@ namespace MVC_SMS.Controllers
 
             if (_resumeRepository.AddSkill(skillEntity, employeeResumeID))
             {
-                msg = "skill added successfully";
+                msg = "技能新增成功";
             }
             else
             {
-                msg = "something Wrong";
+                msg = "出現錯誤";
             }
 
             return Json(new { data = msg }, JsonRequestBehavior.AllowGet);
@@ -338,9 +342,9 @@ namespace MVC_SMS.Controllers
         {
             List<SelectListItem> certificationLevel = new List<SelectListItem>()
             {
-                new SelectListItem { Text = "Beginner", Value = "Beginner", Selected = true},
-                new SelectListItem { Text = "Intermediate", Value = "Intermediate"},
-                new SelectListItem { Text = "Advanced", Value = "Advanced"}
+                new SelectListItem { Text = "初級", Value = "初級", Selected = true},
+                new SelectListItem { Text = "中級", Value = "中級"},
+                new SelectListItem { Text = "高級", Value = "高級"}
             };
 
             certification.ListOfLevel = certificationLevel;
@@ -367,11 +371,11 @@ namespace MVC_SMS.Controllers
 
             if (_resumeRepository.AddCertification(certificationEntity, employeeResumeID))
             {
-                msg = "Certification added successfully";
+                msg = "證照新增成功";
             }
             else
             {
-                msg = "something Wrong";
+                msg = "出現錯誤";
             }
 
             return Json(new { data = msg }, JsonRequestBehavior.AllowGet);
@@ -381,11 +385,9 @@ namespace MVC_SMS.Controllers
         {
             List<SelectListItem> languageLevel = new List<SelectListItem>()
             {
-                new SelectListItem { Text = "Elementary Proficiency", Value = "Elementary Proficiency", Selected = true},
-                new SelectListItem { Text = "LimitedWorking Proficiency", Value = "LimitedWorking Proficiency"},
-                new SelectListItem { Text = "Professional working Proficiency", Value = "Professional working Proficiency"},
-                new SelectListItem { Text = "Full Professional Proficiency", Value = "Full Professional Proficiency"},
-                new SelectListItem { Text = "Native Or Bilingual Proficiency", Value = "Native Or Bilingual Proficiency"}
+                new SelectListItem { Text = "簡單", Value = "簡單", Selected = true},
+                new SelectListItem { Text = "普通", Value = "普通"},
+                new SelectListItem { Text = "流利", Value = "流利"},
             };
 
             language.ListOfProficiency = languageLevel;
@@ -412,11 +414,11 @@ namespace MVC_SMS.Controllers
 
             if (_resumeRepository.AddLanguage(languageEntity, employeeResumeID))
             {
-                msg = "Language added successfully";
+                msg = "語言新增成功";
             }
             else
             {
-                msg = "something Wrong";
+                msg = "出現錯誤";
             }
 
             return Json(new { data = msg }, JsonRequestBehavior.AllowGet);
@@ -553,32 +555,29 @@ namespace MVC_SMS.Controllers
 
             switch (country)
             {
-                case "Pakistan":
-                    listOfCities.Add(new SelectListItem() { Text = "KPK", Value = "KPK", Selected = true });
-                    listOfCities.Add(new SelectListItem() { Text = "Punjab", Value = "Punjab" });
-                    listOfCities.Add(new SelectListItem() { Text = "Sindh", Value = "Sindh" });
-                    listOfCities.Add(new SelectListItem() { Text = "Balochistan", Value = "Balochistan" });
+                case "台灣":
+                    listOfCities.Add(new SelectListItem() { Text = "台北", Value = "台北", Selected = true });
+                    listOfCities.Add(new SelectListItem() { Text = "台中", Value = "台中" });
+                    listOfCities.Add(new SelectListItem() { Text = "高雄", Value = "高雄" });
+                    listOfCities.Add(new SelectListItem() { Text = "嘉義", Value = "嘉義" });
                     break;
 
-                case "India":
-                    listOfCities.Add(new SelectListItem() { Text = "Bombay", Value = "Bombay", Selected = true });
-                    listOfCities.Add(new SelectListItem() { Text = "Bangalore", Value = "Bangalore" });
-                    listOfCities.Add(new SelectListItem() { Text = "Chennai", Value = "Chennai" });
-                    listOfCities.Add(new SelectListItem() { Text = "Hyderabad", Value = "Hyderabad" });
+                case "美國":
+                    listOfCities.Add(new SelectListItem() { Text = "紐約", Value = "紐約", Selected = true });
+                    listOfCities.Add(new SelectListItem() { Text = "洛杉磯", Value = "洛杉磯" });
+                    listOfCities.Add(new SelectListItem() { Text = "芝加哥", Value = "芝加哥" });
                     break;
 
-                case "Spain":
-                    listOfCities.Add(new SelectListItem() { Text = "Barcelone", Value = "Barcelone", Selected = true });
-                    listOfCities.Add(new SelectListItem() { Text = "Madrid", Value = "Madrid" });
-                    listOfCities.Add(new SelectListItem() { Text = "Valence", Value = "Valence" });
-                    listOfCities.Add(new SelectListItem() { Text = "Malaga", Value = "Malaga" });
+                case "中國":
+                    listOfCities.Add(new SelectListItem() { Text = "北京", Value = "北京", Selected = true });
+                    listOfCities.Add(new SelectListItem() { Text = "福建", Value = "福建" });
+                    listOfCities.Add(new SelectListItem() { Text = "廣東", Value = "廣東" });
+                    listOfCities.Add(new SelectListItem() { Text = "上海", Value = "上海" });
                     break;
 
-                case "USA":
-                    listOfCities.Add(new SelectListItem() { Text = "New York", Value = "New York", Selected = true });
-                    listOfCities.Add(new SelectListItem() { Text = "Los Angeles", Value = "Los Angeles" });
-                    listOfCities.Add(new SelectListItem() { Text = "San Francisco", Value = "San Francisco" });
-                    listOfCities.Add(new SelectListItem() { Text = "Chicago", Value = "Chicago" });
+                case "日本":
+                    listOfCities.Add(new SelectListItem() { Text = "東京", Value = "東京", Selected = true });
+                    listOfCities.Add(new SelectListItem() { Text = "大阪", Value = "大阪" });
                     break;
             }
 
@@ -589,11 +588,10 @@ namespace MVC_SMS.Controllers
         {
             List<SelectListItem> listOfCountry = new List<SelectListItem>()
             {
-                 new SelectListItem() { Text = "Pakistan", Value = "Pakistan", Selected = true},
-                new SelectListItem() { Text = "Morocco", Value = "Morocco" },
-                new SelectListItem() { Text = "India", Value = "India"},
-                new SelectListItem() { Text = "Spain", Value = "Spain"},
-                new SelectListItem() { Text = "USA", Value = "USA"}
+            new SelectListItem() { Text = "台灣", Value = "台灣", Selected = true },
+            new SelectListItem() { Text = "美國", Value = "美國" },
+            new SelectListItem() { Text = "中國", Value = "中國" },
+            new SelectListItem() { Text = "日本", Value = "日本" },
             };
 
             return listOfCountry;

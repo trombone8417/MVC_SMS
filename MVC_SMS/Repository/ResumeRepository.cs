@@ -13,6 +13,9 @@ using DatabaseAccess;
 
 namespace MVC_SMS.Repository
 {
+    /// <summary>
+    /// 輸入履歷
+    /// </summary>
     public class ResumeRepository : IResumeRepository
     {
         //Db Context

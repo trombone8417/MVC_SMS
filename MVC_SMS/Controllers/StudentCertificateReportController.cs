@@ -7,6 +7,9 @@ using System.Web.Mvc;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 畢業證書
+    /// </summary>
     public class StudentCertificateReportController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();

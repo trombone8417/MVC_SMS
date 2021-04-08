@@ -7,6 +7,9 @@ using System.Web.Mvc;
 
 namespace MVC_SMS.Controllers
 {
+    /// <summary>
+    /// 教職員離職證明書
+    /// </summary>
     public class EmployeeCertificateController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();

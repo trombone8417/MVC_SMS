@@ -1,133 +1,130 @@
 ﻿@model MVC_SMS.ViewModels.EmployeeResumeTableVM
-<style type="text/css">
-    .container {
-        margin-top: -53px;
-    }
 
-    .row {
-        margin-bottom: 25px;
-    }
-
-    .IconTitle {
-        border: 3px solid #e0e0e0;
-        display: inline-block;
-        width: 70px;
-        height: 70px;
-        border-radius: 100%;
-        background-color: #337ab7;
-    }
-</style>
 @{
     ViewBag.Title = "Personnal Informtion";
-    Layout = "~/Views/Shared/_ResumeLayoutPage.cshtml";
 }
-<div class="container">
-    <div class="Education FirstLevel" style="margin: 19% auto;">
-        <div style="margin-left:18%;">
-            <span class="IconTitle">
-                <span class="glyphicon glyphicon-education" aria-hidden="true" style="margin-left:26px; margin-top: 23px; color:#FFF;"></span>
-            </span>
-            <h4 style="margin-left: 8%; margin-top: -4%;">Personnal Informtion</h4>
-        </div>
-
-        <div class="panel panel-default" style="width: 65%; margin-left: 18%; margin-top: 3%;">
-            <div class="panel-heading">
-                <h3 class="panel-title">Personnal Informtion</h3>
-            </div>
-            @using (Html.BeginForm("PersonnalInformtion", "Resume", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
-
-
-                <div class="panel-body">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="row">
-                        <div class="col-xs-6">
-                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "FirstName" } })
-                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-xs-6">
-                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "LastName" } })
-                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="form-group">
-                                <div id="datetimepicker1">
-                                    @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", @placeholder = "Date Of Birth" } })
-                                </div>
-                            </div>
-                            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-xs-6">
-                            @Html.EditorFor(model => model.EducationalLevel, new { htmlAttributes = new { @class = "form-control", @placeholder = "Educational Level" } })
-                            @Html.ValidationMessageFor(model => model.EducationalLevel, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Address" } })
-                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-xs-6">
-                            @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "form-control", @placeholder = "Tel" } })
-                            @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-xs-6">
-                            @Html.EditorFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control", @placeholder = "Summary" } })
-                            @Html.ValidationMessageFor(model => model.Summary, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            @Html.EditorFor(model => model.LinkedInProdil, new { htmlAttributes = new { @class = "form-control", @placeholder = "LinkedIn Profil" } })
-                            @Html.ValidationMessageFor(model => model.LinkedInProdil, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-xs-6">
-                            @Html.EditorFor(model => model.FaceBookProfil, new { htmlAttributes = new { @class = "form-control", @placeholder = "FaceBook Profil" } })
-                            @Html.ValidationMessageFor(model => model.FaceBookProfil, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            @Html.EditorFor(model => model.C_CornerProfil, new { htmlAttributes = new { @class = "form-control", @placeholder = "C_Corner Profil" } })
-                            @Html.ValidationMessageFor(model => model.C_CornerProfil, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-xs-6">
-                            @Html.EditorFor(model => model.TwitterProfil, new { htmlAttributes = new { @class = "form-control", @placeholder = "Twitter Profil" } })
-                            @Html.ValidationMessageFor(model => model.TwitterProfil, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            @Html.DropDownListFor(model => model.Nationality, Model.ListNationality, new { @class = "form-control", @placeholder = "Certification Level" })
-                            @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-xs-6">
-                            @Html.DropDownListFor(model => model.EducationalLevel, Model.ListEducationalLevel, new { @class = "form-control", @placeholder = "Certification Level" })
-                            @Html.ValidationMessageFor(model => model.EducationalLevel, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <input type="file" name="ImageProfil" id="ImageProfil" />
-
-                        </div>
-                    </div>
+<div class="card mb-4 shadow">
+    <div class="card-header">
+        個人資料
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("PersonnalInformtion", "Resume", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6">
                     <div class="form-group">
-                        <input type="submit" value="Next Step>> Education" class="btn btn-primary"  style="  position: relative; right: -68%;" />
+                        @Html.LabelFor(model => model.LastName, "姓", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FirstName, "名", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div id="datetimepicker1">
+                            @Html.LabelFor(model => model.DateOfBirth, "生日", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Address, "地址", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Tel, "電話", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, "Email", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Summary, "總結", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.ValidationMessageFor(model => model.Summary, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LinkedInProdil, "LinkedIn", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.LinkedInProdil, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LinkedInProdil, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FaceBookProfil, "FaceBook", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.FaceBookProfil, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.ValidationMessageFor(model => model.FaceBookProfil, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.C_CornerProfil, "C_Corner", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.C_CornerProfil, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.ValidationMessageFor(model => model.C_CornerProfil, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TwitterProfil, "Twitter", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.TwitterProfil, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TwitterProfil, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nationality, "國家", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.Nationality, Model.ListNationality, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EducationalLevel, "教育程度", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.EducationalLevel, Model.ListEducationalLevel, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.EducationalLevel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>上傳照片</label>
+                        <input type="file" name="ImageProfil" id="ImageProfil" />
 
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="新增個人資料 & 下一步>> 教育程度" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
             }
         </div>
-    </div>
 </div>
+
 
