@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "使用者角色";
 }
-
-<h2>使用者</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>角色</h4>
+        <h4>使用者角色</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.UserTypeID)
@@ -34,8 +31,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-success" />
-                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+                <input type="submit" value="更新" class="btn btn-success" />
+                @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>

@@ -13,11 +13,11 @@
 </head>
 <body>
     <div>
-        <h4>ClassSubjectTable</h4>
+        <h4>課程</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                Class Subject Title
+                班級
             </dt>
 
             <dd>
@@ -25,14 +25,14 @@
             </dd>
 
             <dt>
-                Class
+                科目
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => model.SubjectTable.Name)
             </dd>
             <dt>
-                Subject
+                課程
             </dt>
 
             <dd>
@@ -40,7 +40,7 @@
             </dd>
 
             <dt>
-                Status
+                狀態
             </dt>
 
             <dd>
@@ -52,8 +52,8 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ClassSubjectID }, new { @class = "btn btn-primary" })
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Edit", "編輯", new { id = Model.ClassSubjectID }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
     </p>
 </body>
 </html>

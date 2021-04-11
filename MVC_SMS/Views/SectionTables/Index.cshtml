@@ -1,15 +1,14 @@
-﻿@model IEnumerable<DatabaseAccess.UserTypeTable>
+﻿@model IEnumerable<DatabaseAccess.SectionTable>
 
 @{
     ViewBag.Title = "Index";
 }
-
 <p>
-    @Html.ActionLink("新增", "Create",null, new { @class="btn btn-success"})
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">使用者角色</h6>
+        <h6 class="m-0 font-weight-bold text-primary">班別</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -17,10 +16,10 @@
                 <thead>
                     <tr>
                         <th>
-                            使用者角色
+                            班別
                         </th>
                         <th>
-                            詳細內容
+                            登入人員
                         </th>
                         <th>操作</th>
                     </tr>
@@ -30,20 +29,21 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.TypeName)
+                                @Html.DisplayFor(modelItem => item.SectionName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Description)
+                                @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
                             <td>
-                                @Html.ActionLink("編輯", "Edit", new { id = item.UserTypeID },new { @class="btn btn-primary" }) 
-                                @Html.ActionLink("內容", "Details", new { id = item.UserTypeID }, new { @class = "btn btn-info" }) 
-                                @Html.ActionLink("刪除", "Delete", new { id = item.UserTypeID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.SectionID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.SectionID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("刪除", "Delete", new { id = item.SectionID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }
-                </tbody>
+
             </table>
         </div>
     </div>
 </div>
+

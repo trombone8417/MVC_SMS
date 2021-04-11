@@ -188,6 +188,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProgrameSessionTablesController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
+    <Compile Include="Controllers\SectionTablesController.cs" />
     <Compile Include="Controllers\SendEmailController.cs" />
     <Compile Include="Controllers\SessionTablesController.cs" />
     <Compile Include="Controllers\StaffAttendanceTablesController.cs" />
@@ -2264,6 +2265,11 @@
     <Content Include="Views\StudentCertificateReport\LeavingC.cshtml" />
     <Content Include="Views\EmployeeCertificate\ExperienceC.cshtml" />
     <Content Include="Views\SendEmail\SendEmail.cshtml" />
+    <Content Include="Views\SectionTables\Create.cshtml" />
+    <Content Include="Views\SectionTables\Delete.cshtml" />
+    <Content Include="Views\SectionTables\Details.cshtml" />
+    <Content Include="Views\SectionTables\Edit.cshtml" />
+    <Content Include="Views\SectionTables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

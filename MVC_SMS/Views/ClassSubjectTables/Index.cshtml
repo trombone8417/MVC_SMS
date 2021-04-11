@@ -9,15 +9,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>課程</title>
 </head>
 <body>
     <p>
-        @Html.ActionLink("Add Subject To Class", "Create", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
     </p>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Class Wise Subject's</h6>
+            <h6 class="m-0 font-weight-bold text-primary">課程</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -25,19 +25,19 @@
                     <thead>
                         <tr>
                             <th>
-                                Class Subject Title
+                                班級
                             </th>
                             <th>
-                                Class Title
+                                科目
                             </th>
                             <th>
-                                Subject
+                                課程
                             </th>
                             <th>
-                                Status
+                                狀態
                             </th>
 
-                            <th>Actions</th>
+                            <th>操作</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,9 +59,9 @@
                             </td>
 
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ClassSubjectID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.ClassSubjectID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ClassSubjectID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.ClassSubjectID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.ClassSubjectID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("刪除", "Delete", new { id = item.ClassSubjectID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                         }

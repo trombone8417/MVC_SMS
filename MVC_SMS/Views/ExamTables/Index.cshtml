@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -53,9 +53,9 @@
                                 @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ExamID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.ExamID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ExamID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.ExamID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.ExamID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("刪除", "Delete", new { id = item.ExamID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }
