@@ -18,7 +18,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submission Fee Date</title>
+    <title>考試成績</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>promoteid</label>
+                <label>學號</label>
                 <input type="text" name="promoteid" class="form-control mb-2 mr-sm-2 mb-sm-0" id="promoteid" required />
             </div>
 
@@ -42,51 +42,48 @@
             <a href="javascript:window.print()" class="btn btn-primary pull-right no-print-button">Print Report</a>
         }
 
-        <h3>Submission Fee Date</h3>
+    <h3>考試成績</h3>
         <table class="table table-bordered">
             <tr>
                 <th>
-                    Total Marks
+                    學生
                 </th>
                 <th>
-                    Obtain Marks
+                    考試
                 </th>
                 <th>
-                    Class Subject
+                    課程
                 </th>
                 <th>
-                    Exam
+                    獲得分數
                 </th>
                 <th>
-                    Student
-                </th>
-                <th>
-                    User
+                    總分
                 </th>
             </tr>
 
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TotalMarks)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ObtainMarks)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClassSubjectTable.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ExamTable.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StudentTable.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserTable.FullName)
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentTable.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExamTable.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassSubjectTable.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ObtainMarks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalMarks)
+            </td>
+
+
+        </tr>
             }
 
         </table>

@@ -8,7 +8,7 @@
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Exam Marks</h6>
+        <h6 class="m-0 font-weight-bold text-primary">活動</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -16,7 +16,7 @@
                 <thead>
                     <tr>
                         <th>
-                            節日
+                            活動
                         </th>
                         <th>
                             日期
@@ -53,9 +53,9 @@
                                 @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.EventID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.EventID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.EventID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.EventID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.EventID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("刪除", "Delete", new { id = item.EventID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }

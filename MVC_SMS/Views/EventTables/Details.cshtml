@@ -4,14 +4,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>EventTable</h4>
+    <h4>活動</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.EventTitle)
+            活動
         </dt>
 
         <dd>
@@ -19,7 +17,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EventDate)
+            日期
         </dt>
 
         <dd>
@@ -27,7 +25,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Location)
+            地點
         </dt>
 
         <dd>
@@ -35,7 +33,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            詳細內容
         </dt>
 
         <dd>
@@ -43,7 +41,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserTable.FullName)
+            登入人員
         </dt>
 
         <dd>
@@ -53,6 +51,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EventID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("編輯", "Edit", new { id = Model.EventID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
 </p>

@@ -11,7 +11,7 @@ using DatabaseAccess;
 namespace MVC_SMS.Controllers
 {
     /// <summary>
-    /// 期末分數
+    /// 科目
     /// </summary>
     public class SubjectTablesController : Controller
     {

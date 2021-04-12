@@ -17,59 +17,46 @@
 </head>
 <body>
     <div class="container body-content">
-        <h3>Teacher Time Table</h3>
+        <h3>全校教師課表</h3>
         <table class="table table-bordered">
             <tr>
                 <th>
-                    Start Time
+                    教師
                 </th>
                 <th>
-                    End Time
+                    課程
                 </th>
                 <th>
-                    Day
+                    星期
                 </th>
                 <th>
-                    Is Active
+                    開始
                 </th>
                 <th>
-                    Class Subject
-                </th>
-                <th>
-                    User
-                </th>
-                <th>
-                    Staff Table
+                    結束
                 </th>
 
             </tr>
 
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StartTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EndTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Day)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClassSubjectTable.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserTable.FullName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StaffTable.Name)
-                    </td>
-
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffTable.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassSubjectTable.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Day)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+        </tr>
             }
 
         </table>

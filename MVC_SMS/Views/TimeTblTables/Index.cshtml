@@ -4,14 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Time Table</h6>
+        <h6 class="m-0 font-weight-bold text-primary">課程時間</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -19,27 +17,27 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.StartTime)
+                            開始
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.EndTime)
+                            結束
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Day)
+                            星期
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.IsActive)
+                            狀態
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ClassSubjectTable.Name)
+                            課程
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.StaffTable.Name)
+                            教師
                         </th>
                         <th>
-                            User
+                            登入人員
                         </th>
-                        <th>Actions</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,9 +66,9 @@
                                 @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.TimeTableID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.TimeTableID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.TimeTableID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.TimeTableID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.TimeTableID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("刪除", "Delete", new { id = item.TimeTableID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }

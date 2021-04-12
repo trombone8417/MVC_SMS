@@ -66,6 +66,7 @@
                                 @Html.ActionLink("編輯", "Edit", new { id = item.StudentID }, new { @class = "btn btn-primary" })
                                 @Html.ActionLink("內容", "Details", new { id = item.StudentID }, new { @class = "btn btn-info" })
                                 @Html.ActionLink("出勤", "StudentAttendance", "AttendanceReports", new { id = item.StudentID }, new { @class = "btn btn-secondary", target = "_blank" })
+                                @Html.ActionLink("課表", "StudentReport", "TimeTableReports", new { id = item.StudentID }, new { @class = "btn btn-secondary", target = "_blank" })
                             </td>
                         </tr>
                     }

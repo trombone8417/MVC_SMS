@@ -11,7 +11,7 @@ using DatabaseAccess;
 namespace MVC_SMS.Controllers
 {
     /// <summary>
-    /// 繳費
+    /// 繳費時間
     /// </summary>
     public class ExpensesTablesController : Controller
     {

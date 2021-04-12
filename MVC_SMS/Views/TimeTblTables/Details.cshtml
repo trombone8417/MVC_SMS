@@ -4,14 +4,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>TimeTblTable</h4>
+    <h4>課程時間</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.StartTime)
+            開始
         </dt>
 
         <dd>
@@ -19,7 +17,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EndTime)
+            結束
         </dt>
 
         <dd>
@@ -27,7 +25,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Day)
+            星期
         </dt>
 
         <dd>
@@ -35,7 +33,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
+            狀態
         </dt>
 
         <dd>
@@ -43,7 +41,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ClassSubjectTable.Name)
+            課程
         </dt>
 
         <dd>
@@ -51,7 +49,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StaffTable.Name)
+            教師
         </dt>
 
         <dd>
@@ -59,7 +57,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserTable.FullName)
+            登入人員
         </dt>
 
         <dd>
@@ -69,6 +67,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TimeTableID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("編輯", "Edit", new { id = Model.TimeTableID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
 </p>

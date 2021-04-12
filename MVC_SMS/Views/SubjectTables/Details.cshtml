@@ -4,14 +4,12 @@
     ViewBag.Title = "Subject";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Subject</h4>
+    <h4>科目</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Subject Name
+            科目
         </dt>
 
         <dd>
@@ -19,7 +17,7 @@
         </dd>
 
         <dt>
-            Reg Date
+            註冊日期
         </dt>
 
         <dd>
@@ -27,7 +25,7 @@
         </dd>
 
         <dt>
-            Description
+            內容
         </dt>
 
         <dd>
@@ -35,7 +33,7 @@
         </dd>
 
         <dt>
-            Total Marks
+            費用
         </dt>
 
         <dd>
@@ -43,7 +41,7 @@
         </dd>
 
         <dt>
-            User
+            登入人員
         </dt>
 
         <dd>
@@ -53,7 +51,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SubjectID }, new { @class = "btn btn-primary" })
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("編輯", "Edit", new { id = Model.SubjectID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("回主頁", "Index", null, new { @class = "btn btn-default" })
 
 </p>

@@ -4,11 +4,11 @@
     ViewBag.Title = "Index";
 }
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-success" })
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Expense Type</h6>
+        <h6 class="m-0 font-weight-bold text-primary">繳費方式</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -19,7 +19,7 @@
                             繳費方式
                         </th>
                         <th>
-                            啟用
+                            狀態
                         </th>
                         <th>操作</th>
                     </tr>
@@ -35,9 +35,9 @@
                                 @Html.DisplayFor(modelItem => item.IsActive)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ExpensesTypeID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.ExpensesTypeID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ExpensesTypeID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("編輯", "Edit", new { id = item.ExpensesTypeID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("內容", "Details", new { id = item.ExpensesTypeID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("刪除", "Delete", new { id = item.ExpensesTypeID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }
